@@ -3,6 +3,7 @@ name: Build watch faces
 on:
   push:
     branches: [main]
+    tags: ["v*"]          # a version tag also publishes a GitHub Release with every face's .iq
   pull_request:
   workflow_dispatch:
 
@@ -88,3 +89,35 @@ jobs:
       - name: Remove signing key
         if: always()
         run: rm -f developer_key
+
+  # On a version tag (v1.0, v1.1, ...): publish a Release with every face's .iq, then keep only the
+  # 3 newest releases (older releases and their tags are deleted).
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Collect .iq files
+        run: |
+          mkdir -p release
+          find artifacts -name "*.iq" -exec cp {} release/ \;
+          ls -la release
+          test "$(ls release/*.iq | wc -l)" -gt 0
+      - name: Create release
+        run: gh release create "${GITHUB_REF_NAME}" release/*.iq --title "${GITHUB_REF_NAME}" --generate-notes
+      - name: Keep only the 3 newest releases
+        run: |
+          gh release list --limit 100 --json tagName,createdAt \
+            --jq 'sort_by(.createdAt) | reverse | .[3:] | .[].tagName' |
+          while read -r tag; do
+            echo "deleting release $tag"
+            gh release delete "$tag" --yes --cleanup-tag
+          done
