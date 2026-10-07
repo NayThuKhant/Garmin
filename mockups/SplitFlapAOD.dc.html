@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face W: Always-on mode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&amp;family=Manrope:wght@600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Manrope', sans-serif; color: #a8a8a8">
+
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; font-family: 'Manrope', sans-serif">
+<div style="font-size: 11px; font-weight: 600; letter-spacing: 3px; color: #6a6a6a">MON 05 OCT</div>
+<div style="display: flex; align-items: center; gap: 5px"><div style="position: relative; width: 52px; height: 80px; border-radius: 4px; background: transparent; border: 1px solid #2a2a2a; box-sizing: border-box; display: flex; align-items: center; justify-content: center; overflow: hidden"><span style="position: relative; font-family: 'Antonio', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 66px; line-height: 1; color: #9a9a9a">1</span><div style="position: absolute; left: 0; top: 39px; width: 52px; height: 2px; background: #1a1a1a"></div></div><div style="position: relative; width: 52px; height: 80px; border-radius: 4px; background: transparent; border: 1px solid #2a2a2a; box-sizing: border-box; display: flex; align-items: center; justify-content: center; overflow: hidden"><span style="position: relative; font-family: 'Antonio', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 66px; line-height: 1; color: #9a9a9a">0</span><div style="position: absolute; left: 0; top: 39px; width: 52px; height: 2px; background: #1a1a1a"></div></div><div style="display: flex; flex-direction: column; gap: 14px; padding: 0 2px"><span style="width: 6px; height: 6px; border-radius: 3px; background: #6a6a6a"></span><span style="width: 6px; height: 6px; border-radius: 3px; background: #6a6a6a"></span></div><div style="position: relative; width: 52px; height: 80px; border-radius: 4px; background: transparent; border: 1px solid #2a2a2a; box-sizing: border-box; display: flex; align-items: center; justify-content: center; overflow: hidden"><span style="position: relative; font-family: 'Antonio', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 66px; line-height: 1; color: #9a9a9a">0</span><div style="position: absolute; left: 0; top: 39px; width: 52px; height: 2px; background: #1a1a1a"></div></div><div style="position: relative; width: 52px; height: 80px; border-radius: 4px; background: transparent; border: 1px solid #2a2a2a; box-sizing: border-box; display: flex; align-items: center; justify-content: center; overflow: hidden"><span style="position: relative; font-family: 'Antonio', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 66px; line-height: 1; color: #9a9a9a">8</span><div style="position: absolute; left: 0; top: 39px; width: 52px; height: 2px; background: #1a1a1a"></div></div></div>
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: #6a6a6a">HR 62 · BB 68</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

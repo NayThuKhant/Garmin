@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face T: Radar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Manrope', sans-serif; color: #ffffff">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<polygon points="204.2,210.0 213.5,226.0 204.2,242.0 185.8,242.0 176.5,226.0 185.8,210.0" stroke="#262626" stroke-width="1"></polygon>
+<polygon points="213.5,194.0 232.0,226.0 213.5,258.0 176.5,258.0 158.0,226.0 176.5,194.0" stroke="#262626" stroke-width="1"></polygon>
+<polygon points="222.8,177.9 250.5,226.0 222.8,274.1 167.2,274.1 139.5,226.0 167.2,177.9" stroke="#262626" stroke-width="1"></polygon>
+<polygon points="232.0,161.9 269.0,226.0 232.0,290.1 158.0,290.1 121.0,226.0 158.0,161.9" stroke="#262626" stroke-width="1"></polygon>
+<line x1="195" y1="226" x2="232.0" y2="161.9" stroke="#1e1e1e" stroke-width="1"></line>
+<line x1="195" y1="226" x2="269.0" y2="226.0" stroke="#1e1e1e" stroke-width="1"></line>
+<line x1="195" y1="226" x2="232.0" y2="290.1" stroke="#1e1e1e" stroke-width="1"></line>
+<line x1="195" y1="226" x2="158.0" y2="290.1" stroke="#1e1e1e" stroke-width="1"></line>
+<line x1="195" y1="226" x2="121.0" y2="226.0" stroke="#1e1e1e" stroke-width="1"></line>
+<line x1="195" y1="226" x2="158.0" y2="161.9" stroke="#1e1e1e" stroke-width="1"></line>
+<polygon points="222.4,178.6 245.3,226.0 225.0,277.9 171.7,266.4 138.8,226.0 159.1,163.8" fill="{{accent}}" fill-opacity="0.16" stroke="{{accent}}" stroke-width="2" stroke-linejoin="round"></polygon>
+<circle cx="222.4" cy="178.6" r="3.5" fill="{{accent}}"></circle>
+<circle cx="245.3" cy="226.0" r="3.5" fill="{{accent}}"></circle>
+<circle cx="225.0" cy="277.9" r="3.5" fill="{{accent}}"></circle>
+<circle cx="171.7" cy="266.4" r="3.5" fill="{{accent}}"></circle>
+<circle cx="138.8" cy="226.0" r="3.5" fill="{{accent}}"></circle>
+<circle cx="159.1" cy="163.8" r="3.5" fill="{{accent}}"></circle>
+</svg>
+<div style="position: absolute; left: 211.0px; top: 125.4px; width: 68px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 13px; font-weight: 700; line-height: 1.1">7,412</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">STEPS</span></div>
+<div style="position: absolute; left: 261.0px; top: 212.0px; width: 68px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 13px; font-weight: 700; line-height: 1.1">68</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">BODY</span></div>
+<div style="position: absolute; left: 211.0px; top: 298.6px; width: 68px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 13px; font-weight: 700; line-height: 1.1">81</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">SLEEP</span></div>
+<div style="position: absolute; left: 111.0px; top: 298.6px; width: 68px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 13px; font-weight: 700; line-height: 1.1">95m</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">INTENS</span></div>
+<div style="position: absolute; left: 61.0px; top: 212.0px; width: 68px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 13px; font-weight: 700; line-height: 1.1">24 str</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">CALM</span></div>
+<div style="position: absolute; left: 111.0px; top: 125.4px; width: 68px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 13px; font-weight: 700; line-height: 1.1">97%</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">SPO2</span></div>
+<div style="position: absolute; left: 0; top: 34px; width: 390px; display: flex; flex-direction: column; align-items: center">
+<div style="display: flex; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 2px; color: #9a9a9a"><span>MON 05 OCT</span><span style="color: #d0d0d0">28°</span></div>
+<div style="font-size: 56px; font-weight: 300; line-height: 1.02; letter-spacing: -2px">10:08<span style="font-size: 18px; font-weight: 500; color: {{accent}}; letter-spacing: 0"> 42</span></div>
+</div>
+<div style="position: absolute; left: 165px; top: 214px; width: 60px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 15px; font-weight: 700; color: #FF6B5A; line-height: 1">62</span><span style="font-size: 7px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">BPM</span></div>
+<div style="position: absolute; left: 0; top: 340px; width: 390px; display: flex; justify-content: center; gap: 12px; font-size: 11px; font-weight: 600; color: #8a8a8a"><span>1,840 kcal</span><span style="color: #d0d0d0">82%</span><span>3 notif</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#7CF2C9"},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#7CF2C9' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{"fonts": [
+  {"id": "Time",  "ttf": "Sora", "axes": {"wght": 300}, "size": 44, "ls": -1, "chars": "0123456789:-"},
+  {"id": "Label", "ttf": "Sora", "axes": {"wght": 600}, "size": 10, "ls": 1, "chars": "upper"},
+  {"id": "Info",  "ttf": "Sora", "axes": {"wght": 500}, "size": 11, "chars": "upper+bpm"}
+]}

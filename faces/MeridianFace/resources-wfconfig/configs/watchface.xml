@@ -1,0 +1,88 @@
+<resources>
+    <watchface-config>
+        <styles>
+            <style id="0" label="@Strings.WS0" default="true"/>
+            <style id="1" label="@Strings.WS1"/>
+            <style id="2" label="@Strings.WS2"/>
+            <style id="3" label="@Strings.WS3"/>
+            <style id="4" label="@Strings.WS4"/>
+            <style id="5" label="@Strings.WS5"/>
+            <style id="6" label="@Strings.WS6"/>
+            <style id="7" label="@Strings.WS7"/>
+            <style id="8" label="@Strings.WS8"/>
+            <style id="9" label="@Strings.WS9"/>
+            <style id="10" label="@Strings.WS10"/>
+            <style id="11" label="@Strings.WS11"/>
+            <style id="12" label="@Strings.WS12"/>
+            <style id="13" label="@Strings.WS13"/>
+            <style id="14" label="@Strings.WS14"/>
+            <style id="15" label="@Strings.WS15"/>
+            <style id="16" label="@Strings.WS16"/>
+            <style id="17" label="@Strings.WS17"/>
+            <style id="18" label="@Strings.WS18"/>
+            <style id="19" label="@Strings.WS19"/>
+            <style id="20" label="@Strings.WS20"/>
+            <style id="21" label="@Strings.WS21"/>
+            <style id="22" label="@Strings.WS22"/>
+            <style id="23" label="@Strings.WS23"/>
+            <style id="24" label="@Strings.WS24"/>
+            <style id="25" label="@Strings.WS25"/>
+            <style id="26" label="@Strings.WS26"/>
+            <style id="27" label="@Strings.WS27"/>
+            <style id="28" label="@Strings.WS28"/>
+            <style id="29" label="@Strings.WS29"/>
+            <style id="30" label="@Strings.WS30"/>
+            <style id="31" label="@Strings.WS31"/>
+            <style id="32" label="@Strings.WS32"/>
+            <style id="33" label="@Strings.WS33"/>
+            <style id="34" label="@Strings.WS34"/>
+            <style id="35" label="@Strings.WS35"/>
+            <style id="36" label="@Strings.WS36"/>
+            <style id="37" label="@Strings.WS37"/>
+            <style id="38" label="@Strings.WS38"/>
+            <style id="39" label="@Strings.WS39"/>
+            <style id="40" label="@Strings.WS40"/>
+            <style id="41" label="@Strings.WS41"/>
+            <style id="42" label="@Strings.WS42"/>
+            <style id="43" label="@Strings.WS43"/>
+            <style id="44" label="@Strings.WS44"/>
+            <style id="45" label="@Strings.WS45"/>
+            <style id="46" label="@Strings.WS46"/>
+            <style id="47" label="@Strings.WS47"/>
+            <style id="48" label="@Strings.WS48"/>
+            <style id="49" label="@Strings.WS49"/>
+            <style id="50" label="@Strings.WS50"/>
+            <style id="51" label="@Strings.WS51"/>
+            <style id="52" label="@Strings.WS52"/>
+            <style id="53" label="@Strings.WS53"/>
+            <style id="54" label="@Strings.WS54"/>
+            <style id="55" label="@Strings.WS55"/>
+            <style id="56" label="@Strings.WS56"/>
+            <style id="57" label="@Strings.WS57"/>
+            <style id="58" label="@Strings.WS58"/>
+            <style id="59" label="@Strings.WS59"/>
+            <style id="60" label="@Strings.WS60"/>
+        </styles>
+        <accentColors allowAny="true"/>
+        <data>
+            <complication id="1" allowAny="true"/>
+            <complication id="2" allowAny="true"/>
+            <complication id="3" allowAny="true"/>
+            <complication id="4" allowAny="true"/>
+            <complication id="5" allowAny="true"/>
+            <complication id="6" allowAny="true"/>
+            <complication id="7" allowAny="true"/>
+            <complication id="8" allowAny="true"/>
+        </data>
+        <dataColors>
+            <color label="@Strings.WCWhite" default="true">0xFFFFFF</color>
+            <color label="@Strings.WCCream">0xF4EEE3</color>
+            <color label="@Strings.WCSilver">0xBDBDBD</color>
+            <color label="@Strings.WCGrey">0x8A8A8A</color>
+            <color label="@Strings.WCLime">0xC6F432</color>
+            <color label="@Strings.WCSky">0xA9D3FF</color>
+            <color label="@Strings.WCPeach">0xF5C6A5</color>
+            <color label="@Strings.WCGold">0xFFC21A</color>
+        </dataColors>
+    </watchface-config>
+</resources>

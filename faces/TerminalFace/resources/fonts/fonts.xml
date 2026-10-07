@@ -1,0 +1,8 @@
+<fonts>
+    <font id="Small" filename="small.fnt" antialias="true"/>
+    <font id="Grid" filename="grid.fnt" antialias="true"/>
+    <font id="Prompt" filename="prompt.fnt" antialias="true"/>
+    <font id="Sec" filename="sec.fnt" antialias="true"/>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="AodTime" filename="aodtime.fnt" antialias="true"/>
+</fonts>

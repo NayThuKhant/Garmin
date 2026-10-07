@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face AB: Segment</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'IBM Plex Mono', 'Menlo', monospace; color: #D0D0D0">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<polygon points="59.5,141.5 65.0,136.0 107.0,136.0 112.5,141.5 107.0,147.0 65.0,147.0" fill="#141414"></polygon>
+<polygon points="59.5,190.0 65.0,184.5 107.0,184.5 112.5,190.0 107.0,195.5 65.0,195.5" fill="#141414"></polygon>
+<polygon points="59.5,238.5 65.0,233.0 107.0,233.0 112.5,238.5 107.0,244.0 65.0,244.0" fill="#141414"></polygon>
+<polygon points="63.5,137.5 69.0,143.0 69.0,183.0 63.5,188.5 58.0,183.0 58.0,143.0" fill="#141414"></polygon>
+<polygon points="108.5,137.5 114.0,143.0 114.0,183.0 108.5,188.5 103.0,183.0 103.0,143.0" fill="{{accent}}"></polygon>
+<polygon points="63.5,191.5 69.0,197.0 69.0,237.0 63.5,242.5 58.0,237.0 58.0,197.0" fill="#141414"></polygon>
+<polygon points="108.5,191.5 114.0,197.0 114.0,237.0 108.5,242.5 103.0,237.0 103.0,197.0" fill="{{accent}}"></polygon>
+<polygon points="127.5,141.5 133.0,136.0 175.0,136.0 180.5,141.5 175.0,147.0 133.0,147.0" fill="{{accent}}"></polygon>
+<polygon points="127.5,190.0 133.0,184.5 175.0,184.5 180.5,190.0 175.0,195.5 133.0,195.5" fill="#141414"></polygon>
+<polygon points="127.5,238.5 133.0,233.0 175.0,233.0 180.5,238.5 175.0,244.0 133.0,244.0" fill="{{accent}}"></polygon>
+<polygon points="131.5,137.5 137.0,143.0 137.0,183.0 131.5,188.5 126.0,183.0 126.0,143.0" fill="{{accent}}"></polygon>
+<polygon points="176.5,137.5 182.0,143.0 182.0,183.0 176.5,188.5 171.0,183.0 171.0,143.0" fill="{{accent}}"></polygon>
+<polygon points="131.5,191.5 137.0,197.0 137.0,237.0 131.5,242.5 126.0,237.0 126.0,197.0" fill="{{accent}}"></polygon>
+<polygon points="176.5,191.5 182.0,197.0 182.0,237.0 176.5,242.5 171.0,237.0 171.0,197.0" fill="{{accent}}"></polygon>
+<rect x="197" y="165.6" width="10" height="10" fill="{{accent}}"></rect>
+<rect x="197" y="204.4" width="10" height="10" fill="{{accent}}"></rect>
+<polygon points="221.5,141.5 227.0,136.0 269.0,136.0 274.5,141.5 269.0,147.0 227.0,147.0" fill="{{accent}}"></polygon>
+<polygon points="221.5,190.0 227.0,184.5 269.0,184.5 274.5,190.0 269.0,195.5 227.0,195.5" fill="#141414"></polygon>
+<polygon points="221.5,238.5 227.0,233.0 269.0,233.0 274.5,238.5 269.0,244.0 227.0,244.0" fill="{{accent}}"></polygon>
+<polygon points="225.5,137.5 231.0,143.0 231.0,183.0 225.5,188.5 220.0,183.0 220.0,143.0" fill="{{accent}}"></polygon>
+<polygon points="270.5,137.5 276.0,143.0 276.0,183.0 270.5,188.5 265.0,183.0 265.0,143.0" fill="{{accent}}"></polygon>
+<polygon points="225.5,191.5 231.0,197.0 231.0,237.0 225.5,242.5 220.0,237.0 220.0,197.0" fill="{{accent}}"></polygon>
+<polygon points="270.5,191.5 276.0,197.0 276.0,237.0 270.5,242.5 265.0,237.0 265.0,197.0" fill="{{accent}}"></polygon>
+<polygon points="289.5,141.5 295.0,136.0 337.0,136.0 342.5,141.5 337.0,147.0 295.0,147.0" fill="{{accent}}"></polygon>
+<polygon points="289.5,190.0 295.0,184.5 337.0,184.5 342.5,190.0 337.0,195.5 295.0,195.5" fill="{{accent}}"></polygon>
+<polygon points="289.5,238.5 295.0,233.0 337.0,233.0 342.5,238.5 337.0,244.0 295.0,244.0" fill="{{accent}}"></polygon>
+<polygon points="293.5,137.5 299.0,143.0 299.0,183.0 293.5,188.5 288.0,183.0 288.0,143.0" fill="{{accent}}"></polygon>
+<polygon points="338.5,137.5 344.0,143.0 344.0,183.0 338.5,188.5 333.0,183.0 333.0,143.0" fill="{{accent}}"></polygon>
+<polygon points="293.5,191.5 299.0,197.0 299.0,237.0 293.5,242.5 288.0,237.0 288.0,197.0" fill="{{accent}}"></polygon>
+<polygon points="338.5,191.5 344.0,197.0 344.0,237.0 338.5,242.5 333.0,237.0 333.0,197.0" fill="{{accent}}"></polygon>
+<rect x="103.0" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="112.5" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="122.0" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="131.5" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="141.0" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="150.5" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="160.0" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="169.5" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="179.0" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="188.5" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="198.0" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="207.5" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="217.0" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="226.5" y="262" width="7" height="7" fill="{{accent}}"></rect><rect x="236.0" y="262" width="7" height="7" fill="#1A1A1A"></rect><rect x="245.5" y="262" width="7" height="7" fill="#1A1A1A"></rect><rect x="255.0" y="262" width="7" height="7" fill="#1A1A1A"></rect><rect x="264.5" y="262" width="7" height="7" fill="#1A1A1A"></rect><rect x="274.0" y="262" width="7" height="7" fill="#1A1A1A"></rect><rect x="283.5" y="262" width="7" height="7" fill="#1A1A1A"></rect>
+</svg>
+<div style="position: absolute; left: 0px; top: 92px; width: 390px; display: flex; justify-content: center; font-size: 13px; font-weight: 500; letter-spacing: 3px; color: #8A8A8A">MON 05·10 <span style="color: #4A4A4A; margin-left: 10px">28°C</span></div>
+<div style="position: absolute; left: 0px; top: 278px; width: 390px; display: flex; justify-content: center; font-size: 10px; font-weight: 500; letter-spacing: 2px; color: #6A6A6A">STEPS 7,412 / 10K</div>
+<div style="position: absolute; left: 0px; top: 300px; width: 390px; display: flex; justify-content: center; gap: 16px; font-size: 13px; font-weight: 500; color: #D0D0D0"><span><span style="color: #5A5A5A">HR</span> 62</span><span><span style="color: #5A5A5A">BB</span> 68</span><span><span style="color: #5A5A5A">BAT</span> 82%</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent": {"editor": "color", "default": "#FF6A3D", "options": ["#FF6A3D", "#7DF9FF", "#C6F432", "#FFFFFF"]}, "$preview": {"width": 390, "height": 390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {accent: this.props.accent ?? '#FF6A3D'};
+  }
+}
+</script>
+</body>
+</html>

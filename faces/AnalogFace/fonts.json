@@ -1,0 +1,9 @@
+{"fonts": [
+  {"id": "Head",    "ttf": "Barlow-SemiBold", "size": 13, "chars": "digits+,°|kcalnotif"},
+  {"id": "Day",     "ttf": "Barlow-SemiBold", "size": 14, "ls": 2, "chars": "upper"},
+  {"id": "Val20",   "ttf": "Barlow-SemiBold", "size": 20, "chars": "digits"},
+  {"id": "Val18",   "ttf": "Barlow-SemiBold", "size": 18, "chars": "digits+,"},
+  {"id": "Label",   "ttf": "Barlow-SemiBold", "size": 9,  "ls": 1.5, "chars": "upper"},
+  {"id": "AodDate", "ttf": "Barlow-Medium",   "size": 14, "ls": 2, "chars": "upper"},
+  {"id": "AodRow",  "ttf": "Barlow-Medium",   "size": 14, "chars": "upper"}
+]}

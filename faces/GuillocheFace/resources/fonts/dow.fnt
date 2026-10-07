@@ -1,0 +1,31 @@
+info face="CormorantGaramond" size=22 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=25 base=18 scaleW=512 scaleH=24 pages=1 packed=0
+page id=0 file="dow.png"
+chars count=26
+char id=65 x=0 y=0 width=19 height=16 xoffset=-2 yoffset=3 xadvance=22 page=0 chnl=15
+char id=66 x=21 y=0 width=15 height=17 xoffset=-1 yoffset=3 xadvance=19 page=0 chnl=15
+char id=67 x=38 y=0 width=17 height=17 xoffset=-1 yoffset=3 xadvance=21 page=0 chnl=15
+char id=68 x=57 y=0 width=18 height=17 xoffset=-1 yoffset=3 xadvance=22 page=0 chnl=15
+char id=69 x=77 y=0 width=14 height=16 xoffset=-1 yoffset=3 xadvance=18 page=0 chnl=15
+char id=70 x=93 y=0 width=14 height=16 xoffset=-1 yoffset=3 xadvance=18 page=0 chnl=15
+char id=71 x=109 y=0 width=18 height=17 xoffset=-1 yoffset=3 xadvance=22 page=0 chnl=15
+char id=72 x=129 y=0 width=19 height=16 xoffset=-1 yoffset=3 xadvance=23 page=0 chnl=15
+char id=73 x=150 y=0 width=10 height=16 xoffset=-1 yoffset=3 xadvance=14 page=0 chnl=15
+char id=74 x=162 y=0 width=12 height=22 xoffset=-3 yoffset=3 xadvance=13 page=0 chnl=15
+char id=75 x=176 y=0 width=17 height=17 xoffset=-1 yoffset=3 xadvance=20 page=0 chnl=15
+char id=76 x=195 y=0 width=14 height=16 xoffset=-1 yoffset=3 xadvance=18 page=0 chnl=15
+char id=77 x=211 y=0 width=21 height=16 xoffset=-1 yoffset=3 xadvance=25 page=0 chnl=15
+char id=78 x=234 y=0 width=18 height=17 xoffset=-1 yoffset=3 xadvance=22 page=0 chnl=15
+char id=79 x=254 y=0 width=19 height=17 xoffset=-1 yoffset=3 xadvance=23 page=0 chnl=15
+char id=80 x=275 y=0 width=14 height=16 xoffset=-1 yoffset=3 xadvance=18 page=0 chnl=15
+char id=81 x=291 y=0 width=19 height=21 xoffset=-1 yoffset=3 xadvance=23 page=0 chnl=15
+char id=82 x=312 y=0 width=18 height=16 xoffset=-1 yoffset=3 xadvance=21 page=0 chnl=15
+char id=83 x=332 y=0 width=14 height=17 xoffset=-1 yoffset=3 xadvance=17 page=0 chnl=15
+char id=84 x=348 y=0 width=16 height=17 xoffset=-1 yoffset=2 xadvance=20 page=0 chnl=15
+char id=85 x=366 y=0 width=18 height=17 xoffset=-1 yoffset=3 xadvance=22 page=0 chnl=15
+char id=86 x=386 y=0 width=17 height=17 xoffset=-1 yoffset=3 xadvance=20 page=0 chnl=15
+char id=87 x=405 y=0 width=23 height=17 xoffset=-1 yoffset=3 xadvance=26 page=0 chnl=15
+char id=88 x=430 y=0 width=17 height=16 xoffset=-1 yoffset=3 xadvance=20 page=0 chnl=15
+char id=89 x=449 y=0 width=16 height=16 xoffset=-1 yoffset=3 xadvance=20 page=0 chnl=15
+char id=90 x=467 y=0 width=16 height=18 xoffset=-1 yoffset=2 xadvance=19 page=0 chnl=15
+kernings count=0

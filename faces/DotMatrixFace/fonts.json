@@ -1,0 +1,5 @@
+{"fonts": [
+  {"id": "Head",  "ttf": "DotGothic16", "size": 15, "ls": 2, "chars": "upper+°"},
+  {"id": "Grid",  "ttf": "DotGothic16", "size": 14, "chars": "digits+HRSTKCBO2k↑↓"},
+  {"id": "Notif", "ttf": "DotGothic16", "size": 12, "ls": 2, "chars": "digits+NOTIFCAS"}
+]}

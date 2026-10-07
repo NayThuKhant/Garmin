@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face A: Ring</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #ffffff">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<path d="M134.1 362.3 A178 178 0 0 1 134.1 27.7" stroke="#262626" stroke-width="8" stroke-linecap="round"></path>
+<path d="M134.1 362.3 A178 178 0 0 1 46.7 96.6" stroke="{{accent}}" stroke-width="8" stroke-linecap="round"></path>
+<path d="M255.9 362.3 A178 178 0 0 0 255.9 27.7" stroke="#262626" stroke-width="8" stroke-linecap="round"></path>
+<path d="M255.9 362.3 A178 178 0 0 0 356.1 119.2" stroke="{{secondary}}" stroke-width="8" stroke-linecap="round"></path>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+<div style="font-size: 18px; font-weight: 600; letter-spacing: 3px; color: #9a9a9a">MON 05 OCT</div>
+<div style="display: flex; align-items: baseline; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 600; font-size: 128px; line-height: 1; letter-spacing: -2px">
+<span style="color: #ffffff">10</span><span style="color: #5a5a5a">:</span><span style="color: {{accent}}">08</span>
+</div>
+<div style="display: flex; align-items: center; gap: 22px; margin-top: 6px">
+<div style="display: flex; align-items: center; gap: 6px; font-size: 22px; font-weight: 600">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+<span>62</span>
+</div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 22px; font-weight: 600">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"></rect><path d="M22 11v2"></path></svg>
+<span>82%</span>
+</div>
+</div>
+</div>
+<div style="position: absolute; left: 0; top: 300px; width: 390px; display: flex; justify-content: center; gap: 28px; font-size: 14px; font-weight: 600; letter-spacing: 1px">
+<div style="display: flex; align-items: center; gap: 6px; color: {{accent}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"></path><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"></path></svg>
+<span>7,412</span>
+</div>
+<div style="display: flex; align-items: center; gap: 6px; color: {{secondary}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{secondary}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+<span>68</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C6F432","options":["#C6F432","#FF9F1C","#4DD0E1","#FFFFFF"]},"secondary":{"editor":"color","default":"#4DA3FF","options":["#4DA3FF","#B388FF","#FF6B5A"]},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#C6F432',
+      secondary: this.props.secondary ?? '#4DA3FF'
+    };
+  }
+}
+</script>
+</body>
+</html>

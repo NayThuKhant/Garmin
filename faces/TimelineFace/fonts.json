@@ -1,0 +1,11 @@
+{"fonts": [
+  {"id": "Head",  "ttf": "Barlow-SemiBold", "size": 13, "ls": 1.5, "chars": "upper"},
+  {"id": "Time",  "ttf": "BarlowCondensed-SemiBold", "size": 86, "ls": -1, "chars": "digits"},
+  {"id": "Bar",   "ttf": "Barlow-SemiBold", "size": 11, "ls": 1, "chars": "upper"},
+  {"id": "Hours", "ttf": "Barlow-SemiBold", "size": 10, "chars": "0123456789"},
+  {"id": "Value", "ttf": "Barlow-SemiBold", "size": 18, "chars": "digits+,km"},
+  {"id": "Label", "ttf": "Barlow-SemiBold", "size": 9, "ls": 1.5, "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "},
+  {"id": "ADate", "ttf": "Barlow-Medium", "size": 13, "ls": 1.5, "chars": "upper"},
+  {"id": "ATime", "ttf": "BarlowCondensed-Medium", "size": 86, "ls": -1, "chars": "digits"},
+  {"id": "ARow",  "ttf": "Barlow-Medium", "size": 15, "chars": "digits+,HRB"}
+]}

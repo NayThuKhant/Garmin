@@ -1,0 +1,6 @@
+<fonts>
+    <font id="Big" filename="big.fnt" antialias="true"/>
+    <font id="BigOut" filename="bigout.fnt" antialias="true"/>
+    <font id="BigOutAod" filename="bigoutaod.fnt" antialias="true"/>
+    <font id="Sec" filename="sec.fnt" antialias="true"/>
+</fonts>

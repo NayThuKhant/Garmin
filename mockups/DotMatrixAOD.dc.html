@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face X: Always-on mode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'DotGothic16', monospace; color: #a8a8a8">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="85.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="85.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="95.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="95.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="95.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="95.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="95.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="95.0" cy="168.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="95.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="105.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="135.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="135.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="135.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="135.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="135.0" cy="168.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="145.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="145.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="145.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="155.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="155.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="155.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="165.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="165.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="165.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="175.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="175.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="175.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="175.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="175.0" cy="168.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="195.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="195.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="215.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="215.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="215.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="215.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="215.0" cy="168.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="225.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="225.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="225.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="235.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="235.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="235.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="245.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="245.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="245.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="255.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="255.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="255.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="255.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="255.0" cy="168.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="275.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="275.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="275.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="275.0" cy="168.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="285.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="285.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="285.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="295.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="295.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="295.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="305.0" cy="118.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="305.0" cy="148.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="305.0" cy="178.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="315.0" cy="128.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="315.0" cy="138.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="315.0" cy="158.0" r="2.6" fill="#7a7a7a"></circle>
+<circle cx="315.0" cy="168.0" r="2.6" fill="#7a7a7a"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 76px; width: 390px; display: flex; justify-content: center; font-size: 15px; letter-spacing: 2px; color: #5a5a5a">MON 05 OCT</div>
+<div style="position: absolute; left: 0; top: 226px; width: 390px; display: flex; justify-content: center; gap: 16px; font-size: 14px; color: #5a5a5a"><span>HR 62</span><span>BB 68</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{"fonts": [
+  {"id": "Grid",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 14, "chars": "ABCDEFGHIKLMNOPQRSTUVWXY"},
+  {"id": "Date",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "ls": 4, "chars": "ABCDEFGHIJLMNOPRSTUVWY0123456789 "},
+  {"id": "AodDate", "ttf": "Manrope", "axes": {"wght": 500}, "size": 11, "ls": 4, "chars": "ABCDEFGHIJLMNOPRSTUVWY0123456789 "},
+  {"id": "Stat",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "chars": "0123456789,%-BPM "}
+]}

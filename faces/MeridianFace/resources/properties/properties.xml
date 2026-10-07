@@ -1,0 +1,742 @@
+<resources>
+    <properties>
+        <property id="SlotTop" type="number">34</property>
+        <property id="SlotLeft" type="number">21</property>
+        <property id="SlotRight" type="number">27</property>
+        <property id="SlotBottom" type="number">24</property>
+        <property id="ArcTL" type="number">1</property>
+        <property id="ArcTR" type="number">13</property>
+        <property id="ArcBL" type="number">15</property>
+        <property id="ArcBR" type="number">6</property>
+        <property id="Theme" type="number">0</property>
+        <property id="FontStyle" type="number">0</property>
+        <property id="Frame" type="number">0</property>
+        <property id="TimeFormat" type="number">0</property>
+        <property id="LeadingZero" type="boolean">true</property>
+        <property id="HourColor" type="number">-1</property>
+        <property id="MinuteColor" type="number">-1</property>
+        <property id="WeekdayColor" type="number">-1</property>
+        <property id="TextColor" type="number">-1</property>
+        <property id="IconColor" type="number">-1</property>
+        <property id="OutlineColor" type="number">-1</property>
+        <property id="TrackColor" type="number">-1</property>
+        <property id="ArcColorTL" type="number">-1</property>
+        <property id="ArcColorTR" type="number">-1</property>
+        <property id="ArcColorBL" type="number">-1</property>
+        <property id="ArcColorBR" type="number">-1</property>
+    </properties>
+    <settings>
+    <group id="Data" title="@Strings.GData">
+        <setting propertyKey="@Properties.SlotTop" title="@Strings.TSlotTop">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.SlotLeft" title="@Strings.TSlotLeft">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.SlotRight" title="@Strings.TSlotRight">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.SlotBottom" title="@Strings.TSlotBottom">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.ArcTL" title="@Strings.TArcTL">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.ArcTR" title="@Strings.TArcTR">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.ArcBL" title="@Strings.TArcBL">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.ArcBR" title="@Strings.TArcBR">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.DNone</listEntry>
+                <listEntry value="1">@Strings.DSteps</listEntry>
+                <listEntry value="2">@Strings.DStepsOfGoal</listEntry>
+                <listEntry value="3">@Strings.DDistance</listEntry>
+                <listEntry value="4">@Strings.DCalories</listEntry>
+                <listEntry value="5">@Strings.DIntensityMinutesWeek</listEntry>
+                <listEntry value="6">@Strings.DHeartRate</listEntry>
+                <listEntry value="7">@Strings.DRestingHeartRate</listEntry>
+                <listEntry value="8">@Strings.DBodyBattery</listEntry>
+                <listEntry value="9">@Strings.DStress</listEntry>
+                <listEntry value="10">@Strings.DPulseOxSpo2</listEntry>
+                <listEntry value="11">@Strings.DRespiration</listEntry>
+                <listEntry value="12">@Strings.DBattery</listEntry>
+                <listEntry value="13">@Strings.DBatteryDaysLeft</listEntry>
+                <listEntry value="14">@Strings.DTemperature</listEntry>
+                <listEntry value="15">@Strings.DWeatherConditionTemp</listEntry>
+                <listEntry value="16">@Strings.DHighLowTemp</listEntry>
+                <listEntry value="17">@Strings.DPrecipitationChance</listEntry>
+                <listEntry value="18">@Strings.DHumidity</listEntry>
+                <listEntry value="19">@Strings.DWindSpeed</listEntry>
+                <listEntry value="20">@Strings.DUvIndex</listEntry>
+                <listEntry value="21">@Strings.DSunrise</listEntry>
+                <listEntry value="22">@Strings.DSunset</listEntry>
+                <listEntry value="23">@Strings.DNextSunriseSunset</listEntry>
+                <listEntry value="24">@Strings.DNotifications</listEntry>
+                <listEntry value="25">@Strings.DAlarms</listEntry>
+                <listEntry value="26">@Strings.DPhoneConnection</listEntry>
+                <listEntry value="27">@Strings.DDate</listEntry>
+                <listEntry value="28">@Strings.DWeekNumber</listEntry>
+                <listEntry value="29">@Strings.DAltitude</listEntry>
+                <listEntry value="30">@Strings.DRecoveryTime</listEntry>
+                <listEntry value="31">@Strings.DTrainingStatus</listEntry>
+                <listEntry value="32">@Strings.DVo2MaxRun</listEntry>
+                <listEntry value="33">@Strings.DSleepScore</listEntry>
+                <listEntry value="34">@Strings.DNextCalendarEvent</listEntry>
+                <listEntry value="35">@Strings.DFloorsClimbed</listEntry>
+                <listEntry value="36">@Strings.DSeaLevelPressure</listEntry>
+            </settingConfig>
+        </setting>
+    </group>
+    <group id="Style" title="@Strings.GStyle">
+        <setting propertyKey="@Properties.Theme" title="@Strings.TTheme">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.BBlack</listEntry>
+                <listEntry value="1">@Strings.BNavy</listEntry>
+                <listEntry value="2">@Strings.BCharcoal</listEntry>
+                <listEntry value="3">@Strings.BCream</listEntry>
+                <listEntry value="4">@Strings.BWhite</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.FontStyle" title="@Strings.TFontStyle">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.FRounded</listEntry>
+                <listEntry value="1">@Strings.FSquare</listEntry>
+                <listEntry value="2">@Strings.FSerif</listEntry>
+                <listEntry value="3">@Strings.FClassic</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.Frame" title="@Strings.TFrame">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.RCircle</listEntry>
+                <listEntry value="1">@Strings.RHexagon</listEntry>
+                <listEntry value="2">@Strings.RNone</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.TimeFormat" title="@Strings.TTimeFormat">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.HFollowWatch</listEntry>
+                <listEntry value="1">@Strings.H12Hour</listEntry>
+                <listEntry value="2">@Strings.H24Hour</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.LeadingZero" title="@Strings.TLeadingZero">
+            <settingConfig type="boolean"/>
+        </setting>
+    </group>
+    <group id="TimeColors" title="@Strings.GTimeColors">
+        <setting propertyKey="@Properties.HourColor" title="@Strings.THourColor">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+                <listEntry value="-2">@Strings.CGradientWhiteToSilver</listEntry>
+                <listEntry value="-3">@Strings.CGradientLimeToTeal</listEntry>
+                <listEntry value="-4">@Strings.CGradientLimeToPaleGreen</listEntry>
+                <listEntry value="-5">@Strings.CGradientLimeToSky</listEntry>
+                <listEntry value="-6">@Strings.CGradientPinkToOrange</listEntry>
+                <listEntry value="-7">@Strings.CGradientSkyToLavender</listEntry>
+                <listEntry value="-8">@Strings.CGradientGoldToRed</listEntry>
+                <listEntry value="-9">@Strings.CGradientTealToBlue</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.MinuteColor" title="@Strings.TMinuteColor">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+                <listEntry value="-2">@Strings.CGradientWhiteToSilver</listEntry>
+                <listEntry value="-3">@Strings.CGradientLimeToTeal</listEntry>
+                <listEntry value="-4">@Strings.CGradientLimeToPaleGreen</listEntry>
+                <listEntry value="-5">@Strings.CGradientLimeToSky</listEntry>
+                <listEntry value="-6">@Strings.CGradientPinkToOrange</listEntry>
+                <listEntry value="-7">@Strings.CGradientSkyToLavender</listEntry>
+                <listEntry value="-8">@Strings.CGradientGoldToRed</listEntry>
+                <listEntry value="-9">@Strings.CGradientTealToBlue</listEntry>
+            </settingConfig>
+        </setting>
+    </group>
+    <group id="Colors" title="@Strings.GColors">
+        <setting propertyKey="@Properties.WeekdayColor" title="@Strings.TWeekdayColor">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.TextColor" title="@Strings.TTextColor">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.IconColor" title="@Strings.TIconColor">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="-10">@Strings.CDynamicFollowsValue</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.OutlineColor" title="@Strings.TOutlineColor">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.TrackColor" title="@Strings.TTrackColor">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+    </group>
+    <group id="ArcColors" title="@Strings.GArcColors">
+        <setting propertyKey="@Properties.ArcColorTL" title="@Strings.TArcColorTL">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="-10">@Strings.CDynamicFollowsValue</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.ArcColorTR" title="@Strings.TArcColorTR">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="-10">@Strings.CDynamicFollowsValue</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.ArcColorBL" title="@Strings.TArcColorBL">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="-10">@Strings.CDynamicFollowsValue</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.ArcColorBR" title="@Strings.TArcColorBR">
+            <settingConfig type="list">
+                <listEntry value="-1">@Strings.CAutoTheme</listEntry>
+                <listEntry value="-10">@Strings.CDynamicFollowsValue</listEntry>
+                <listEntry value="16777215">@Strings.CWhite</listEntry>
+                <listEntry value="16051939">@Strings.CCream</listEntry>
+                <listEntry value="12434877">@Strings.CSilver</listEntry>
+                <listEntry value="9079434">@Strings.CGrey</listEntry>
+                <listEntry value="4868682">@Strings.CDarkGrey</listEntry>
+                <listEntry value="13038642">@Strings.CLime</listEntry>
+                <listEntry value="6021467">@Strings.CGreen</listEntry>
+                <listEntry value="7268279">@Strings.CMint</listEntry>
+                <listEntry value="3003583">@Strings.CTeal</listEntry>
+                <listEntry value="11129855">@Strings.CSky</listEntry>
+                <listEntry value="5088255">@Strings.CBlue</listEntry>
+                <listEntry value="8367840">@Strings.CSteelBlue</listEntry>
+                <listEntry value="12170485">@Strings.CLavender</listEntry>
+                <listEntry value="16727461">@Strings.CPink</listEntry>
+                <listEntry value="16743019">@Strings.CCoral</listEntry>
+                <listEntry value="16107173">@Strings.CPeach</listEntry>
+                <listEntry value="16754219">@Strings.COrange</listEntry>
+                <listEntry value="16761370">@Strings.CGold</listEntry>
+                <listEntry value="16769306">@Strings.CYellow</listEntry>
+                <listEntry value="16726862">@Strings.CRed</listEntry>
+                <listEntry value="11747630">@Strings.CBrickRed</listEntry>
+                <listEntry value="2051679">@Strings.CDeepTeal</listEntry>
+                <listEntry value="1780292">@Strings.CNavy</listEntry>
+                <listEntry value="1118481">@Strings.CBlack</listEntry>
+            </settingConfig>
+        </setting>
+    </group>
+    </settings>
+</resources>

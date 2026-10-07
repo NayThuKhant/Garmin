@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face P: 24h pulse ring</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #ffffff">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<line x1="205.1" y1="41.3" x2="205.9" y2="28.2" stroke="#4CCEE0" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="225.0" y1="44.0" x2="227.9" y2="29.8" stroke="#61D6C3" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="244.5" y1="49.2" x2="248.9" y2="36.2" stroke="#54D2D6" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="263.1" y1="56.9" x2="268.0" y2="46.9" stroke="#46ACDE" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="280.6" y1="67.0" x2="286.7" y2="57.8" stroke="#45AADD" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="296.5" y1="79.2" x2="303.6" y2="71.1" stroke="#45A6DD" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="310.8" y1="93.5" x2="317.9" y2="87.2" stroke="#4190DB" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="323.0" y1="109.4" x2="332.3" y2="103.3" stroke="#46ACDE" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="333.1" y1="126.9" x2="345.0" y2="121.0" stroke="#4CCFE0" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="340.8" y1="145.5" x2="353.0" y2="141.4" stroke="#4CCAE0" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="346.0" y1="165.0" x2="359.6" y2="162.3" stroke="#57D3D2" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="348.7" y1="184.9" x2="363.3" y2="184.0" stroke="#64D7BE" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="348.7" y1="205.1" x2="361.0" y2="205.9" stroke="#4AC1DF" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="346.0" y1="225.0" x2="356.9" y2="227.2" stroke="#46ABDD" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="340.8" y1="244.5" x2="351.5" y2="248.1" stroke="#47AFDE" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="333.1" y1="263.1" x2="341.9" y2="267.5" stroke="#4296DC" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="323.0" y1="280.6" x2="331.2" y2="286.0" stroke="#4296DC" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="310.8" y1="296.5" x2="320.1" y2="304.7" stroke="#4AC1DF" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="296.5" y1="310.8" x2="305.0" y2="320.4" stroke="#4BC9E0" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="280.6" y1="323.0" x2="287.8" y2="333.9" stroke="#4CCCE0" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="263.1" y1="333.1" x2="269.6" y2="346.3" stroke="#66D7BC" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="244.5" y1="340.8" x2="248.9" y2="353.9" stroke="#56D2D3" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="225.0" y1="346.0" x2="227.3" y2="357.3" stroke="#47B3DE" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="205.1" y1="348.7" x2="205.8" y2="360.2" stroke="#47B4DE" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="184.9" y1="348.7" x2="184.2" y2="359.3" stroke="#45A5DD" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="165.0" y1="346.0" x2="163.3" y2="354.5" stroke="#3E82DA" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="145.5" y1="340.8" x2="142.8" y2="348.7" stroke="#3D7CDA" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="126.9" y1="333.1" x2="123.4" y2="340.2" stroke="#3C77D9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="109.4" y1="323.0" x2="104.7" y2="330.1" stroke="#3E80DA" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="93.5" y1="310.8" x2="87.8" y2="317.2" stroke="#3E81DA" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="79.2" y1="296.5" x2="73.2" y2="301.8" stroke="#3C79D9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="67.0" y1="280.6" x2="60.9" y2="284.6" stroke="#3B6FD9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="56.9" y1="263.1" x2="50.7" y2="266.2" stroke="#3B6FD9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="49.2" y1="244.5" x2="42.5" y2="246.8" stroke="#3B6FD9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="44.0" y1="225.0" x2="36.5" y2="226.5" stroke="#3B72D9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="41.3" y1="205.1" x2="33.0" y2="205.6" stroke="#3D7DDA" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="41.3" y1="184.9" x2="32.7" y2="184.4" stroke="#3E82DA" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="44.0" y1="165.0" x2="35.8" y2="163.3" stroke="#3D7DDA" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="49.2" y1="145.5" x2="42.0" y2="143.1" stroke="#3B71D9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="56.9" y1="126.9" x2="50.6" y2="123.8" stroke="#3B6FD9" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="67.0" y1="109.4" x2="55.0" y2="101.5" stroke="#60D5C5" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="79.2" y1="93.5" x2="56.7" y2="73.7" stroke="#FF6448" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="93.5" y1="79.2" x2="76.4" y2="59.7" stroke="#FCA31D" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="109.4" y1="67.0" x2="103.3" y2="57.8" stroke="#46AADD" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="126.9" y1="56.9" x2="117.5" y2="37.8" stroke="#CEE72E" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="145.5" y1="49.2" x2="142.3" y2="39.7" stroke="#4299DC" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="165.0" y1="44.0" x2="162.5" y2="31.6" stroke="#4BC5E0" stroke-width="4.5" stroke-linecap="round"></line>
+<line x1="184.9" y1="41.3" x2="184.0" y2="27.9" stroke="#51D1DA" stroke-width="4.5" stroke-linecap="round"></line>
+<circle cx="195" cy="49.0" r="2.5" fill="#ffffff"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 3px; color: #8a8a8a">MON 05 OCT · 28°</div>
+<div style="font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: 92px; font-weight: 600; line-height: 0.95; letter-spacing: -1px">10:08</div>
+<div style="display: flex; align-items: baseline; gap: 6px">
+<span style="font-size: 22px; font-weight: 600; color: #4DD0E1">62</span>
+<span style="font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">BPM · 24H 51–128</span>
+</div>
+<div style="display: flex; gap: 12px; margin-top: 8px; font-size: 13px; font-weight: 600; color: #d0d0d0">
+<span>7,412<span style="color: #8a8a8a"> st</span></span><span>68<span style="color: #8a8a8a"> bb</span></span><span>24<span style="color: #8a8a8a"> str</span></span><span>82<span style="color: #8a8a8a">%</span></span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

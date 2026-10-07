@@ -1,0 +1,10 @@
+<fonts>
+    <font id="Head" filename="head.fnt" antialias="true"/>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="Val" filename="val.fnt" antialias="true"/>
+    <font id="Lab" filename="lab.fnt" antialias="true"/>
+    <font id="Foot" filename="foot.fnt" antialias="true"/>
+    <font id="AodDate" filename="aoddate.fnt" antialias="true"/>
+    <font id="AodTime" filename="aodtime.fnt" antialias="true"/>
+    <font id="AodRow" filename="aodrow.fnt" antialias="true"/>
+</fonts>

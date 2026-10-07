@@ -1,0 +1,16 @@
+{"fonts": [
+  {"id": "TimeRound", "ttf": "MPLUSRounded1c-ExtraBold", "size": 132, "ls": -4, "chars": "0123456789"},
+  {"id": "TimeSquare", "ttf": "ChakraPetch-Bold", "size": 132, "ls": -4, "chars": "0123456789"},
+  {"id": "TimeSerif", "ttf": "DMSerifDisplay", "size": 132, "ls": -3, "chars": "0123456789"},
+  {"id": "TimeClassic", "ttf": "BarlowCondensed-SemiBold", "size": 132, "ls": -2, "chars": "0123456789"},
+  {"id": "AodRound", "ttf": "MPLUSRounded1c-ExtraBold", "size": 132, "ls": -4, "outline": 2, "chars": "0123456789"},
+  {"id": "AodSquare", "ttf": "ChakraPetch-Bold", "size": 132, "ls": -4, "outline": 2, "chars": "0123456789"},
+  {"id": "AodSerif", "ttf": "DMSerifDisplay", "size": 132, "ls": -3, "outline": 2, "chars": "0123456789"},
+  {"id": "AodClassic", "ttf": "BarlowCondensed-SemiBold", "size": 132, "ls": -2, "outline": 2, "chars": "0123456789"},
+  {"id": "Value", "ttf": "RobotoCondensed", "axes": {"wght": 500}, "size": 33, "chars": "upper+kdhmip°/"},
+  {"id": "ValueSm", "ttf": "RobotoCondensed", "axes": {"wght": 500}, "size": 24, "chars": "upper+kdhmip°/"},
+  {"id": "Label", "ttf": "RobotoCondensed", "axes": {"wght": 700}, "size": 30, "chars": "ADEFHIKMNORSTUVW"},
+  {"id": "AodInfo", "ttf": "RobotoCondensed", "axes": {"wght": 600}, "size": 18, "chars": "0123456789ADEFHIMNORSTUW-· "},
+  {"id": "Icons", "icons": "meridian"},
+  {"id": "IconsSm", "icons": "meridian", "scale": 0.8}
+]}

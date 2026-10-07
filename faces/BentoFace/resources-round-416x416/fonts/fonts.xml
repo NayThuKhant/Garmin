@@ -1,0 +1,13 @@
+<fonts>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="TimeAod" filename="timeaod.fnt" antialias="true"/>
+    <font id="Date" filename="date.fnt" antialias="true"/>
+    <font id="DateAod" filename="dateaod.fnt" antialias="true"/>
+    <font id="Notif" filename="notif.fnt" antialias="true"/>
+    <font id="Steps" filename="steps.fnt" antialias="true"/>
+    <font id="Tag" filename="tag.fnt" antialias="true"/>
+    <font id="Hr" filename="hr.fnt" antialias="true"/>
+    <font id="Temp" filename="temp.fnt" antialias="true"/>
+    <font id="Small" filename="small.fnt" antialias="true"/>
+    <font id="Aod" filename="aod.fnt" antialias="true"/>
+</fonts>

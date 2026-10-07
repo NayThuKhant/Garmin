@@ -1,0 +1,15 @@
+info face="ChakraPetch-Bold" size=154 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=187 base=141 scaleW=512 scaleH=354 pages=1 packed=0
+page id=0 file="aodsquare.png"
+chars count=10
+char id=48 x=0 y=0 width=108 height=116 xoffset=-4 yoffset=29 xadvance=96 page=0 chnl=15
+char id=49 x=110 y=0 width=67 height=116 xoffset=-4 yoffset=29 xadvance=54 page=0 chnl=15
+char id=50 x=179 y=0 width=96 height=116 xoffset=-4 yoffset=29 xadvance=84 page=0 chnl=15
+char id=51 x=277 y=0 width=101 height=116 xoffset=-4 yoffset=29 xadvance=88 page=0 chnl=15
+char id=52 x=380 y=0 width=97 height=116 xoffset=-4 yoffset=29 xadvance=85 page=0 chnl=15
+char id=53 x=0 y=118 width=101 height=116 xoffset=-4 yoffset=29 xadvance=89 page=0 chnl=15
+char id=54 x=103 y=118 width=104 height=116 xoffset=-4 yoffset=29 xadvance=91 page=0 chnl=15
+char id=55 x=209 y=118 width=88 height=116 xoffset=-4 yoffset=29 xadvance=76 page=0 chnl=15
+char id=56 x=299 y=118 width=106 height=116 xoffset=-4 yoffset=29 xadvance=94 page=0 chnl=15
+char id=57 x=0 y=236 width=105 height=116 xoffset=-4 yoffset=29 xadvance=92 page=0 chnl=15
+kernings count=0

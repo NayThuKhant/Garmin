@@ -1,0 +1,15 @@
+info face="BarlowCondensed-SemiBold" size=184 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=223 base=168 scaleW=512 scaleH=276 pages=1 packed=0
+page id=0 file="time.png"
+chars count=10
+char id=48 x=0 y=0 width=85 height=136 xoffset=-1 yoffset=36 xadvance=78 page=0 chnl=15
+char id=49 x=87 y=0 width=53 height=131 xoffset=-1 yoffset=38 xadvance=46 page=0 chnl=15
+char id=50 x=142 y=0 width=81 height=133 xoffset=-1 yoffset=36 xadvance=74 page=0 chnl=15
+char id=51 x=225 y=0 width=81 height=133 xoffset=-1 yoffset=38 xadvance=74 page=0 chnl=15
+char id=52 x=308 y=0 width=87 height=131 xoffset=-1 yoffset=38 xadvance=80 page=0 chnl=15
+char id=53 x=397 y=0 width=81 height=133 xoffset=-1 yoffset=38 xadvance=74 page=0 chnl=15
+char id=54 x=0 y=138 width=81 height=135 xoffset=-1 yoffset=36 xadvance=74 page=0 chnl=15
+char id=55 x=83 y=138 width=75 height=131 xoffset=-1 yoffset=38 xadvance=68 page=0 chnl=15
+char id=56 x=160 y=138 width=82 height=136 xoffset=-1 yoffset=35 xadvance=75 page=0 chnl=15
+char id=57 x=244 y=138 width=80 height=135 xoffset=-1 yoffset=36 xadvance=73 page=0 chnl=15
+kernings count=0

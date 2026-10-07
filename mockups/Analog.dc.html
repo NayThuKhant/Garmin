@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face E: Analog chrono</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #ffffff">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<path d="{{minorTicks}}" stroke="#4a4a4a" stroke-width="2" stroke-linecap="round"></path>
+<path d="{{majorTicks}}" stroke="#d0d0d0" stroke-width="4" stroke-linecap="round"></path>
+<circle cx="115" cy="200" r="40" stroke="#262626" stroke-width="5"></circle>
+<path d="{{hrArc}}" stroke="#FF6B5A" stroke-width="5" stroke-linecap="round"></path>
+<circle cx="275" cy="200" r="40" stroke="#262626" stroke-width="5"></circle>
+<path d="{{bbArc}}" stroke="#4DA3FF" stroke-width="5" stroke-linecap="round"></path>
+<circle cx="195" cy="290" r="40" stroke="#262626" stroke-width="5"></circle>
+<path d="{{stepArc}}" stroke="{{accent}}" stroke-width="5" stroke-linecap="round"></path>
+</svg>
+<div style="position: absolute; left: 0; top: 52px; width: 390px; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<div style="display: flex; gap: 10px; font-size: 13px; font-weight: 600; color: #9a9a9a">
+<span>28°</span><span>↑5:58</span><span>↓17:52</span>
+</div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; letter-spacing: 2px">
+<span style="color: #9a9a9a">MON</span>
+<span style="padding: 1px 6px; border-radius: 4px; background: {{accent}}; color: #000000">05</span>
+</div>
+<div style="display: flex; gap: 10px; font-size: 13px; font-weight: 600; color: #d0d0d0; margin-top: 2px">
+<span>1,840 kcal</span><span style="color: #4a4a4a">|</span><span>3 notif</span><span style="color: #4a4a4a">|</span><span>82%</span>
+</div>
+</div>
+<div style="position: absolute; left: 75px; top: 160px; width: 80px; height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font-size: 20px; font-weight: 600; line-height: 1">62</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #FF6B5A">BPM</span>
+</div>
+<div style="position: absolute; left: 235px; top: 160px; width: 80px; height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font-size: 20px; font-weight: 600; line-height: 1">68</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #4DA3FF">BODY</span>
+</div>
+<div style="position: absolute; left: 155px; top: 250px; width: 80px; height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1">7,412</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: {{accent}}">STEPS</span>
+</div>
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<line x1="195" y1="195" x2="{{hourX}}" y2="{{hourY}}" stroke="#ffffff" stroke-width="9" stroke-linecap="round"></line>
+<line x1="195" y1="195" x2="{{minX}}" y2="{{minY}}" stroke="#ffffff" stroke-width="5" stroke-linecap="round"></line>
+<line x1="{{secTailX}}" y1="{{secTailY}}" x2="{{secX}}" y2="{{secY}}" stroke="{{accent}}" stroke-width="2" stroke-linecap="round"></line>
+<circle cx="195" cy="195" r="8" fill="#ffffff"></circle>
+<circle cx="195" cy="195" r="3" fill="{{accent}}"></circle>
+</svg>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C6F432","options":["#C6F432","#FF9F1C","#4DD0E1"]},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var cx = 195, cy = 195;
+    function pt(x0, y0, r, deg) {
+      var a = deg * Math.PI / 180;
+      return [x0 + r * Math.sin(a), y0 - r * Math.cos(a)];
+    }
+    function f(n) { return Math.round(n * 10) / 10; }
+    function arc(x0, y0, r, frac) {
+      var s = pt(x0, y0, r, 0), e = pt(x0, y0, r, frac * 359.9);
+      return 'M' + f(s[0]) + ' ' + f(s[1]) + ' A' + r + ' ' + r + ' 0 ' + (frac > 0.5 ? 1 : 0) + ' 1 ' + f(e[0]) + ' ' + f(e[1]);
+    }
+    var minor = '', major = '';
+    for (var i = 0; i < 60; i++) {
+      var isMajor = i % 5 === 0;
+      var p1 = pt(cx, cy, 186, i * 6), p2 = pt(cx, cy, isMajor ? 166 : 178, i * 6);
+      var seg = 'M' + f(p1[0]) + ' ' + f(p1[1]) + ' L' + f(p2[0]) + ' ' + f(p2[1]) + ' ';
+      if (isMajor) { major += seg; } else { minor += seg; }
+    }
+    var h = pt(cx, cy, 92, 304), m = pt(cx, cy, 148, 52.2), s = pt(cx, cy, 162, 252), t = pt(cx, cy, 26, 72);
+    return {
+      accent: this.props.accent ?? '#C6F432',
+      minorTicks: minor, majorTicks: major,
+      hrArc: arc(115, 200, 40, 62 / 190),
+      bbArc: arc(275, 200, 40, 0.68),
+      stepArc: arc(195, 290, 40, 0.74),
+      hourX: f(h[0]), hourY: f(h[1]), minX: f(m[0]), minY: f(m[1]),
+      secX: f(s[0]), secY: f(s[1]), secTailX: f(t[0]), secTailY: f(t[1])
+    };
+  }
+}
+</script>
+</body>
+</html>

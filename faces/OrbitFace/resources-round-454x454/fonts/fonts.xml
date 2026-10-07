@@ -1,0 +1,8 @@
+<fonts>
+    <font id="Date" filename="date.fnt" antialias="true"/>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="Row" filename="row.fnt" antialias="true"/>
+    <font id="Grid" filename="grid.fnt" antialias="true"/>
+    <font id="ADate" filename="adate.fnt" antialias="true"/>
+    <font id="ARow" filename="arow.fnt" antialias="true"/>
+</fonts>

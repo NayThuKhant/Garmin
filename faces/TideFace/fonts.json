@@ -1,0 +1,9 @@
+{"fonts": [
+  {"id": "Time",  "ttf": "Fraunces", "axes": {"wght": 300}, "size": 96, "ls": -2, "chars": "digits"},
+  {"id": "Date",  "ttf": "Sora", "axes": {"wght": 400}, "size": 12, "ls": 3, "chars": "upper"},
+  {"id": "Head",  "ttf": "Sora", "axes": {"wght": 400}, "size": 12, "chars": "upper+°·"},
+  {"id": "Aod",   "ttf": "Sora", "axes": {"wght": 400}, "size": 13, "chars": "upper"},
+  {"id": "Value", "ttf": "Sora", "axes": {"wght": 500}, "size": 17, "chars": "digits+,"},
+  {"id": "Tag",   "ttf": "Sora", "axes": {"wght": 400}, "size": 10, "ls": 1.5, "chars": "upper"},
+  {"id": "Label", "ttf": "Sora", "axes": {"wght": 400}, "size": 9,  "ls": 1.5, "chars": "upper"}
+]}

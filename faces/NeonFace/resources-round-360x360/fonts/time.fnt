@@ -1,0 +1,17 @@
+info face="TiltNeon" size=96 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=116 base=87 scaleW=512 scaleH=143 pages=1 packed=0
+page id=0 file="time.png"
+chars count=12
+char id=48 x=0 y=0 width=59 height=70 xoffset=-1 yoffset=19 xadvance=57 page=0 chnl=15
+char id=49 x=61 y=0 width=35 height=69 xoffset=-1 yoffset=21 xadvance=33 page=0 chnl=15
+char id=50 x=98 y=0 width=51 height=69 xoffset=-1 yoffset=19 xadvance=48 page=0 chnl=15
+char id=51 x=151 y=0 width=49 height=69 xoffset=-1 yoffset=20 xadvance=47 page=0 chnl=15
+char id=52 x=202 y=0 width=53 height=70 xoffset=-1 yoffset=20 xadvance=50 page=0 chnl=15
+char id=53 x=257 y=0 width=50 height=69 xoffset=-1 yoffset=20 xadvance=48 page=0 chnl=15
+char id=54 x=309 y=0 width=54 height=69 xoffset=-1 yoffset=20 xadvance=51 page=0 chnl=15
+char id=55 x=365 y=0 width=49 height=70 xoffset=-1 yoffset=20 xadvance=46 page=0 chnl=15
+char id=56 x=416 y=0 width=54 height=70 xoffset=-1 yoffset=19 xadvance=51 page=0 chnl=15
+char id=57 x=0 y=72 width=54 height=69 xoffset=-1 yoffset=20 xadvance=51 page=0 chnl=15
+char id=58 x=56 y=72 width=27 height=52 xoffset=-1 yoffset=38 xadvance=25 page=0 chnl=15
+char id=45 x=85 y=72 width=35 height=36 xoffset=-1 yoffset=52 xadvance=33 page=0 chnl=15
+kernings count=0

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face S: Bauhaus</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&amp;family=Manrope:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Manrope', sans-serif; color: #ffffff">
+
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; padding-top: 50px; box-sizing: border-box">
+<div style="display: flex; gap: 10px; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: 2px; color: #9a9a9a">
+<span style="width: 8px; height: 8px; border-radius: 4px; background: #E63B2E"></span><span>MON 05 OCT</span><span style="color: #d0d0d0">28°</span><span style="width: 8px; height: 8px; background: #F2C230"></span>
+</div>
+<div style="font-family: 'Syne', sans-serif; font-size: 82px; font-weight: 800; line-height: 1; letter-spacing: -3px; margin-top: 4px">10<span style="color: #F2C230">.</span>08</div>
+<div style="display: flex; gap: 16px; margin-top: 14px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" stroke="#E63B2E" stroke-width="1.5"></circle><path d="M24 24 L24 2 A22 22 0 1 1 2.0 25.4 Z" fill="#E63B2E"></path></svg><span style="font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; line-height: 1">7.4k</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">STEPS</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="2" y="2" width="44" height="44" stroke="#2D5BD8" stroke-width="1.5"></rect><rect x="2" y="16.1" width="44" height="29.9" fill="#2D5BD8"></rect></svg><span style="font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; line-height: 1">68</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">BODY</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 2 L46 46 L2 46 Z" stroke="#F2C230" stroke-width="1.5" stroke-linejoin="round"></path><path d="M2.0 46 L46 46 L40.7 35.4 L7.3 35.4 Z" fill="#F2C230"></path></svg><span style="font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; line-height: 1">24</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">STRESS</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M2 40 A22 22 0 0 1 46 40 Z" stroke="#EDEDED" stroke-width="1.5" stroke-linejoin="round"></path><path d="M24 40 L2 40 A22 22 0 0 1 42.6 28.2 Z" fill="#EDEDED"></path></svg><span style="font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; line-height: 1">82%</span><span style="font-size: 8px; font-weight: 600; letter-spacing: 1.5px; color: #8a8a8a">BATT</span></div>
+</div>
+<div style="display: flex; gap: 12px; margin-top: 16px; font-size: 12px; font-weight: 600; color: #d0d0d0">
+<span style="color: #E63B2E">HR 62</span><span>1,840 kcal</span><span style="color: #8a8a8a">↑5:58 ↓17:52</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

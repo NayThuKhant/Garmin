@@ -1,0 +1,7 @@
+{"fonts": [
+  {"id": "Date",    "ttf": "IBMPlexMono-Regular", "size": 12, "ls": 2, "chars": "upper"},
+  {"id": "Time",    "ttf": "Fraunces", "axes": {"wght": 400}, "size": 92, "ls": -3, "chars": "0123456789:"},
+  {"id": "TimeAod", "ttf": "Fraunces", "axes": {"wght": 300}, "size": 92, "ls": -3, "chars": "0123456789:"},
+  {"id": "Grid",    "ttf": "IBMPlexMono-Regular", "size": 12, "chars": "lower+0123456789:%-· "},
+  {"id": "Foot",    "ttf": "IBMPlexMono-Regular", "size": 11, "ls": 1, "chars": "lower+0123456789%- "}
+]}

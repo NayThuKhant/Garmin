@@ -1,0 +1,12 @@
+<strings>
+    <string id="AppName">B · Data grid</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorLime">Lime</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorCyan">Cyan</string>
+    <string id="ColorWhite">White</string>
+    <string id="SecondaryTitle">Secondary color</string>
+    <string id="ColorBlue">Blue</string>
+    <string id="ColorViolet">Violet</string>
+    <string id="ColorCoral">Coral</string>
+</strings>

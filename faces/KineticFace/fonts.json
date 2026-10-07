@@ -1,0 +1,6 @@
+{"fonts": [
+  {"id": "Big",     "ttf": "BigShouldersDisplay", "axes": {"wght": 900}, "size": 172, "chars": "0123456789"},
+  {"id": "BigOut",  "ttf": "BigShouldersDisplay", "axes": {"wght": 900}, "size": 172, "outline": 2, "chars": "0123456789"},
+  {"id": "BigOutAod", "ttf": "BigShouldersDisplay", "axes": {"wght": 900}, "size": 172, "outline": 1.5, "chars": "0123456789"},
+  {"id": "Sec",     "ttf": "Unbounded", "axes": {"wght": 500}, "size": 18, "chars": "0123456789"}
+]}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face AE: Meridian</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&amp;family=Roboto+Condensed:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: {{accent}}; overflow: hidden">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<path d="M31.6 132.3 A175 175 0 0 1 132.3 31.6" stroke="{{track}}" stroke-width="3.5" stroke-linecap="round"></path>
+<path d="M33.1 128.6 A175 175 0 0 1 100.3 47.8" stroke="{{steps}}" stroke-width="8" stroke-linecap="round"></path>
+<text x="95.3" y="95.3" transform="rotate(315 95.3 95.3)" text-anchor="middle" dominant-baseline="central" font-family="Roboto Condensed" font-weight="500" font-size="33" fill="{{text}}">12k</text>
+<path d="M257.7 31.6 A175 175 0 0 1 358.4 132.3" stroke="{{track}}" stroke-width="3.5" stroke-linecap="round"></path>
+<path d="M316.8 69.3 A175 175 0 0 1 356.9 128.6" stroke="{{batt}}" stroke-width="8" stroke-linecap="round"></path>
+<text x="294.7" y="95.3" transform="rotate(45 294.7 95.3)" text-anchor="middle" dominant-baseline="central" font-family="Roboto Condensed" font-weight="500" font-size="33" fill="{{text}}">9d</text>
+<path d="M132.3 358.4 A175 175 0 0 1 31.6 257.7" stroke="{{track}}" stroke-width="3.5" stroke-linecap="round"></path>
+<path d="M82.5 329.0 A175 175 0 0 1 33.1 261.4" stroke="{{weather}}" stroke-width="8" stroke-linecap="round"></path>
+<text x="95.3" y="294.7" transform="rotate(45 95.3 294.7)" text-anchor="middle" dominant-baseline="central" font-family="Roboto Condensed" font-weight="500" font-size="33" fill="{{text}}">27°</text>
+<path d="M358.4 257.7 A175 175 0 0 1 257.7 358.4" stroke="{{track}}" stroke-width="3.5" stroke-linecap="round"></path>
+<path d="M356.9 261.4 A175 175 0 0 1 335.1 299.9" stroke="{{heart}}" stroke-width="8" stroke-linecap="round"></path>
+<text x="294.7" y="294.7" transform="rotate(-45 294.7 294.7)" text-anchor="middle" dominant-baseline="central" font-family="Roboto Condensed" font-weight="500" font-size="33" fill="{{text}}">61</text>
+<circle cx="195" cy="36" r="51" stroke="{{outline}}" stroke-width="2.5"></circle>
+<circle cx="36" cy="195" r="51" stroke="{{outline}}" stroke-width="2.5"></circle>
+<circle cx="354" cy="195" r="51" stroke="{{outline}}" stroke-width="2.5"></circle>
+<circle cx="195" cy="354" r="51" stroke="{{outline}}" stroke-width="2.5"></circle>
+</svg>
+<div style="position: absolute; left: 96.2px; top: 31.8px; width: 26px; height: 26px; display: flex"><svg width="26" height="26" viewBox="0 0 24 24" fill="{{steps}}" stroke="{{steps}}" stroke-width="0" style="filter: drop-shadow(2.5px 0 0 {{bg}}) drop-shadow(-2.5px 0 0 {{bg}}) drop-shadow(0 2.5px 0 {{bg}}) drop-shadow(0 -2.5px 0 {{bg}})"><ellipse cx="7" cy="7.2" rx="3.4" ry="4.8"/><ellipse cx="7.4" cy="15.6" rx="2.6" ry="2.9"/><ellipse cx="16.6" cy="10.4" rx="3.4" ry="4.8"/><ellipse cx="17" cy="18.8" rx="2.6" ry="2.9"/></svg></div>
+<div style="position: absolute; left: 296.7px; top: 52.6px; width: 24px; height: 24px; display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="{{batt}}" stroke="{{batt}}" stroke-width="0" style="filter: drop-shadow(2.5px 0 0 {{bg}}) drop-shadow(-2.5px 0 0 {{bg}}) drop-shadow(0 2.5px 0 {{bg}}) drop-shadow(0 -2.5px 0 {{bg}})"><path fill-rule="evenodd" d="M12 .5a11.5 11.5 0 1 1 0 23a11.5 11.5 0 1 1 0-23zM13.2 4.5 7 13.4h4.6l-1 6.1 6.4-9.2h-4.7l.9-5.8z"/></svg></div>
+<div style="position: absolute; left: 75.9px; top: 318.1px; width: 30px; height: 30px; display: flex"><svg width="30" height="30" viewBox="0 0 24 24" fill="{{weather}}" stroke="{{weather}}" stroke-width="0" style="filter: drop-shadow(2.5px 0 0 {{bg}}) drop-shadow(-2.5px 0 0 {{bg}}) drop-shadow(0 2.5px 0 {{bg}}) drop-shadow(0 -2.5px 0 {{bg}})"><path d="M9.5 1.5l.8 2.3h-1.6zM3.3 3.6l2.2 1-1.2 1.2zM15.7 3.6l-1 2.2-1.2-1.2zM1 9.8l2.3-.8v1.6z"/><path d="M5.6 9.8a3.9 3.9 0 0 1 7.6-1.2A5.6 5.6 0 0 0 9 12.6 3.6 3.6 0 0 0 5.9 11.3z"/><path d="M6.8 22.5h11.4a4.6 4.6 0 0 0 .9-9.1 6 6 0 0 0-11.4 1.9 3.6 3.6 0 0 0-.9 7.2z"/></svg></div>
+<div style="position: absolute; left: 313.4px; top: 291.3px; width: 29px; height: 29px; display: flex"><svg width="29" height="29" viewBox="0 0 24 24" fill="{{heart}}" stroke="{{heart}}" stroke-width="0" style="filter: drop-shadow(2.5px 0 0 {{bg}}) drop-shadow(-2.5px 0 0 {{bg}}) drop-shadow(0 2.5px 0 {{bg}}) drop-shadow(0 -2.5px 0 {{bg}})"><path d="M12 21.2 10.4 19.8C4.9 14.8 1.3 11.5 1.3 7.5 1.3 4.2 3.9 1.7 7.1 1.7c1.9 0 3.7.9 4.9 2.3 1.2-1.4 3-2.3 4.9-2.3 3.2 0 5.8 2.5 5.8 5.8 0 4-3.6 7.3-9.1 12.3L12 21.2z"/></svg></div>
+<div style="position: absolute; left: 178.0px; top: 0.0px; width: 34px; height: 34px; display: flex"><svg width="34" height="34" viewBox="0 0 24 24" fill="{{cal}}" stroke="{{cal}}" stroke-width="0" ><path fill-rule="evenodd" d="M4.7 4h14.6a2.2 2.2 0 0 1 2.2 2.2v13.6a2.2 2.2 0 0 1-2.2 2.2H4.7a2.2 2.2 0 0 1-2.2-2.2V6.2A2.2 2.2 0 0 1 4.7 4zM2.5 8.2v1.4h19V8.2zM5.5 11.5v2.6h3v-2.6zm5 0v2.6h3v-2.6zm5 0v2.6h3v-2.6zM5.5 16v2.6h3V16zm5 0v2.6h3V16zm5 0v2.6h3V16z"/><rect x="6" y="1.5" width="2.4" height="5" rx="1.2"/><rect x="15.6" y="1.5" width="2.4" height="5" rx="1.2"/></svg></div>
+<div style="position: absolute; left: 135px; top: 40.2px; width: 120px; height: 39.6px; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed', sans-serif; font-weight: 500; font-size: 33px; line-height: 1; color: {{text}}">11:00</div>
+<div style="position: absolute; left: 21.0px; top: 159.0px; width: 36px; height: 36px; display: flex"><svg width="36" height="36" viewBox="0 0 24 24" fill="{{sun}}" stroke="{{sun}}" stroke-width="0" ><path d="M12 1 8.4 5.4h2.4V9.6h2.4V5.4h2.4z"/><path d="M6.2 18.6a5.8 5.8 0 0 1 11.6 0z"/><rect x="1.5" y="19.4" width="21" height="2.4" rx="1.2"/><path d="M12 10.4l.9 1.9h-1.8zM5.4 12.4l1.9.9-1.2 1.3zM18.6 12.4l-1.9.9 1.2 1.3zM2.2 16.6l2.2.3-.8 1.6zM21.8 16.6l-2.2.3.8 1.6zM8.2 10.9l1.4 1.5-1.7.6zM15.8 10.9l-1.4 1.5 1.7.6z"/></svg></div>
+<div style="position: absolute; left: -21px; top: 197.2px; width: 120px; height: 39.6px; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed', sans-serif; font-weight: 500; font-size: 33px; line-height: 1; color: {{text}}">7:24</div>
+<div style="position: absolute; left: 291px; top: 160.0px; width: 120px; height: 36.0px; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed', sans-serif; font-weight: 700; font-size: 30px; line-height: 1; color: {{day}}">SAT</div>
+<div style="position: absolute; left: 291px; top: 197.2px; width: 120px; height: 39.6px; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed', sans-serif; font-weight: 500; font-size: 33px; line-height: 1; color: {{text}}">24</div>
+<div style="position: absolute; left: 177.0px; top: 312.0px; width: 36px; height: 36px; display: flex"><svg width="36" height="36" viewBox="0 0 24 24" fill="{{bell}}" stroke="{{bell}}" stroke-width="0" ><path d="M12 1.8a1.7 1.7 0 0 1 1.7 1.7v.6a6.8 6.8 0 0 1 5.1 6.6v4.6l2.4 2.8v1.2H2.8v-1.2l2.4-2.8v-4.6a6.8 6.8 0 0 1 5.1-6.6v-.6A1.7 1.7 0 0 1 12 1.8zM9.2 20.4h5.6a2.8 2.8 0 0 1-5.6 0z"/></svg></div>
+<div style="position: absolute; left: 135px; top: 353.2px; width: 120px; height: 39.6px; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed', sans-serif; font-weight: 500; font-size: 33px; line-height: 1; color: {{text}}">2</div>
+<div style="position: absolute; left: 0; top: 86px; width: 390px; height: 120px; display: flex; align-items: center; justify-content: center; font-family: 'M PLUS Rounded 1c', sans-serif; font-weight: 800; font-size: 132px; line-height: 1; letter-spacing: -4px; background: linear-gradient(180deg, {{hour}} 55%, {{hourEnd}} 100%); -webkit-background-clip: text; background-clip: text; color: transparent;"><span style="position: relative; top: 4px">12</span></div>
+<div style="position: absolute; left: 0; top: 184px; width: 390px; height: 120px; display: flex; align-items: center; justify-content: center; font-family: 'M PLUS Rounded 1c', sans-serif; font-weight: 800; font-size: 132px; line-height: 1; letter-spacing: -4px; color: {{min}};"><span style="position: relative; top: 4px">31</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent": {"editor": "color", "default": "#0B0B0B", "options": ["#0B0B0B", "#1B2A44", "#F4EEE3", "#20262E"]}, "$preview": {"width": 390, "height": 390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const bg = (this.props.accent ?? '#0B0B0B').toUpperCase();
+    const themes = {
+      '#0B0B0B': { hourEnd: '#BDBDBD', track: '#4A4A4A', outline: '#3C3C3C', text: '#FFFFFF', hour: '#FFFFFF', min: '#FFFFFF', day: '#4A90E2',
+                   steps: '#F0399F', batt: '#5BE15B', weather: '#F5A33A', heart: '#EF3348', cal: '#C8C8C8', sun: '#F7B52C', bell: '#F7E03A' },
+      '#1B2A44': { hourEnd: '#9EE6C8', track: '#8E8E93', outline: '#8E8E93', text: '#E8E8EA', hour: '#C9E86B', min: '#A9D6FF', day: '#F2B9A6',
+                   steps: '#7FB2E8', batt: '#D7DE8A', weather: '#E3A04E', heart: '#C8443A', cal: '#C8CCD6', sun: '#E8E070', bell: '#E3A04E' },
+      '#F4EEE3': { hourEnd: '#1F4E5F', track: '#3E8EA3', outline: '#C9B79A', text: '#2B2B2B', hour: '#1F4E5F', min: '#B3412E', day: '#B3412E',
+                   steps: '#3E8EA3', batt: '#3E8EA3', weather: '#3E8EA3', heart: '#3E8EA3', cal: '#B3412E', sun: '#B3412E', bell: '#B3412E' },
+      '#20262E': { hourEnd: '#5FD3F3', track: '#55606C', outline: '#4A5562', text: '#FFFFFF', hour: '#9BF0B0', min: '#5FD3F3', day: '#5FD3F3',
+                   steps: '#C6F432', batt: '#C6F432', weather: '#C6F432', heart: '#C6F432', cal: '#E6E6E6', sun: '#C6F432', bell: '#C6F432' }
+    };
+    return Object.assign({ accent: bg, bg: bg }, themes[bg] || themes['#0B0B0B']);
+  }
+}
+</script>
+</body>
+</html>

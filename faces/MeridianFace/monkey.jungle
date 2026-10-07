@@ -1,0 +1,9 @@
+project.manifest = manifest.xml
+
+# Garmin's native watch-face editor (resources-wfconfig/configs/watchface.xml) is only for watches that
+# support WatchFaceConfig; the four API 5.0 watches below get the same resources without it.
+base.resourcePath = $(base.resourcePath);resources-wfconfig
+venu2.resourcePath = resources;resources-round-416x416;resources-venu2
+venu2plus.resourcePath = resources;resources-round-416x416;resources-venu2plus
+d2airx10.resourcePath = resources;resources-round-416x416;resources-d2airx10
+venu2s.resourcePath = resources;resources-round-360x360;resources-venu2s

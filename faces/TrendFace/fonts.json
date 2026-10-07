@@ -1,0 +1,14 @@
+{"fonts": [
+  {"id": "Head",    "ttf": "Barlow-SemiBold", "size": 14, "ls": 1.5, "chars": "upper+°·"},
+  {"id": "Time",    "ttf": "BarlowCondensed-SemiBold", "size": 88, "ls": -1, "chars": "digits"},
+  {"id": "HrLabel", "ttf": "Barlow-SemiBold", "size": 11, "ls": 1.5, "chars": "upper+·"},
+  {"id": "Range",   "ttf": "Barlow-SemiBold", "size": 11, "chars": "digits+–"},
+  {"id": "Bpm",     "ttf": "Barlow-SemiBold", "size": 26, "chars": "digits"},
+  {"id": "BpmTag",  "ttf": "Barlow-SemiBold", "size": 10, "ls": 1, "chars": "BPM"},
+  {"id": "Value",   "ttf": "Barlow-SemiBold", "size": 17, "chars": "digits+,/"},
+  {"id": "Label",   "ttf": "Barlow-SemiBold", "size": 9,  "ls": 1.5, "chars": "upper"},
+  {"id": "Foot",    "ttf": "Barlow-SemiBold", "size": 12, "chars": "digits"},
+  {"id": "AodDate", "ttf": "Barlow-Medium",   "size": 14, "ls": 1.5, "chars": "upper+°·"},
+  {"id": "AodTime", "ttf": "BarlowCondensed-Medium", "size": 88, "ls": -1, "chars": "digits"},
+  {"id": "AodRow",  "ttf": "Barlow-Medium",   "size": 15, "chars": "upper+,"}
+]}

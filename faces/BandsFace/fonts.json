@@ -1,0 +1,12 @@
+{"fonts": [
+  {"id": "Time",    "ttf": "BarlowCondensed-SemiBold", "size": 100, "ls": -2, "chars": "digits"},
+  {"id": "Sec",     "ttf": "BarlowCondensed-SemiBold", "size": 26, "chars": "0123456789"},
+  {"id": "TimeAod", "ttf": "BarlowCondensed-Medium",   "size": 100, "ls": -2, "chars": "digits"},
+  {"id": "Head",    "ttf": "Barlow-SemiBold", "size": 14, "chars": "digits+°"},
+  {"id": "Date",    "ttf": "Barlow-SemiBold", "size": 14, "ls": 3, "chars": "upper"},
+  {"id": "Value",   "ttf": "Barlow-SemiBold", "size": 20, "chars": "digits+,"},
+  {"id": "Label",   "ttf": "Barlow-SemiBold", "size": 10, "ls": 1.5, "chars": "upper"},
+  {"id": "Batt",    "ttf": "Barlow-SemiBold", "size": 13, "chars": "digits+·d"},
+  {"id": "DateAod", "ttf": "Barlow-Medium",   "size": 14, "ls": 3, "chars": "upper"},
+  {"id": "RowAod",  "ttf": "Barlow-Medium",   "size": 16, "chars": "digits+,HRB"}
+]}

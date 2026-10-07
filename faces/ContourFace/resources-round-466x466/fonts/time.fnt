@@ -1,0 +1,16 @@
+info face="Fraunces" size=110 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=133 base=100 scaleW=512 scaleH=172 pages=1 packed=0
+page id=0 file="time.png"
+chars count=11
+char id=48 x=0 y=0 width=67 height=83 xoffset=-1 yoffset=20 xadvance=61 page=0 chnl=15
+char id=49 x=69 y=0 width=42 height=82 xoffset=-1 yoffset=19 xadvance=36 page=0 chnl=15
+char id=50 x=113 y=0 width=61 height=82 xoffset=-1 yoffset=20 xadvance=55 page=0 chnl=15
+char id=51 x=176 y=0 width=56 height=81 xoffset=-1 yoffset=22 xadvance=50 page=0 chnl=15
+char id=52 x=234 y=0 width=62 height=81 xoffset=-1 yoffset=20 xadvance=56 page=0 chnl=15
+char id=53 x=298 y=0 width=59 height=85 xoffset=-1 yoffset=18 xadvance=53 page=0 chnl=15
+char id=54 x=359 y=0 width=63 height=83 xoffset=-1 yoffset=20 xadvance=57 page=0 chnl=15
+char id=55 x=424 y=0 width=53 height=81 xoffset=-1 yoffset=22 xadvance=47 page=0 chnl=15
+char id=56 x=0 y=87 width=60 height=83 xoffset=-1 yoffset=20 xadvance=54 page=0 chnl=15
+char id=57 x=62 y=87 width=63 height=83 xoffset=-1 yoffset=20 xadvance=57 page=0 chnl=15
+char id=58 x=127 y=87 width=22 height=47 xoffset=-1 yoffset=55 xadvance=16 page=0 chnl=15
+kernings count=0

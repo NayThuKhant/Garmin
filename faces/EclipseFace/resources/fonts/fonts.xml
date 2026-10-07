@@ -1,0 +1,6 @@
+<fonts>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="Date" filename="date.fnt" antialias="true"/>
+    <font id="Info" filename="info.fnt" antialias="true"/>
+    <font id="Steps" filename="steps.fnt" antialias="true"/>
+</fonts>

@@ -1,0 +1,10 @@
+{"fonts": [
+  {"id": "Time",    "ttf": "BarlowCondensed-SemiBold", "size": 122, "ls": -2, "chars": "digits"},
+  {"id": "TimeAod", "ttf": "BarlowCondensed-Medium",   "size": 122, "ls": -2, "chars": "digits"},
+  {"id": "Head",    "ttf": "Barlow-SemiBold", "size": 13, "ls": 1.5, "chars": "upper+°·"},
+  {"id": "Value",   "ttf": "Barlow-SemiBold", "size": 17, "chars": "digits+,"},
+  {"id": "Label",   "ttf": "Barlow-SemiBold", "size": 9,  "ls": 1.5, "chars": "BPMSTEKCALODYR2"},
+  {"id": "Sun",     "ttf": "Barlow-SemiBold", "size": 13, "chars": "digits"},
+  {"id": "AodDate", "ttf": "Barlow-Medium",   "size": 13, "ls": 1.5, "chars": "upper"},
+  {"id": "AodInfo", "ttf": "Barlow-Medium",   "size": 16, "chars": "digits+HRB"}
+]}

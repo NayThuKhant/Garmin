@@ -1,0 +1,12 @@
+{"fonts": [
+  {"id": "Head",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "ls": 2, "chars": "upper"},
+  {"id": "Time",    "ttf": "Manrope", "axes": {"wght": 300}, "size": 56, "ls": -2, "chars": "0123456789:-"},
+  {"id": "Sec",     "ttf": "Manrope", "axes": {"wght": 500}, "size": 18, "chars": "0123456789 "},
+  {"id": "Val",     "ttf": "Manrope", "axes": {"wght": 700}, "size": 13, "chars": "digits+,mstr"},
+  {"id": "Lab",     "ttf": "Manrope", "axes": {"wght": 600}, "size": 8, "ls": 1.5, "chars": "STEPBODYLINCAMRO2"},
+  {"id": "Hr",      "ttf": "Manrope", "axes": {"wght": 700}, "size": 15, "chars": "0123456789-"},
+  {"id": "Bpm",     "ttf": "Manrope", "axes": {"wght": 600}, "size": 7, "ls": 1.5, "chars": "BPM"},
+  {"id": "Foot",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "chars": "digits+,kcalnotif"},
+  {"id": "AodDate", "ttf": "Manrope", "axes": {"wght": 500}, "size": 11, "ls": 2, "chars": "upper"},
+  {"id": "AodFoot", "ttf": "Manrope", "axes": {"wght": 400}, "size": 12, "chars": "digits+HRB"}
+]}

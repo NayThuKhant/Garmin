@@ -1,0 +1,10 @@
+<fonts>
+    <font id="Date" filename="date.fnt" antialias="true"/>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="Value" filename="value.fnt" antialias="true"/>
+    <font id="Label" filename="label.fnt" antialias="true"/>
+    <font id="Foot" filename="foot.fnt" antialias="true"/>
+    <font id="ADate" filename="adate.fnt" antialias="true"/>
+    <font id="ATime" filename="atime.fnt" antialias="true"/>
+    <font id="ARow" filename="arow.fnt" antialias="true"/>
+</fonts>

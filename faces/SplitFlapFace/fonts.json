@@ -1,0 +1,8 @@
+{"fonts": [
+  {"id": "Flap",    "ttf": "Antonio", "axes": {"wght": 700}, "size": 66, "chars": "digits"},
+  {"id": "Mini",    "ttf": "Antonio", "axes": {"wght": 700}, "size": 15, "chars": "digits+K"},
+  {"id": "Head",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "ls": 3, "chars": "upper+°·"},
+  {"id": "Label",   "ttf": "Manrope", "axes": {"wght": 600}, "size": 8,  "ls": 1.5, "chars": "HRSTEPKCALBODYT"},
+  {"id": "Foot",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 10, "ls": 1.5, "chars": "digits+SUNOTIF–"},
+  {"id": "AodInfo", "ttf": "Manrope", "axes": {"wght": 600}, "size": 12, "ls": 1.5, "chars": "digits+HRB·"}
+]}

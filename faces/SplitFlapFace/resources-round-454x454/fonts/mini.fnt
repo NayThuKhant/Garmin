@@ -1,0 +1,21 @@
+info face="Antonio" size=17 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=24 base=19 scaleW=512 scaleH=20 pages=1 packed=0
+page id=0 file="mini.png"
+chars count=16
+char id=48 x=0 y=0 width=11 height=18 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=49 x=13 y=0 width=8 height=17 xoffset=-1 yoffset=3 xadvance=6 page=0 chnl=15
+char id=50 x=23 y=0 width=10 height=17 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=51 x=35 y=0 width=10 height=18 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=52 x=47 y=0 width=10 height=17 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=53 x=59 y=0 width=10 height=18 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=54 x=71 y=0 width=10 height=18 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=55 x=83 y=0 width=10 height=17 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=56 x=95 y=0 width=10 height=18 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=57 x=107 y=0 width=10 height=18 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+char id=58 x=119 y=0 width=7 height=13 xoffset=-1 yoffset=7 xadvance=4 page=0 chnl=15
+char id=46 x=128 y=0 width=7 height=5 xoffset=-1 yoffset=15 xadvance=4 page=0 chnl=15
+char id=45 x=137 y=0 width=8 height=9 xoffset=-1 yoffset=11 xadvance=6 page=0 chnl=15
+char id=37 x=147 y=0 width=21 height=18 xoffset=-1 yoffset=3 xadvance=18 page=0 chnl=15
+char id=32 x=170 y=0 width=5 height=3 xoffset=-1 yoffset=18 xadvance=3 page=0 chnl=15
+char id=75 x=177 y=0 width=11 height=17 xoffset=-1 yoffset=3 xadvance=8 page=0 chnl=15
+kernings count=0

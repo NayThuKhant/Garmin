@@ -1,0 +1,6 @@
+<fonts>
+    <font id="Grid" filename="grid.fnt" antialias="true"/>
+    <font id="Date" filename="date.fnt" antialias="true"/>
+    <font id="AodDate" filename="aoddate.fnt" antialias="true"/>
+    <font id="Stat" filename="stat.fnt" antialias="true"/>
+</fonts>

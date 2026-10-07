@@ -1,0 +1,9 @@
+<fonts>
+    <font id="Head" filename="head.fnt" antialias="true"/>
+    <font id="Day" filename="day.fnt" antialias="true"/>
+    <font id="Val20" filename="val20.fnt" antialias="true"/>
+    <font id="Val18" filename="val18.fnt" antialias="true"/>
+    <font id="Label" filename="label.fnt" antialias="true"/>
+    <font id="AodDate" filename="aoddate.fnt" antialias="true"/>
+    <font id="AodRow" filename="aodrow.fnt" antialias="true"/>
+</fonts>

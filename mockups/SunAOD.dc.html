@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face J: Always-on mode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #a8a8a8">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<path d="M29 212 A166 166 0 0 1 119.6 64.1" stroke="#8a6a1a" stroke-width="2" stroke-linecap="round"></path>
+<circle cx="119.6" cy="64.1" r="5" fill="#8a6a1a"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 94px; width: 390px; display: flex; justify-content: center; font-size: 13px; font-weight: 500; letter-spacing: 2.5px; color: #7a7a7a">MON 05 OCT · 28°</div>
+<div style="position: absolute; left: 0; top: 112px; width: 390px; display: flex; justify-content: center; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 500; font-size: 90px; line-height: 0.95; letter-spacing: -1px; color: #a8a8a8">10:08</div>
+<div style="position: absolute; left: 0; top: 240px; width: 390px; display: flex; justify-content: center; gap: 18px; font-size: 15px; font-weight: 500; color: #8a8a8a">
+<span>HR 62</span><span>7,412</span><span>BB 68</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face J: Sun arc</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #ffffff">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<path d="M119.6 64.1 A166 166 0 0 1 361 212" stroke="#3a3a3a" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"></path>
+<path d="M29 212 A166 166 0 0 1 119.6 64.1" stroke="#FFB000" stroke-width="4" stroke-linecap="round"></path>
+<circle cx="119.6" cy="64.1" r="9" fill="#FFB000"></circle>
+<circle cx="119.6" cy="64.1" r="15" stroke="#FFB000" stroke-opacity="0.35" stroke-width="2"></circle>
+<line x1="24" y1="212" x2="366" y2="212" stroke="#2a2a2a" stroke-width="1"></line>
+</svg>
+<div style="position: absolute; left: 0; top: 70px; width: 390px; display: flex; justify-content: center; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #d0d0d0">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d0d0d0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg><span>28°</span><span style="color: #8a8a8a">H31 L24</span>
+</div>
+<div style="position: absolute; left: 0; top: 94px; width: 390px; display: flex; justify-content: center; font-size: 13px; font-weight: 600; letter-spacing: 2.5px; color: #9a9a9a">MON 05 OCT</div>
+<div style="position: absolute; left: 0; top: 110px; width: 390px; display: flex; justify-content: center; align-items: flex-end; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 600; line-height: 0.95">
+<span style="font-size: 90px; letter-spacing: -1px">10:08</span>
+<span style="font-size: 22px; color: #FFB000; margin-left: 3px; margin-bottom: 10px">42</span>
+</div>
+<div style="position: absolute; left: 34px; top: 218px; font-size: 12px; font-weight: 600; color: #FFB000">5:58</div>
+<div style="position: absolute; left: 318px; top: 218px; font-size: 12px; font-weight: 600; color: #8a8a8a">17:52</div>
+<div style="position: absolute; left: 60px; top: 238px; width: 270px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 10px">
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">62</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #FF6B5A">BPM</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">7,412</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: {{accent}}">STEPS</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">68</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #4DA3FF">BODY BATT</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">24</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #FF9F1C">STRESS</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">1,840</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #FFB36B">KCAL</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">82%</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #d0d0d0">BATT</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C6F432","options":["#C6F432","#4DD0E1","#FFFFFF"]},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#C6F432' };
+  }
+}
+</script>
+</body>
+</html>

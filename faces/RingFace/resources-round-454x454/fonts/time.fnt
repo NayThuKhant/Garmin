@@ -1,0 +1,20 @@
+info face="BarlowCondensed-SemiBold" size=149 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=181 base=136 scaleW=512 scaleH=225 pages=1 packed=0
+page id=0 file="time.png"
+chars count=15
+char id=48 x=0 y=0 width=69 height=110 xoffset=-1 yoffset=29 xadvance=65 page=0 chnl=15
+char id=49 x=71 y=0 width=43 height=107 xoffset=-1 yoffset=30 xadvance=38 page=0 chnl=15
+char id=50 x=116 y=0 width=66 height=108 xoffset=-1 yoffset=29 xadvance=61 page=0 chnl=15
+char id=51 x=184 y=0 width=66 height=109 xoffset=-1 yoffset=30 xadvance=61 page=0 chnl=15
+char id=52 x=252 y=0 width=71 height=107 xoffset=-1 yoffset=30 xadvance=66 page=0 chnl=15
+char id=53 x=325 y=0 width=66 height=109 xoffset=-1 yoffset=30 xadvance=61 page=0 chnl=15
+char id=54 x=393 y=0 width=66 height=110 xoffset=-1 yoffset=29 xadvance=62 page=0 chnl=15
+char id=55 x=0 y=112 width=61 height=107 xoffset=-1 yoffset=30 xadvance=56 page=0 chnl=15
+char id=56 x=63 y=112 width=67 height=111 xoffset=-1 yoffset=28 xadvance=62 page=0 chnl=15
+char id=57 x=132 y=112 width=65 height=110 xoffset=-1 yoffset=29 xadvance=61 page=0 chnl=15
+char id=58 x=199 y=112 width=40 height=73 xoffset=-1 yoffset=64 xadvance=35 page=0 chnl=15
+char id=46 x=241 y=112 width=34 height=24 xoffset=-1 yoffset=114 xadvance=29 page=0 chnl=15
+char id=45 x=277 y=112 width=51 height=55 xoffset=-1 yoffset=82 xadvance=46 page=0 chnl=15
+char id=37 x=330 y=112 width=117 height=110 xoffset=-1 yoffset=29 xadvance=113 page=0 chnl=15
+char id=32 x=449 y=112 width=32 height=3 xoffset=-1 yoffset=135 xadvance=27 page=0 chnl=15
+kernings count=0

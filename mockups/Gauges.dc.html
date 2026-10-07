@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face G: Six gauges</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #ffffff">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; padding-top: 44px; box-sizing: border-box">
+<div style="display: flex; gap: 12px; font-size: 14px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">
+<span>MON 05 OCT</span><span style="color: #d0d0d0">28°</span><span>3 NOTIF</span>
+</div>
+<div style="font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 600; font-size: 78px; line-height: 0.95; letter-spacing: -1px; margin-top: 2px">10:08</div>
+<div style="display: flex; gap: 10px; font-size: 13px; font-weight: 600; color: #d0d0d0">
+<span style="color: #FF6B5A">HR 62</span><span>1,840 kcal</span><span style="color: #9a9a9a">↑5:58 ↓17:52</span>
+</div>
+<div style="display: flex; gap: 14px; margin-top: 10px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<div style="position: relative; width: 60px; height: 60px">
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="30" cy="30" r="24" stroke="#262626" stroke-width="5"></circle>
+<circle cx="30" cy="30" r="24" stroke="{{accent}}" stroke-width="5" stroke-linecap="round" stroke-dasharray="111.6 151" transform="rotate(-90 30 30)"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600">7.4k</div>
+</div>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">STEPS</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<div style="position: relative; width: 60px; height: 60px">
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="30" cy="30" r="24" stroke="#262626" stroke-width="5"></circle>
+<circle cx="30" cy="30" r="24" stroke="#4DA3FF" stroke-width="5" stroke-linecap="round" stroke-dasharray="102.5 151" transform="rotate(-90 30 30)"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600">68</div>
+</div>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">BODY</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<div style="position: relative; width: 60px; height: 60px">
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="30" cy="30" r="24" stroke="#262626" stroke-width="5"></circle>
+<circle cx="30" cy="30" r="24" stroke="#FF9F1C" stroke-width="5" stroke-linecap="round" stroke-dasharray="36.2 151" transform="rotate(-90 30 30)"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600">24</div>
+</div>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">STRESS</span>
+</div>
+</div>
+<div style="display: flex; gap: 14px; margin-top: 6px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<div style="position: relative; width: 60px; height: 60px">
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="30" cy="30" r="24" stroke="#262626" stroke-width="5"></circle>
+<circle cx="30" cy="30" r="24" stroke="#E6E6E6" stroke-width="5" stroke-linecap="round" stroke-dasharray="123.6 151" transform="rotate(-90 30 30)"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600">82%</div>
+</div>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">BATT</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<div style="position: relative; width: 60px; height: 60px">
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="30" cy="30" r="24" stroke="#262626" stroke-width="5"></circle>
+<circle cx="30" cy="30" r="24" stroke="#B388FF" stroke-width="5" stroke-linecap="round" stroke-dasharray="95.0 151" transform="rotate(-90 30 30)"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600">95m</div>
+</div>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">INTENS</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<div style="position: relative; width: 60px; height: 60px">
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="30" cy="30" r="24" stroke="#262626" stroke-width="5"></circle>
+<circle cx="30" cy="30" r="24" stroke="#9FA8FF" stroke-width="5" stroke-linecap="round" stroke-dasharray="122.1 151" transform="rotate(-90 30 30)"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600">81</div>
+</div>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">SLEEP</span>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C6F432","options":["#C6F432","#4DD0E1","#FFFFFF"]},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#C6F432' };
+  }
+}
+</script>
+</body>
+</html>

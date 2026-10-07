@@ -1,0 +1,15 @@
+# signing key: NEVER commit (CI gets it from the DEVELOPER_KEY_B64 secret)
+developer_key
+*.der
+*.pem
+
+# build output
+faces/*/bin/
+dist/
+*.prg
+*.iq
+
+# local tooling
+tools/.venv/
+__pycache__/
+.DS_Store

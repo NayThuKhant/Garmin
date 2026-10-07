@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face A: Always-on mode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #a8a8a8">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<path d="M134.1 362.3 A178 178 0 0 1 46.7 96.6" stroke="{{accent}}" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"></path>
+<path d="M255.9 362.3 A178 178 0 0 0 356.1 119.2" stroke="{{secondary}}" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"></path>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+<div style="font-size: 18px; font-weight: 500; letter-spacing: 3px; color: #8a8a8a">MON 05 OCT</div>
+<div style="font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 500; font-size: 128px; line-height: 1; letter-spacing: -2px; color: #a8a8a8">10:08</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C6F432","options":["#C6F432","#FF9F1C","#4DD0E1","#FFFFFF"]},"secondary":{"editor":"color","default":"#4DA3FF","options":["#4DA3FF","#B388FF","#FF6B5A"]},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#C6F432',
+      secondary: this.props.secondary ?? '#4DA3FF'
+    };
+  }
+}
+</script>
+</body>
+</html>

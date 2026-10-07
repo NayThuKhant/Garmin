@@ -1,0 +1,8 @@
+{"fonts": [
+  {"id": "Date",  "ttf": "Sora", "axes": {"wght": 500}, "size": 11, "ls": 4, "chars": "upper"},
+  {"id": "Time",  "ttf": "Sora", "axes": {"wght": 300}, "size": 64, "ls": -2, "chars": "digits"},
+  {"id": "Row",   "ttf": "Sora", "axes": {"wght": 500}, "size": 12, "chars": "digits+°HRnotif"},
+  {"id": "Grid",  "ttf": "Sora", "axes": {"wght": 500}, "size": 11, "chars": "digits+,stepbodyra"},
+  {"id": "ADate", "ttf": "Sora", "axes": {"wght": 400}, "size": 11, "ls": 4, "chars": "upper"},
+  {"id": "ARow",  "ttf": "Sora", "axes": {"wght": 400}, "size": 12, "chars": "digits+HRB·"}
+]}

@@ -1,0 +1,13 @@
+{"fonts": [
+  {"id": "Time",    "ttf": "Manrope", "axes": {"wght": 700}, "size": 66, "ls": -3, "chars": "0123456789:-"},
+  {"id": "TimeAod", "ttf": "Manrope", "axes": {"wght": 600}, "size": 66, "ls": -3, "chars": "0123456789:-"},
+  {"id": "Date",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 12, "chars": "upper"},
+  {"id": "DateAod", "ttf": "Manrope", "axes": {"wght": 500}, "size": 12, "chars": "upper"},
+  {"id": "Notif",   "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "chars": "0123456789NOTIF-+ "},
+  {"id": "Steps",   "ttf": "Manrope", "axes": {"wght": 800}, "size": 28, "ls": -1, "chars": "0123456789.k-"},
+  {"id": "Tag",     "ttf": "Manrope", "axes": {"wght": 600}, "size": 9, "ls": 1.5, "chars": "STEPBMODYHL0123456789–·- "},
+  {"id": "Hr",      "ttf": "Manrope", "axes": {"wght": 700}, "size": 24, "chars": "0123456789-"},
+  {"id": "Temp",    "ttf": "Manrope", "axes": {"wght": 700}, "size": 26, "chars": "0123456789°-"},
+  {"id": "Small",   "ttf": "Manrope", "axes": {"wght": 700}, "size": 18, "chars": "0123456789%-"},
+  {"id": "Aod",     "ttf": "Manrope", "axes": {"wght": 600}, "size": 22, "chars": "0123456789.k-"}
+]}

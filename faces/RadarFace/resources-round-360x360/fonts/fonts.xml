@@ -1,0 +1,12 @@
+<fonts>
+    <font id="Head" filename="head.fnt" antialias="true"/>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="Sec" filename="sec.fnt" antialias="true"/>
+    <font id="Val" filename="val.fnt" antialias="true"/>
+    <font id="Lab" filename="lab.fnt" antialias="true"/>
+    <font id="Hr" filename="hr.fnt" antialias="true"/>
+    <font id="Bpm" filename="bpm.fnt" antialias="true"/>
+    <font id="Foot" filename="foot.fnt" antialias="true"/>
+    <font id="AodDate" filename="aoddate.fnt" antialias="true"/>
+    <font id="AodFoot" filename="aodfoot.fnt" antialias="true"/>
+</fonts>

@@ -1,0 +1,90 @@
+name: Build watch faces
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CIQ_SDK_VERSION: "9.2.0"
+  CIQ_CLI_VERSION: "v0.8.4"   # github.com/lindell/connect-iq-sdk-manager-cli
+
+jobs:
+  # Downloads the SDK + every device in tools/devices.txt once and caches them (needs the Garmin login).
+  sdk:
+    runs-on: ubuntu-latest
+    outputs:
+      faces: ${{ steps.faces.outputs.list }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: faces
+        run: echo "list=$(ls -d faces/*Face | xargs -n1 basename | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.Garmin
+          key: ciq-${{ env.CIQ_SDK_VERSION }}-${{ hashFiles('tools/devices.txt') }}
+      - name: Install SDK manager CLI
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          curl -sSL -o cli.tgz "https://github.com/lindell/connect-iq-sdk-manager-cli/releases/download/${CIQ_CLI_VERSION}/connect-iq-sdk-manager-cli_${CIQ_CLI_VERSION#v}_Linux_x86_64.tar.gz"
+          tar -xzf cli.tgz connect-iq-sdk-manager && sudo mv connect-iq-sdk-manager /usr/local/bin/
+      - name: Download SDK and devices
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          GARMIN_USERNAME: ${{ secrets.GARMIN_USERNAME }}
+          GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+        run: |
+          connect-iq-sdk-manager agreement accept --acceptance-hash="${{ vars.CIQ_AGREEMENT_HASH }}"
+          connect-iq-sdk-manager login
+          connect-iq-sdk-manager sdk set "$CIQ_SDK_VERSION"
+          connect-iq-sdk-manager device download --manifest=faces/SplitFace/manifest.xml
+
+  # Builds every face for every device and packages a Store .iq per face.
+  build:
+    needs: sdk
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        face: ${{ fromJson(needs.sdk.outputs.faces) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: actions/cache/restore@v4
+        with:
+          path: ~/.Garmin
+          key: ciq-${{ env.CIQ_SDK_VERSION }}-${{ hashFiles('tools/devices.txt') }}
+          fail-on-cache-miss: true
+      - name: Locate SDK and devices
+        run: |
+          jar=$(find ~/.Garmin -path "*${CIQ_SDK_VERSION}*/bin/monkeybrains.jar" | head -1)
+          echo "CIQ_SDK=$(dirname "$(dirname "$jar")")" >> "$GITHUB_ENV"
+          dev=$(find ~/.Garmin -path "*/Devices/vivoactive6/compiler.json" | head -1)
+          echo "CIQ_DEVICES=$(dirname "$(dirname "$dev")")" >> "$GITHUB_ENV"
+      - name: Install signing key
+        env:
+          DEVELOPER_KEY_B64: ${{ secrets.DEVELOPER_KEY_B64 }}
+        run: echo "$DEVELOPER_KEY_B64" | base64 -d > developer_key
+      - name: Build (vivoactive6) and all devices
+        run: |
+          tools/build.sh "${{ matrix.face }}"
+          tools/build_devices.sh "${{ matrix.face }}" | tee build-devices.log
+          ! grep -E "^(FAIL|MISSING)" build-devices.log
+      - name: Package for the Connect IQ Store
+        run: tools/export.sh "${{ matrix.face }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.face }}
+          path: |
+            dist/${{ matrix.face }}.iq
+            faces/${{ matrix.face }}/bin/devices/vivoactive6.prg
+          if-no-files-found: error
+      - name: Remove signing key
+        if: always()
+        run: rm -f developer_key

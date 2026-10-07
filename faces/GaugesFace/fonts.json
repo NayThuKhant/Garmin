@@ -1,0 +1,10 @@
+{"fonts": [
+  {"id": "Head",    "ttf": "Barlow-SemiBold", "size": 14, "ls": 1.5, "chars": "upper+°·"},
+  {"id": "Time",    "ttf": "BarlowCondensed-SemiBold", "size": 78, "ls": -1, "chars": "digits"},
+  {"id": "Row",     "ttf": "Barlow-SemiBold", "size": 13, "chars": "digits+,HRkcal"},
+  {"id": "Value",   "ttf": "Barlow-SemiBold", "size": 16, "chars": "digits+km"},
+  {"id": "Label",   "ttf": "Barlow-SemiBold", "size": 9,  "ls": 1.5, "chars": "upper"},
+  {"id": "AodDate", "ttf": "Barlow-Medium",   "size": 14, "ls": 1.5, "chars": "upper"},
+  {"id": "AodTime", "ttf": "BarlowCondensed-Medium", "size": 78, "ls": -1, "chars": "digits"},
+  {"id": "AodVal",  "ttf": "Barlow-Medium",   "size": 14, "chars": "digits+km"}
+]}

@@ -1,0 +1,8 @@
+{"fonts": [
+  {"id": "Small",   "ttf": "JetBrainsMono", "axes": {"wght": 400}, "size": 13, "chars": "lower+digits+·°CF→"},
+  {"id": "Grid",    "ttf": "JetBrainsMono", "axes": {"wght": 400}, "size": 14, "chars": "lower+digits+·"},
+  {"id": "Prompt",  "ttf": "JetBrainsMono", "axes": {"wght": 700}, "size": 20, "chars": ">"},
+  {"id": "Sec",     "ttf": "JetBrainsMono", "axes": {"wght": 600}, "size": 20, "chars": "digits+>_"},
+  {"id": "Time",    "ttf": "JetBrainsMono", "axes": {"wght": 700}, "size": 58, "ls": -2, "chars": "digits"},
+  {"id": "AodTime", "ttf": "JetBrainsMono", "axes": {"wght": 600}, "size": 58, "ls": -2, "chars": "digits"}
+]}

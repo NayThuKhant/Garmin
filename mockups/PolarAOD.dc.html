@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face Z: Always-on mode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Sora', 'Helvetica Neue', sans-serif; color: #A8A8A8">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<path d="M195.0 25.0 A170 170 0 1 1 25.6 180.2" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"></path>
+<path d="M195.0 47.0 A148 148 0 0 1 297.8 88.5" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"></path>
+<path d="M195.0 69.0 A126 126 0 0 1 287.4 109.3" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"></path>
+<path d="M195.0 91.0 A104 104 0 0 1 278.3 132.7" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"></path>
+</svg>
+<div style="position: absolute; left: 0px; top: 166px; width: 390px; display: flex; justify-content: center; font-size: 44px; font-weight: 300; line-height: 1; letter-spacing: -1px; color: #A8A8A8">10:08</div>
+<div style="position: absolute; left: 0px; top: 216px; width: 390px; display: flex; justify-content: center; font-size: 11px; font-weight: 500; color: #6A6A6A">MON 05 OCT</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 390, "height": 390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

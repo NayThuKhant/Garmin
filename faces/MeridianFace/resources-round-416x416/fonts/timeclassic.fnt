@@ -1,0 +1,15 @@
+info face="BarlowCondensed-SemiBold" size=141 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1
+common lineHeight=171 base=129 scaleW=512 scaleH=214 pages=1 packed=0
+page id=0 file="timeclassic.png"
+chars count=10
+char id=48 x=0 y=0 width=66 height=105 xoffset=-1 yoffset=27 xadvance=61 page=0 chnl=15
+char id=49 x=68 y=0 width=41 height=101 xoffset=-1 yoffset=29 xadvance=37 page=0 chnl=15
+char id=50 x=111 y=0 width=62 height=102 xoffset=-1 yoffset=28 xadvance=58 page=0 chnl=15
+char id=51 x=175 y=0 width=62 height=103 xoffset=-1 yoffset=29 xadvance=58 page=0 chnl=15
+char id=52 x=239 y=0 width=67 height=101 xoffset=-1 yoffset=29 xadvance=63 page=0 chnl=15
+char id=53 x=308 y=0 width=63 height=103 xoffset=-1 yoffset=29 xadvance=58 page=0 chnl=15
+char id=54 x=373 y=0 width=63 height=104 xoffset=-1 yoffset=28 xadvance=58 page=0 chnl=15
+char id=55 x=438 y=0 width=58 height=101 xoffset=-1 yoffset=29 xadvance=53 page=0 chnl=15
+char id=56 x=0 y=107 width=64 height=105 xoffset=-1 yoffset=27 xadvance=59 page=0 chnl=15
+char id=57 x=66 y=107 width=62 height=104 xoffset=-1 yoffset=28 xadvance=58 page=0 chnl=15
+kernings count=0

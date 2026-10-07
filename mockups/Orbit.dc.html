@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face M: Orbit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Sora', 'Helvetica Neue', sans-serif; color: #ffffff">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<circle cx="195" cy="195" r="178" stroke="#1c1c1c" stroke-width="1.5"></circle>
+<path d="M195.0 17.0 A178 178 0 1 1 17.4 206.4" stroke="{{accent}}" stroke-opacity="0.55" stroke-width="1.5"></path>
+<circle cx="17.4" cy="206.4" r="11" fill="{{accent}}" fill-opacity="0.14"></circle>
+<circle cx="17.4" cy="206.4" r="5.5" fill="{{accent}}"></circle>
+<circle cx="195" cy="195" r="158" stroke="#1c1c1c" stroke-width="1.5"></circle>
+<path d="M195.0 37.0 A158 158 0 1 1 52.1 262.4" stroke="#4DA3FF" stroke-opacity="0.55" stroke-width="1.5"></path>
+<circle cx="52.1" cy="262.4" r="11" fill="#4DA3FF" fill-opacity="0.14"></circle>
+<circle cx="52.1" cy="262.4" r="5.5" fill="#4DA3FF"></circle>
+<circle cx="195" cy="195" r="138" stroke="#1c1c1c" stroke-width="1.5"></circle>
+<path d="M195.0 57.0 A138 138 0 0 1 332.7 186.3" stroke="#FF9F1C" stroke-opacity="0.55" stroke-width="1.5"></path>
+<circle cx="332.7" cy="186.3" r="11" fill="#FF9F1C" fill-opacity="0.14"></circle>
+<circle cx="332.7" cy="186.3" r="5.5" fill="#FF9F1C"></circle>
+<circle cx="195" cy="195" r="118" stroke="#1c1c1c" stroke-width="1.5"></circle>
+<path d="M195.0 77.0 A118 118 0 1 1 88.2 144.9" stroke="#E6E6E6" stroke-opacity="0.55" stroke-width="1.5"></path>
+<circle cx="88.2" cy="144.9" r="11" fill="#E6E6E6" fill-opacity="0.14"></circle>
+<circle cx="88.2" cy="144.9" r="5.5" fill="#E6E6E6"></circle>
+<circle cx="195.0" cy="7.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="289.0" cy="32.2" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="357.8" cy="101.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="383.0" cy="195.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="357.8" cy="289.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="289.0" cy="357.8" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="195.0" cy="383.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="101.0" cy="357.8" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="32.2" cy="289.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="7.0" cy="195.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="32.2" cy="101.0" r="1.2" fill="#4a4a4a"></circle>
+<circle cx="101.0" cy="32.2" r="1.2" fill="#4a4a4a"></circle>
+</svg>
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<div style="font-size: 11px; font-weight: 500; letter-spacing: 4px; color: #8a8a8a">MON · 05 OCT</div>
+<div style="font-size: 64px; font-weight: 300; line-height: 1.05; letter-spacing: -2px">10<span style="color: {{accent}}">:</span>08</div>
+<div style="display: flex; gap: 10px; font-size: 12px; font-weight: 500; color: #d0d0d0">
+<span style="color: #FF6B5A">HR 62</span><span>28°</span><span style="color: #8a8a8a">3 notif</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 10px; row-gap: 2px; margin-top: 8px; font-size: 11px; font-weight: 500; color: #d0d0d0">
+<div style="display: flex; align-items: center; gap: 4px"><span style="width: 6px; height: 6px; border-radius: 3px; background: {{accent}}"></span><span>7,412 steps</span></div><div style="display: flex; align-items: center; gap: 4px"><span style="width: 6px; height: 6px; border-radius: 3px; background: #4DA3FF"></span><span>68 body</span></div>
+<div style="display: flex; align-items: center; gap: 4px"><span style="width: 6px; height: 6px; border-radius: 3px; background: #FF9F1C"></span><span>24 stress</span></div><div style="display: flex; align-items: center; gap: 4px"><span style="width: 6px; height: 6px; border-radius: 3px; background: #E6E6E6"></span><span>82% batt</span></div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C6F432"},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#C6F432' };
+  }
+}
+</script>
+</body>
+</html>

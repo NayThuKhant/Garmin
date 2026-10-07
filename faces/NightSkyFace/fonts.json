@@ -1,0 +1,9 @@
+{"fonts": [
+  {"id": "Time",    "ttf": "CormorantGaramond-Italic", "axes": {"wght": 500}, "size": 100, "chars": "digits"},
+  {"id": "Head",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "ls": 3, "chars": "upper+°·"},
+  {"id": "Value",   "ttf": "Manrope", "axes": {"wght": 600}, "size": 15, "chars": "digits+,"},
+  {"id": "Label",   "ttf": "Manrope", "axes": {"wght": 600}, "size": 8,  "ls": 1.5, "chars": "digits+BPMSTEODYN"},
+  {"id": "Foot",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "chars": "digits+STR↑↓"},
+  {"id": "AodHead", "ttf": "Manrope", "axes": {"wght": 500}, "size": 11, "ls": 3, "chars": "upper+·"},
+  {"id": "AodInfo", "ttf": "Manrope", "axes": {"wght": 400}, "size": 12, "chars": "digits+HRB·"}
+]}

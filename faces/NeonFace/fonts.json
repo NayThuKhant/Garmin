@@ -1,0 +1,8 @@
+{"fonts": [
+  {"id": "Date",   "ttf": "TiltNeon", "size": 15, "ls": 3, "chars": "upper"},
+  {"id": "Time",   "ttf": "TiltNeon", "size": 104, "chars": "0123456789:-"},
+  {"id": "Row",    "ttf": "TiltNeon", "size": 20, "chars": "digits+HRBST"},
+  {"id": "Row2",   "ttf": "TiltNeon", "size": 15, "chars": "digits+,stepkcal"},
+  {"id": "Foot",   "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "ls": 1, "chars": "digits+BATNOIF"},
+  {"id": "AodRow", "ttf": "TiltNeon", "size": 16, "chars": "digits+HRB·"}
+]}

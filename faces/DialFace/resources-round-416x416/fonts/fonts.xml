@@ -1,0 +1,12 @@
+<fonts>
+    <font id="Time" filename="time.fnt" antialias="true"/>
+    <font id="Sec" filename="sec.fnt" antialias="true"/>
+    <font id="TimeAod" filename="timeaod.fnt" antialias="true"/>
+    <font id="Temp" filename="temp.fnt" antialias="true"/>
+    <font id="Date" filename="date.fnt" antialias="true"/>
+    <font id="Corner" filename="corner.fnt" antialias="true"/>
+    <font id="Row" filename="row.fnt" antialias="true"/>
+    <font id="Sun" filename="sun.fnt" antialias="true"/>
+    <font id="DateAod" filename="dateaod.fnt" antialias="true"/>
+    <font id="RowAod" filename="rowaod.fnt" antialias="true"/>
+</fonts>

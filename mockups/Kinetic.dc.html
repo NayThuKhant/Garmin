@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face Q: Kinetic type</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&amp;family=Unbounded:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Unbounded', sans-serif; color: #ffffff">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<defs><path id="rimq" d="M195 19 A176 176 0 1 1 194.9 19"></path></defs>
+<text font-family="'Unbounded', sans-serif" font-size="10.5" letter-spacing="1.6" fill="#9a9a9a"><textPath href="#rimq">MON 05 OCT  ·  28°  ·  ↑05:58  ↓17:52  ·  HR 62  ·  7,412 STEPS  ·  BODY 68  ·  STRESS 24  ·  1,840 KCAL  ·  BAT 82%  ·  3 NOTIF  ·</textPath></text>
+</svg>
+<div style="position: absolute; left: 92px; top: 62px; font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 900; font-size: 172px; line-height: 0.85; color: transparent; -webkit-text-stroke: 2px #ffffff">10</div>
+<div style="position: absolute; left: 168px; top: 168px; font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 900; font-size: 172px; line-height: 0.85; color: {{accent}}">08</div>
+<div style="position: absolute; left: 116px; top: 238px; font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 500; color: #ffffff">42</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF4D8D"},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#FF4D8D' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{"fonts": [
+  {"id": "Head",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 11, "ls": 2, "chars": "upper"},
+  {"id": "Time",    "ttf": "Syne", "axes": {"wght": 800}, "size": 82, "ls": -3, "chars": "0123456789.-"},
+  {"id": "Val",     "ttf": "Syne", "axes": {"wght": 800}, "size": 16, "chars": "digits+k"},
+  {"id": "Lab",     "ttf": "Manrope", "axes": {"wght": 600}, "size": 8, "ls": 1.5, "chars": "STEPBODYRAT"},
+  {"id": "Foot",    "ttf": "Manrope", "axes": {"wght": 600}, "size": 12, "chars": "digits+HR,kcal"},
+  {"id": "AodDate", "ttf": "Manrope", "axes": {"wght": 500}, "size": 11, "ls": 2, "chars": "upper"},
+  {"id": "AodTime", "ttf": "Syne", "axes": {"wght": 600}, "size": 82, "ls": -3, "chars": "0123456789.-"},
+  {"id": "AodRow",  "ttf": "Manrope", "axes": {"wght": 400}, "size": 13, "chars": "digits+HRB·"}
+]}

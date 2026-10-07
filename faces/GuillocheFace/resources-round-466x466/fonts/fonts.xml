@@ -1,0 +1,9 @@
+<fonts>
+    <font id="Dow" filename="dow.fnt" antialias="true"/>
+    <font id="Day" filename="day.fnt" antialias="true"/>
+    <font id="DayAod" filename="dayaod.fnt" antialias="true"/>
+    <font id="Sub" filename="sub.fnt" antialias="true"/>
+    <font id="Row" filename="row.fnt" antialias="true"/>
+    <font id="Val" filename="val.fnt" antialias="true"/>
+    <font id="Lab" filename="lab.fnt" antialias="true"/>
+</fonts>

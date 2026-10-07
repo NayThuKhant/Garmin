@@ -1,0 +1,16 @@
+<fonts>
+    <font id="TimeRound" filename="timeround.fnt" antialias="true"/>
+    <font id="TimeSquare" filename="timesquare.fnt" antialias="true"/>
+    <font id="TimeSerif" filename="timeserif.fnt" antialias="true"/>
+    <font id="TimeClassic" filename="timeclassic.fnt" antialias="true"/>
+    <font id="AodRound" filename="aodround.fnt" antialias="true"/>
+    <font id="AodSquare" filename="aodsquare.fnt" antialias="true"/>
+    <font id="AodSerif" filename="aodserif.fnt" antialias="true"/>
+    <font id="AodClassic" filename="aodclassic.fnt" antialias="true"/>
+    <font id="Value" filename="value.fnt" antialias="true"/>
+    <font id="ValueSm" filename="valuesm.fnt" antialias="true"/>
+    <font id="Label" filename="label.fnt" antialias="true"/>
+    <font id="AodInfo" filename="aodinfo.fnt" antialias="true"/>
+    <font id="Icons" filename="icons.fnt" antialias="true"/>
+    <font id="IconsSm" filename="iconssm.fnt" antialias="true"/>
+</fonts>

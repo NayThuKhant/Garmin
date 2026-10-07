@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face Q: Always-on mode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&amp;family=Unbounded:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Unbounded', sans-serif; color: #a8a8a8">
+<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<defs><path id="rimqa" d="M195 19 A176 176 0 1 1 194.9 19"></path></defs>
+<text font-family="'Unbounded', sans-serif" font-size="10.5" letter-spacing="1.6" fill="#5a5a5a"><textPath href="#rimqa">MON 05 OCT  ·  HR 62  ·  BODY 68  ·  BAT 82%</textPath></text>
+</svg>
+<div style="position: absolute; left: 92px; top: 62px; font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 900; font-size: 172px; line-height: 0.85; color: transparent; -webkit-text-stroke: 1.5px #8a8a8a">10</div>
+<div style="position: absolute; left: 168px; top: 168px; font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 900; font-size: 172px; line-height: 0.85; color: transparent; -webkit-text-stroke: 1.5px #8a8a8a">08</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

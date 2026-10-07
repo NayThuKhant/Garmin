@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Watch face K: Day timeline</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&amp;family=Barlow:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1a1a1a}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden; font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: #ffffff">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 390px; display: flex; flex-direction: column; align-items: center; padding-top: 50px; box-sizing: border-box">
+<div style="display: flex; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: #9a9a9a">
+<span>MON 05 OCT</span><span style="color: #d0d0d0">28°</span><span>3 NOTIF</span>
+</div>
+<div style="font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 600; font-size: 86px; line-height: 0.95; letter-spacing: -1px">10:08</div>
+<div style="display: flex; justify-content: space-between; width: 290px; margin-top: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1px">
+<span style="color: #9a9a9a">TODAY</span><span style="color: #9FA8FF">SLEEP 7H 12M · 81</span>
+</div>
+<div style="position: relative; width: 290px; height: 14px; margin-top: 4px; border-radius: 4px; background: #141414; overflow: hidden">
+<div style="position: absolute; left: 0.0%; top: 0; width: 42.2%; height: 14px; background: #262626"></div>
+<div style="position: absolute; left: 0.0%; top: 0; width: 27.1%; height: 14px; background: #6B74C9"></div>
+<div style="position: absolute; left: 29.2%; top: 0; width: 3.1%; height: 14px; background: {{accent}}"></div>
+<div style="position: absolute; left: 35.4%; top: 0; width: 2.1%; height: 14px; background: {{accent}}"></div>
+<div style="position: absolute; left: 39.2%; top: 0; width: 0.8%; height: 14px; background: {{accent}}"></div>
+</div>
+<div style="position: relative; width: 290px; height: 0">
+<div style="position: absolute; left: 42.2%; top: -18px; width: 2px; height: 22px; background: #ffffff"></div>
+</div>
+<div style="display: flex; justify-content: space-between; width: 290px; margin-top: 4px; font-size: 10px; font-weight: 600; color: #6a6a6a">
+<span>00</span><span>06</span><span>12</span><span>18</span><span>24</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 290px; margin-top: 12px; row-gap: 10px">
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">62</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #FF6B5A">BPM</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">7.4k</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: {{accent}}">STEPS</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">68</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #4DA3FF">BODY</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">24</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #FF9F1C">STRESS</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">1,840</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #FFB36B">KCAL</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">97%</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #4DD0E1">SPO2</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">95m</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #B388FF">INT MIN</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<span style="font-size: 18px; font-weight: 600; line-height: 1.1">82%</span>
+<span style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #d0d0d0">BATT</span>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C6F432","options":["#C6F432","#4DD0E1","#FFFFFF"]},"$preview":{"width":390,"height":390}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#C6F432' };
+  }
+}
+</script>
+</body>
+</html>

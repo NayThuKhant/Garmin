@@ -1,0 +1,10 @@
+{"fonts": [
+  {"id": "Time",    "ttf": "BarlowCondensed-SemiBold", "size": 96, "ls": -2, "chars": "0123456789:-"},
+  {"id": "TimeAod", "ttf": "BarlowCondensed-Medium",   "size": 96, "ls": -2, "chars": "0123456789:-"},
+  {"id": "Num",     "ttf": "BarlowCondensed-SemiBold", "size": 16, "chars": "0123456789"},
+  {"id": "NumAod",  "ttf": "BarlowCondensed-Medium",   "size": 16, "chars": "0123456789"},
+  {"id": "Date",    "ttf": "Barlow-SemiBold", "size": 12, "ls": 3, "chars": "upper"},
+  {"id": "DateAod", "ttf": "Barlow-Medium",   "size": 12, "ls": 3, "chars": "upper"},
+  {"id": "Info",    "ttf": "Barlow-SemiBold", "size": 13, "chars": "0123456789%-B "},
+  {"id": "InfoAod", "ttf": "Barlow-Medium",   "size": 13, "chars": "0123456789%-BHR· "}
+]}
