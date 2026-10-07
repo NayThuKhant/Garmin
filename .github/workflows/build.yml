@@ -36,7 +36,7 @@ jobs:
           GARMIN_USERNAME: ${{ secrets.GARMIN_USERNAME }}
           GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
         run: |
-          connect-iq-sdk-manager agreement accept --acceptance-hash="${{ vars.CIQ_AGREEMENT_HASH }}"
+          connect-iq-sdk-manager agreement accept --agreement-hash="${{ vars.CIQ_AGREEMENT_HASH }}"
           connect-iq-sdk-manager login
           connect-iq-sdk-manager sdk set "$CIQ_SDK_VERSION"
           connect-iq-sdk-manager device download --manifest=faces/SplitFace/manifest.xml
