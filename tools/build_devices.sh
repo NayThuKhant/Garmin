@@ -17,7 +17,7 @@ for d in "$@"; do
     fi
     log="$d/bin/devices/$id.log"
     if (cd "$d" && java -Djava.awt.headless=true -jar "$SDK/bin/monkeybrains.jar" -o "bin/devices/$id.prg" -f monkey.jungle \
-          -y ../../developer_key -d "$id" -w > "bin/devices/$id.log" 2>&1); then
+          -y ../../developer_key -d "$id" -w -r > "bin/devices/$id.log" 2>&1); then
       res="OK"
     else
       res="FAIL"
