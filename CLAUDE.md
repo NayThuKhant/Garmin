@@ -59,7 +59,8 @@ W SplitFlap · X DotMatrix · Y Eclipse · Z Polar · AA Words · AB Segment · 
   lindell/connect-iq-sdk-manager-cli (secrets GARMIN_USERNAME, GARMIN_PASSWORD, DEVELOPER_KEY_B64; repo
   variable CIQ_AGREEMENT_HASH), caches them, then builds every face for every device and uploads the
   `.iq` + a vivoactive6 `.prg` per face as artifacts. Pushing a `v*` tag also creates a GitHub Release with
-  all `.iq` files and keeps only the 3 newest releases. Scripts read `CIQ_SDK` / `CIQ_DEVICES` (tools/ciq_env.sh).
+  all `.iq` files and keeps only the 3 newest releases. Pushes/PRs build only faces whose folder changed
+  (everything if tools/*.sh, tools/devices.txt or the workflow changed; tags/manual runs build all). Scripts read `CIQ_SDK` / `CIQ_DEVICES` (tools/ciq_env.sh).
 - Sideload: build with `-d vivoactive6 -r` (not `_sim`), copy the `.prg` to `GARMIN/APPS/` with OpenMTP
   (watch USB Mode must be MTP), quit OpenMTP, unplug. Sideloaded faces get NO phone settings.
 - Store / private beta: `tools/export.sh <Dir>` -> `dist/<Dir>.iq`, upload at apps.garmin.com/developer

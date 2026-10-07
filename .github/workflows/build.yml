@@ -19,8 +19,30 @@ jobs:
       faces: ${{ steps.faces.outputs.list }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Which faces to build: only faces whose folder changed (saves Actions minutes). Everything is
+      # rebuilt for version tags, manual runs, new branches, or when the build setup itself changed.
       - id: faces
-        run: echo "list=$(ls -d faces/*Face | xargs -n1 basename | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
+        env:
+          BEFORE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          all=$(ls -d faces/*Face | xargs -n1 basename)
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || [ "${GITHUB_REF_TYPE}" = "tag" ] \
+             || [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] \
+             || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            faces="$all"
+          else
+            changed=$(git diff --name-only "$BEFORE" "$GITHUB_SHA")
+            echo "changed files:"; echo "$changed" | sed 's/^/  /'
+            if echo "$changed" | grep -qE '^(tools/[^/]+\.sh|tools/devices\.txt|\.github/workflows/)'; then
+              faces="$all"
+            else
+              faces=$(echo "$changed" | sed -n 's|^faces/\([^/]*Face\)/.*|\1|p' | sort -u)
+            fi
+          fi
+          echo "faces to build: $(echo $faces)"
+          echo "list=$(printf '%s\n' $faces | sed '/^$/d' | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
       - id: cache
         uses: actions/cache@v4
         with:
@@ -45,6 +67,7 @@ jobs:
   # Builds every face for every device and packages a Store .iq per face.
   build:
     needs: sdk
+    if: needs.sdk.outputs.faces != '[]'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
