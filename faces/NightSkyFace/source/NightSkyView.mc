@@ -121,10 +121,11 @@ class NightSkyView extends WatchUi.WatchFace {
             dc.fillCircle(Gfx.sx(STARS[i]), Gfx.sy(STARS[i + 1]), r < 1 ? 1 : r);
         }
 
-        // Moon: faint glow, then disc + phase occluder.
-        dc.setColor(Gfx.dim(0xE8E3D3, 0.06), Graphics.COLOR_TRANSPARENT);
+        // Moon (accent): faint glow, then disc + phase occluder.
+        var accent = Gfx.accent(0xE8E3D3);
+        dc.setColor(Gfx.dim(accent, 0.06), Graphics.COLOR_TRANSPARENT);
         dc.fillCircle(Gfx.sx(284), Gfx.sy(76), Gfx.s(34));
-        drawMoon(dc, 0xE8E3D3);
+        drawMoon(dc, accent);
 
         // Mountains
         dc.setColor(0x0E1426, Graphics.COLOR_TRANSPARENT);

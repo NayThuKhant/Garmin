@@ -34,7 +34,7 @@ tools/build.sh                       # asks for the face (or all) and device fro
 tools/run.sh                         # asks for face + device, builds and runs it in the simulator
 tools/build.sh -d venu3 MeridianFace # or pass them directly (no prompts; CI: all faces, vivoactive6)
 tools/run.sh MeridianFace venu3
-tools/build_devices.sh MeridianFace  # build + fit-check every device in the manifest
+tools/build_devices.sh MeridianFace  # build + fit-check every device in its face.json
 tools/export.sh MeridianFace         # Store package -> dist/MeridianFace.iq
 ```
 
@@ -47,7 +47,7 @@ Other tools:
 |---|---|
 | `tools/mkfont.py <Face>` | Turns the mockup's Google Fonts into bitmap fonts (`fonts.json`) for 360/390/416/454/466 px screens; also builds icon fonts from SVG sets in `tools/icons/`. Needs `tools/.venv` (Pillow, fontTools) and Chrome for icons. |
 | `tools/make_icons.sh [Face]` | Launcher icon at each device's exact size from `icon.json`. |
-| `tools/set_products.sh` | Writes `tools/devices.txt` (the 49 target devices) into every manifest. |
+| `tools/set_products.sh` | Writes each face's `face.json` device list (faces ↔ devices map) into its manifest; `--check` verifies (CI). |
 | `tools/build_gallery.py` | Regenerates `faces.html` from `mockups/`. |
 | `tools/render_mockup.py` | Renders one mockup to PNG with headless Chrome. |
 | `tools/render_preview.py` | Renders `docs/preview.png` (this README's image: every face's active design) from `faces.html`. |

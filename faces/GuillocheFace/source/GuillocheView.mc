@@ -90,40 +90,62 @@ class GuillocheView extends WatchUi.WatchFace {
         Gfx.text(dc, 298, 195, f, day, txt, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
+    // Darker tone of the accent; the exact mockup color while the accent is the default gold.
+    function shade(gold as Number, exact as Number, f as Float) as Number {
+        return gold == GOLD ? exact : Gfx.dim(gold, f);
+    }
+
+    // Blend `c` toward white by `t` (0..1).
+    function lighten(c as Number, t as Float) as Number {
+        var r = (c >> 16) & 0xFF;
+        var g = (c >> 8) & 0xFF;
+        var b = c & 0xFF;
+        r = (r + (255 - r) * t).toNumber();
+        g = (g + (255 - g) * t).toNumber();
+        b = (b + (255 - b) * t).toNumber();
+        return (r << 16) | (g << 8) | b;
+    }
+
     function drawActive(dc as Dc) as Void {
+        // Accent (setting, default gold): markers, rosette, sub-dial, reserve, hands, date frame;
+        // the tan labels, dark ticks/track and hand highlight are derived from it.
+        var gold = Gfx.accent(GOLD);
+        var tan = shade(gold, 0x8A7A55, 0.65);
+        var tick = shade(gold, 0x5A4E33, 0.43);
+        var hi = gold == GOLD ? 0xDFC58F : lighten(gold, 0.25);
         // Guilloché rosette: 36 circles r=46 whose centers lie on a circle r=46.
-        var rose = Gfx.dim(GOLD, 0.22);
+        var rose = Gfx.dim(gold, 0.22);
         dc.setColor(rose, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(1);
         for (var i = 0; i < 36; i++) {
             var a = i * 10;
             dc.drawCircle(Gfx.sx(Gfx.px(195, 46, a)), Gfx.sy(Gfx.py(195, 46, a)), Gfx.s(46));
         }
-        Gfx.arc(dc, 195, 195, 172, 0, 360, Gfx.dim(GOLD, 0.35), 0.8);
+        Gfx.arc(dc, 195, 195, 172, 0, 360, Gfx.dim(gold, 0.35), 0.8);
 
         // Minute ticks r178..184.
         for (var i = 0; i < 60; i++) {
             if (i % 5 == 0) { continue; }
             var a = i * 6;
-            Gfx.line(dc, Gfx.px(195, 184, a), Gfx.py(195, 184, a), Gfx.px(195, 178, a), Gfx.py(195, 178, a), 0x5A4E33, 1);
+            Gfx.line(dc, Gfx.px(195, 184, a), Gfx.py(195, 184, a), Gfx.px(195, 178, a), Gfx.py(195, 178, a), tick, 1);
         }
         // Hour markers r162..184 (double at 12, none at 3 — date window).
         for (var h = 1; h < 12; h++) {
             if (h == 3) { continue; }
             var a = h * 30;
-            Extra.capLine(dc, Gfx.px(195, 184, a), Gfx.py(195, 184, a), Gfx.px(195, 162, a), Gfx.py(195, 162, a), GOLD, 4);
+            Extra.capLine(dc, Gfx.px(195, 184, a), Gfx.py(195, 184, a), Gfx.px(195, 162, a), Gfx.py(195, 162, a), gold, 4);
         }
         var d12 = [-2.21, 2.21];
         for (var i = 0; i < 2; i++) {
             var a = d12[i];
-            Extra.capLine(dc, Gfx.px(195, 184, a), Gfx.py(195, 184, a), Gfx.px(195, 158, a), Gfx.py(195, 158, a), GOLD, 4);
+            Extra.capLine(dc, Gfx.px(195, 184, a), Gfx.py(195, 184, a), Gfx.px(195, 158, a), Gfx.py(195, 158, a), gold, 4);
         }
 
         // Heart-rate sub-dial at (92,195): 240° sweep from 240° to 120° (clock), 40..180 bpm.
-        Gfx.arc(dc, 92, 195, 34, 0, 360, Gfx.dim(GOLD, 0.6), 1);
+        Gfx.arc(dc, 92, 195, 34, 0, 360, Gfx.dim(gold, 0.6), 1);
         for (var i = 0; i < 8; i++) {
             var a = 240 + i * 240 / 7.0;
-            Gfx.line(dc, Gfx.px(92, 34, a), Gfx.py(195, 34, a), Gfx.px(92, 29, a), Gfx.py(195, 29, a), GOLD, 1);
+            Gfx.line(dc, Gfx.px(92, 34, a), Gfx.py(195, 34, a), Gfx.px(92, 29, a), Gfx.py(195, 29, a), gold, 1);
         }
         var hr = Data.heartRate();
         if (hr != null) {
@@ -134,41 +156,41 @@ class GuillocheView extends WatchUi.WatchFace {
 
         // Reserve (battery) arc at (195,296) r=34, -60°..60°.
         var batt = Data.battery();
-        Extra.capArc(dc, 195, 296, 34, -60, 60, 0x3A3324, 5);
-        Extra.capArc(dc, 195, 296, 34, -60, -60 + 120 * Extra.clamp01(batt / 100.0), GOLD, 5);
+        Extra.capArc(dc, 195, 296, 34, -60, 60, shade(gold, 0x3A3324, 0.28), 5);
+        Extra.capArc(dc, 195, 296, 34, -60, -60 + 120 * Extra.clamp01(batt / 100.0), gold, 5);
 
         // Header.
         var dow = Data.weekday();
-        Gfx.text(dc, 195, 77.2, fDow, dow, GOLD, Graphics.TEXT_JUSTIFY_CENTER);
+        Gfx.text(dc, 195, 77.2, fDow, dow, gold, Graphics.TEXT_JUSTIFY_CENTER);
         var temp = Data.temperature();
-        Extra.row(dc, 195, 96.4, fSub, [(temp != null ? temp + "°" : "--°") + " · " + Extra.sunStr()], [0x8A7A55], 0, 2, 8);
+        Extra.row(dc, 195, 96.4, fSub, [(temp != null ? temp + "°" : "--°") + " · " + Extra.sunStr()], [tan], 0, 2, 8);
 
         // Steps / body / stress row.
         Extra.row(dc, 195, 134, fRow,
             [Data.thousands(Data.steps()) + " STEPS", "BODY " + Data.fmt(Data.bodyBattery()), "STR " + Data.fmt(Data.stress())],
-            [0x8A7A55, 0x8A7A55, 0x8A7A55], 12, 1.5, 8);
+            [tan, tan, tan], 12, 1.5, 8);
 
-        dateWindow(dc, GOLD, 0xF2EAD6, fDay);
+        dateWindow(dc, gold, 0xF2EAD6, fDay);
 
         // Sub-dial and reserve labels.
         Gfx.text(dc, 92, 244.4, fVal, Data.fmt(hr), 0xF2EAD6, Graphics.TEXT_JUSTIFY_CENTER);
-        Gfx.text(dc, 92, 258.2, fLab, "BPM", 0x8A7A55, Graphics.TEXT_JUSTIFY_CENTER);
+        Gfx.text(dc, 92, 258.2, fLab, "BPM", tan, Graphics.TEXT_JUSTIFY_CENTER);
         Gfx.text(dc, 195, 308.4, fVal, batt + "%", 0xF2EAD6, Graphics.TEXT_JUSTIFY_CENTER);
-        Gfx.text(dc, 195, 322.2, fLab, "RESERVE", 0x8A7A55, Graphics.TEXT_JUSTIFY_CENTER);
+        Gfx.text(dc, 195, 322.2, fLab, "RESERVE", tan, Graphics.TEXT_JUSTIFY_CENTER);
 
         // Hands.
         var an = angles();
         var hp = hourHand(an[0]);
-        Extra.fillPoly(dc, hp, GOLD);
-        Extra.fillPoly(dc, hp.slice(0, 6), 0xDFC58F);
+        Extra.fillPoly(dc, hp, gold);
+        Extra.fillPoly(dc, hp.slice(0, 6), hi);
         var mp = minuteHand(an[1]);
-        Extra.fillPoly(dc, mp, GOLD);
-        Extra.fillPoly(dc, mp.slice(0, 6), 0xDFC58F);
+        Extra.fillPoly(dc, mp, gold);
+        Extra.fillPoly(dc, mp.slice(0, 6), hi);
 
         // Seconds hand (awake only): 160 forward, 30 tail.
         var sa = (Data.clock().sec as Number) * 6;
         Gfx.line(dc, Gfx.px(195, -30, sa), Gfx.py(195, -30, sa), Gfx.px(195, 160, sa), Gfx.py(195, 160, sa), 0xE8E2D0, 1.2);
-        Extra.dot(dc, 195, 195, 6, GOLD);
+        Extra.dot(dc, 195, 195, 6, gold);
         Extra.dot(dc, 195, 195, 2, 0x000000);
     }
 

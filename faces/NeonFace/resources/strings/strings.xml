@@ -1,3 +1,9 @@
 <strings>
     <string id="AppName">U · Neon</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorPink">Pink</string>
+    <string id="ColorViolet">Violet</string>
+    <string id="ColorGreen">Green</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorYellow">Yellow</string>
 </strings>

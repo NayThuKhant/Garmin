@@ -1,3 +1,9 @@
 <strings>
     <string id="AppName">P · 24h pulse ring</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorCyan">Cyan</string>
+    <string id="ColorLime">Lime</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorCoral">Coral</string>
+    <string id="ColorWhite">White</string>
 </strings>

@@ -23,18 +23,18 @@ body{margin:0;background:#1a1a1a}
 <div style="font-size: 12px; letter-spacing: 3px; color: #9a9a9a">MONDAY 05 OCT</div>
 <div style="font-size: 12px; color: #d0d0d0">28° · ↑5:58 ↓17:52</div>
 </div>
-<div style="position: absolute; left: 286px; top: 98px; font-size: 10px; letter-spacing: 1.5px; color: #8FB7E0">BODY 68</div>
+<div style="position: absolute; left: 286px; top: 98px; font-size: 10px; letter-spacing: 1.5px; color: {{accent}}">BODY 68</div>
 <div style="position: absolute; left: 0; top: 140px; width: 390px; display: flex; justify-content: center; font-family: 'Fraunces', Georgia, serif; font-size: 96px; font-weight: 300; line-height: 1; letter-spacing: -2px; color: #ffffff">10:08</div>
 <div style="position: absolute; left: 70px; top: 254px; width: 250px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 8px">
-<div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">62</span><span style="font-size: 9px; letter-spacing: 1.5px; color: #8FB7E0">BPM</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">7,412</span><span style="font-size: 9px; letter-spacing: 1.5px; color: #8FB7E0">STEPS</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">24</span><span style="font-size: 9px; letter-spacing: 1.5px; color: #8FB7E0">STRESS</span></div>
-<div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">1,840</span><span style="font-size: 9px; letter-spacing: 1.5px; color: #8FB7E0">KCAL</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">97%</span><span style="font-size: 9px; letter-spacing: 1.5px; color: #8FB7E0">SPO2</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">82%</span><span style="font-size: 9px; letter-spacing: 1.5px; color: #8FB7E0">BATT</span></div>
+<div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">62</span><span style="font-size: 9px; letter-spacing: 1.5px; color: {{accent}}">BPM</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">7,412</span><span style="font-size: 9px; letter-spacing: 1.5px; color: {{accent}}">STEPS</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">24</span><span style="font-size: 9px; letter-spacing: 1.5px; color: {{accent}}">STRESS</span></div>
+<div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">1,840</span><span style="font-size: 9px; letter-spacing: 1.5px; color: {{accent}}">KCAL</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">97%</span><span style="font-size: 9px; letter-spacing: 1.5px; color: {{accent}}">SPO2</span></div><div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 17px; font-weight: 500">82%</span><span style="font-size: 9px; letter-spacing: 1.5px; color: {{accent}}">BATT</span></div>
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":390}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent": {"editor": "color", "default": "#8FB7E0", "options": ["#8FB7E0", "#7FE0D0", "#E0C890", "#FF9A85"]}, "$preview": {"width": 390, "height": 390}}'>
 class Component extends DCLogic {
   renderVals() {
-    return {};
+    return {accent: this.props.accent ?? '#8FB7E0'};
   }
 }
 </script>

@@ -1,3 +1,8 @@
 <strings>
     <string id="AppName">O · Tide</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorSea">Sea blue</string>
+    <string id="ColorAqua">Aqua</string>
+    <string id="ColorSand">Sand</string>
+    <string id="ColorCoral">Coral</string>
 </strings>

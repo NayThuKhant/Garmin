@@ -1,3 +1,8 @@
 <strings>
     <string id="AppName">S · Bauhaus</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorYellow">Yellow</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorGreen">Green</string>
+    <string id="ColorPink">Pink</string>
 </strings>

@@ -1,3 +1,9 @@
 <strings>
     <string id="AppName">W · Split-flap</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorAmber">Amber</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorGreen">Green</string>
+    <string id="ColorCyan">Cyan</string>
+    <string id="ColorRed">Red</string>
 </strings>

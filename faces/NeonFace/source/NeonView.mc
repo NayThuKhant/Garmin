@@ -7,8 +7,6 @@ class NeonView extends WatchUi.WatchFace {
 
     const CYAN = 0x4DE8FF;
     const CYAN_TXT = 0xD8FAFF;
-    const PINK = 0xFF4D8D;
-    const PINK_TXT = 0xFFE3EE;
 
     var mSleep as Boolean = false;
     var fDate as FontResource;
@@ -95,6 +93,17 @@ class NeonView extends WatchUi.WatchFace {
         group(dc, g, core);
     }
 
+    // Glow core: the accent blended 85% toward white (default pink keeps its exact 0xFFE3EE).
+    function pale(c as Number) as Number {
+        if (c == 0xFF4D8D) { return 0xFFE3EE; }
+        var out = 0;
+        for (var s = 16; s >= 0; s -= 8) {
+            var v = (c >> s) & 0xFF;
+            out |= (v + (255 - v) * 0.85).toNumber() << s;
+        }
+        return out;
+    }
+
     function drawActive(dc as Dc) as Void {
         // Steps progress ring with layered glow.
         Gfx.arc(dc, 195, 195, 178, 0, 360, 0x101A1D, 3);
@@ -104,8 +113,10 @@ class NeonView extends WatchUi.WatchFace {
         Extra.capArc(dc, 195, 195, 178, 0, a1, CYAN_TXT, 2);
 
         glow(dc, 0, CYAN, CYAN_TXT, 1.5);
-        glow(dc, 1, PINK, PINK_TXT, 3);
-        glow(dc, 2, PINK, PINK_TXT, 1.5);
+        var accent = Gfx.accent(0xFF4D8D);
+        var core = pale(accent);
+        glow(dc, 1, accent, core, 3);
+        glow(dc, 2, accent, core, 1.5);
         glow(dc, 3, CYAN, CYAN_TXT, 1.5);
 
         Extra.row(dc, 195, 286.6, fFoot,

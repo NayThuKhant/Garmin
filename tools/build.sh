@@ -1,6 +1,6 @@
 #!/bin/sh
 # Build face projects for the simulator.
-#   tools/build.sh [-d device] [Face ...]
+#   tools/build.sh [-d device] [Face ...]   (faces whose face.json lacks the device are skipped)
 # Left out in a terminal: pick the face (Enter = all) and the device (Enter = vivoactive6) from lists.
 # Non-interactive (CI): all faces, vivoactive6.
 cd "$(dirname "$0")/.." || exit 1
@@ -15,10 +15,13 @@ if [ $# -eq 0 ]; then
     set -- faces/*Face
   fi
 fi
-dev=$(ciq_device "$dev") || exit 1
+# with one face, only offer the devices it supports (face.json)
+[ $# -eq 1 ] && one=$1 || one=""
+dev=$(ciq_device "$dev" "$one") || exit 1
 status=0
 for d in "$@"; do
   d=${d%/}; d=faces/${d#faces/}
+  if ! ciq_supports "$d" "$dev"; then echo "SKIP  $d ($dev not in $d/face.json)"; continue; fi
   mkdir -p "$d/bin"
   if (cd "$d" && java -Djava.awt.headless=true -jar "$SDK/bin/monkeybrains.jar" -o "bin/$(basename "$d").prg" -f monkey.jungle -y ../../developer_key -d "${dev}_sim" -w > bin/build.log 2>&1); then
     echo "OK    $d ($dev)"

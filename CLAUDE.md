@@ -14,10 +14,10 @@ in the same turn, without being asked:
    code: it reads each face's settings straight from `faces/<Dir>/resources/properties/properties.xml`
    (+ strings, + the native editor's `watchface.xml`), shows every configurable setting in a Settings
    popup (card button "Settings (N)"), and turns color settings (AccentColor/SecondaryColor; Meridian's Theme) into swatches that
-   recolor the mockup. It also has a search box (names + settings) and Download links to the latest
+   recolor the mockup. It also has a search box (names + settings), a watch filter (faces per device, from face.json) and Download links to the latest
    GitHub release (repo URL read from `git remote`). So any settings change in code shows up after regenerating. CI fails the build
    if the committed `faces.html` is stale, and the Pages workflow republishes a freshly generated one.
-   New face with settings: name the color properties AccentColor/SecondaryColor and give the mockup
+   Every face has at least an AccentColor setting. New face with settings: name the color properties AccentColor/SecondaryColor and give the mockup
    matching `accent`/`secondary` props so the swatches work.
 The local `mockups/` + `faces.html` are the only design source; there is no online canvas to keep in sync.
 
@@ -29,10 +29,15 @@ The local `mockups/` + `faces.html` are the only design source; there is no onli
   vector fonts, icons, AOD shift) are shared: copy them unchanged into each new face; put
   face-specific helpers in the view or a `<Name>Extra.mc`.
 - `faces/<Name>Face/` — one project per face (e.g. `RingFace`, `DialFace`), classes `<Name>App`/`<Name>View`.
+- `faces/<Dir>/face.json` — the faces <-> devices map: `{"devices": [ids]}` = the watches that face ships to.
+  It is the source of truth: `tools/set_products.sh` writes it into manifest.xml (CI fails if they differ,
+  `set_products.sh --check`), `build_devices.sh` builds exactly those devices, `build.sh`/`run.sh` only offer
+  (and only build) those devices, and faces.html's "All watches" filter + Download device list read it.
+  To drop a face from a watch, remove the id from its face.json and run `tools/set_products.sh <Dir>`.
 - `tools/devices.json` — supported device ids + display names for faces.html; regenerate after editing
   `tools/devices.txt`: `. tools/ciq_env.sh && ciq_devices` (see git history for the one-liner).
 - `tools/` — `build.sh` (vivoactive6 sim build), `build_devices.sh` (build + fit check for every
-  manifest product), `set_products.sh` (writes `devices.txt` into manifests), `icon.py`
+  device in face.json), `set_products.sh` (writes face.json devices into manifests), `icon.py`
   (54x54 launcher icon from a JSON shape list, `faces/<Dir>/icon.json`). Scripts take face
   names with or without the `faces/` prefix. `render_mockup.py` renders a mockup to PNG with headless
   Chrome (use it to compare a mockup against a reference photo before saying it matches).
@@ -64,7 +69,7 @@ W SplitFlap · X DotMatrix · Y Eclipse · Z Polar · AA Words · AB Segment · 
   or `tools/build.sh [-d device] [Dir...]`: in a terminal it asks for the face (Enter = all) and the
   device (Enter = vivoactive6) from numbered lists; with no terminal (CI) it builds all faces for
   vivoactive6 without asking. Pass `-d`/faces to skip the prompts in scripts.
-- All devices: `tools/set_products.sh` then `tools/build_devices.sh [<Dir>...]`. A device only
+- All devices: `tools/set_products.sh` then `tools/build_devices.sh [<Dir>...]` (devices from each face.json). A device only
   builds if its files are installed in `~/Library/Application Support/Garmin/ConnectIQ/Devices/`
   (SDK Manager → Devices; otherwise "Invalid device id"). Missing devices are reported as MISSING.
   The "Invalid device id found in the application manifest" warnings mean the same thing.

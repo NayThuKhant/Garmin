@@ -144,6 +144,8 @@ def main():
                 entry["dir"] = os.path.relpath(d, ROOT)
                 entry["settings"] = settings_of(d)
                 entry["swatches"] = swatches_of(entry["settings"], props)
+                fj = os.path.join(d, "face.json")   # the faces <-> devices map
+                entry["devices"] = json.load(open(fj))["devices"] if os.path.exists(fj) else None
                 for g in entry["settings"]["groups"]:
                     for it in g["items"]:
                         # a setting is playable when the mockup has a prop for it: same name (value as-is)
@@ -179,13 +181,23 @@ PAGE = """<!doctype html>
 :root { --bg: #111; --card: #191919; --text: #eee; --muted: #8a8a8a; --line: #262626; }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 -apple-system, "Helvetica Neue", sans-serif; }
-header { padding: 28px 24px 8px; max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: baseline; }
-h1 { margin: 0; font-size: 22px; font-weight: 600; }
+header { max-width: 1600px; margin: 0 auto; padding: 32px 24px 0; }
+.title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+h1 { margin: 0; font-size: 24px; font-weight: 650; letter-spacing: -0.01em; }
 header p { margin: 0; color: var(--muted); }
-.controls { margin-left: auto; display: flex; gap: 8px; align-items: center; color: var(--muted); }
-.controls button { background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
-.controls button[aria-pressed="true"] { border-color: #888; }
-main { max-width: 1600px; margin: 0 auto; padding: 12px 24px 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 14px; }
+.toolbar { position: sticky; top: 0; z-index: 5; background: rgba(17, 17, 17, 0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.toolbar > div { max-width: 1600px; margin: 0 auto; padding: 14px 24px; display: flex; gap: 10px; align-items: center; }
+.field { position: relative; display: flex; align-items: center; min-width: 0; }
+.field > svg { position: absolute; left: 11px; color: var(--muted); pointer-events: none; }
+.field.search-field { flex: 1 1 auto; }
+.field.device-field { flex: 0 1 260px; }
+.field.device-field > svg:last-child { left: auto; right: 11px; }
+.search, .device-filter { height: 38px; width: 100%; background: var(--card); color: var(--text); border: 1px solid #2e2e2e; border-radius: 10px; padding: 0 12px 0 34px; font: inherit; transition: border-color .15s; }
+.device-filter { appearance: none; -webkit-appearance: none; padding-right: 32px; cursor: pointer; text-overflow: ellipsis; }
+.search:hover, .device-filter:hover { border-color: #444; }
+.search:focus, .device-filter:focus { outline: none; border-color: #777; }
+.dl-filter { width: 100%; box-sizing: border-box; margin-top: 8px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font: inherit; }
+main { max-width: 1600px; margin: 0 auto; padding: 4px 24px 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 14px; }
 .face[hidden] { display: none; }
 .face { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
 .face h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
@@ -226,8 +238,7 @@ main { max-width: 1600px; margin: 0 auto; padding: 12px 24px 48px; display: grid
 .settings .note { margin: 10px 0 0; }
 .swatches button { width: 16px; height: 16px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
 .swatches button[aria-pressed="true"] { border-color: #fff; }
-body.only-active .board.aod, body.only-aod .board.active { display: none; }
-.download-btn { background: #e8e8e8; color: #111; border-radius: 8px; padding: 7px 12px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.download-btn { height: 38px; flex: none; background: #ececec; color: #111; border-radius: 10px; padding: 0 16px; font-weight: 600; text-decoration: none; white-space: nowrap; }
 .download-btn:hover { background: #fff; }
 .dl-list { display: grid; gap: 8px; margin-top: 14px; }
 .dl-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); text-decoration: none; background: #1d1d1d; }
@@ -245,25 +256,24 @@ body.only-active .board.aod, body.only-aod .board.active { display: none; }
 .download-btn { display: inline-flex; align-items: center; gap: 6px; }
 .dlg-files { margin: 8px 0 0; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 12px; }
 .dlg-files a { color: #8fc2ff; }
-.search { flex: 1 1 220px; max-width: 360px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font: inherit; }
-.search:focus { outline: none; border-color: #777; }
 .empty { grid-column: 1 / -1; color: var(--muted); padding: 24px 0; text-align: center; }
 @media (max-width: 680px) { .dlg-body { grid-template-columns: minmax(0, 1fr); } .dlg-preview .screen { width: min(260px, 100%); margin: 0 auto; } .settings-dialog { padding: 14px; } }
-@media (max-width: 480px) { .settings dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .settings dd { margin-bottom: 8px; } header { padding: 16px 12px 4px; } main { padding: 8px 12px 32px; } .controls { margin-left: 0; } .search { max-width: none; } }
+@media (max-width: 480px) { .settings dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .settings dd { margin-bottom: 8px; } header { padding: 20px 12px 0; } .toolbar > div { padding: 12px; } main { padding: 4px 12px 32px; } }
+@media (max-width: 640px) { .toolbar > div { flex-wrap: wrap; } .field.search-field { flex: 1 1 100%; } .field.device-field { flex: 1 1 0; } .download-btn span { display: none; } .download-btn { padding: 0 12px; } }
 </style>
 </head>
 <body>
 <header>
-  <h1>Watch faces</h1>
-  <p>{{COUNT}} faces · active + always-on · 390 × 390</p>
-  <input class="search" id="search" type="search" placeholder="Search faces or settings…" aria-label="Search faces">
-  <a class="download-btn" id="download-all" href="{{RELEASES}}" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Download</span></a>
-  <div class="controls" role="group" aria-label="Show">
-    <button type="button" data-show="both" aria-pressed="true">Both</button>
-    <button type="button" data-show="active" aria-pressed="false">Active</button>
-    <button type="button" data-show="aod" aria-pressed="false">Always-on</button>
-  </div>
+  <div class="title"><h1>Watch faces</h1><p id="count">{{COUNT}} faces · active + always-on · 390 × 390</p></div>
 </header>
+<div class="toolbar"><div>
+  <label class="field search-field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input class="search" id="search" type="search" placeholder="Search faces or settings…" aria-label="Search faces"></label>
+  <label class="field device-field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="6"/><path d="M9 6 10 2h4l1 4M9 18l1 4h4l1-4"/></svg>
+    <select class="device-filter" id="device" aria-label="Filter by watch"><option value="">All watches</option></select>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></label>
+  <a class="download-btn" id="download-all" href="{{RELEASES}}" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Download</span></a>
+</div></div>
 <main id="grid"></main>
 <script id="faces-data" type="application/json">{{DATA}}</script>
 <script>
@@ -460,6 +470,15 @@ function openSettings(face, state, redrawCard) {
   dlg.showModal();
   fit(inner);
 }
+// Devices a face supports (faces/<Dir>/face.json); all faces together for the header popup.
+const DEVICE_NAME = Object.fromEntries(DEVICES.map(d => [d.id, d.name]));
+function faceDevices(face) {
+  const ids = face ? (face.devices || DEVICES.map(d => d.id))
+                   : [...new Set(faces.flatMap(f => f.devices || DEVICES.map(d => d.id)))];
+  return DEVICES.filter(d => ids.includes(d.id)).concat(ids.filter(i => !DEVICE_NAME[i]).map(i => ({id: i, name: i})));
+}
+const deviceSel = document.getElementById('device');
+const pickedDevice = () => deviceSel.value;
 // Download popup: pick a file from the latest release.
 const DL = RELEASES.replace(/\/latest$/, '/latest/download/');
 function openDownload(face) {
@@ -499,11 +518,20 @@ function openDownload(face) {
   all.appendChild(t2);
   list.appendChild(all);
   dlg.appendChild(list);
+  const devs = faceDevices(face);
   const sup = el('details', 'more dl-devices');
-  sup.appendChild(el('summary', null, 'Supported devices (' + DEVICES.length + ') — the .iq covers all of them'));
+  sup.appendChild(el('summary', null, 'Supported devices (' + devs.length + ') — the .iq covers all of them'));
+  const filt = el('input', 'dl-filter'); filt.type = 'search'; filt.placeholder = 'Filter devices…';
+  filt.setAttribute('aria-label', 'Filter devices');
+  sup.appendChild(filt);
   const box = el('div', 'chips');
-  for (const d of DEVICES) { const c = el('span', 'chip', d.name); c.title = d.id; box.appendChild(c); }
+  for (const d of devs) { const c = el('span', 'chip', d.name); c.title = d.id; c.dataset.q = (d.name + ' ' + d.id).toLowerCase(); box.appendChild(c); }
+  filt.addEventListener('input', () => {
+    const q = filt.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    for (const c of box.children) c.hidden = !q.every(w => c.dataset.q.includes(w));
+  });
   sup.appendChild(box);
+  if (pickedDevice() && devs.some(d => d.id === pickedDevice())) { sup.open = true; filt.value = pickedDevice(); filt.dispatchEvent(new Event('input')); }
   dlg.appendChild(sup);
   dlg.showModal();
 }
@@ -552,33 +580,36 @@ for (const face of faces) {
     if (s.menu) words.push('on-watch menu');
   }
   card.dataset.search = words.join(' ').toLowerCase();
+  card.dataset.devices = faceDevices(face).map(d => d.id).join(' ');
   redrawCard();
   grid.appendChild(card);
 }
 const empty = el('p', 'empty', 'No faces match.');
 empty.hidden = true;
 grid.appendChild(empty);
-document.getElementById('search').addEventListener('input', ev => {
-  const q = ev.target.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+for (const d of faceDevices(null)) {
+  const o = el('option', null, d.name); o.value = d.id; deviceSel.appendChild(o);
+}
+function applyFilter() {
+  const q = document.getElementById('search').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const dev = pickedDevice();
   let shown = 0;
   for (const c of grid.querySelectorAll('.face')) {
-    const hit = q.every(w => c.dataset.search.includes(w));
+    const hit = q.every(w => c.dataset.search.includes(w)) && (!dev || c.dataset.devices.split(' ').includes(dev));
     c.hidden = !hit;
     if (hit) shown++;
   }
   empty.hidden = shown > 0;
+  const total = faces.length, forDev = dev ? ' for ' + deviceSel.selectedOptions[0].textContent : '';
+  document.getElementById('count').textContent = (shown === total ? total + ' faces' : shown + ' of ' + total + ' faces') + forDev + ' · active + always-on';
   refit();
-});
+}
+document.getElementById('search').addEventListener('input', applyFilter);
+deviceSel.addEventListener('change', applyFilter);
 document.getElementById('download-all').addEventListener('click', ev => { ev.preventDefault(); openDownload(null); });
 const refit = () => inners.forEach(fit);
 new ResizeObserver(refit).observe(grid);
 refit();
-document.querySelectorAll('.controls button').forEach(btn => btn.addEventListener('click', () => {
-  document.querySelectorAll('.controls button').forEach(x => x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'));
-  document.body.classList.toggle('only-active', btn.dataset.show === 'active');
-  document.body.classList.toggle('only-aod', btn.dataset.show === 'aod');
-  refit();
-}));
 </script>
 </body>
 </html>

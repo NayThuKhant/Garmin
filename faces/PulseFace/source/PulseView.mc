@@ -170,7 +170,7 @@ class PulseView extends WatchUi.WatchFace {
         var w1 = Gfx.width(dc, hr, big);
         var w2 = Gfx.width(dc, rng, small);
         var x = 195 - (w1 + 6 + w2) / 2;
-        Gfx.text(dc, x, 234.1, big, hr, 0x4DD0E1, Graphics.TEXT_JUSTIFY_LEFT);
+        Gfx.text(dc, x, 234.1, big, hr, Gfx.accent(0x4DD0E1), Graphics.TEXT_JUSTIFY_LEFT);
         Gfx.text(dc, x + w1 + 6, 238.4, small, rng, 0x8A8A8A, Graphics.TEXT_JUSTIFY_LEFT);
 
         // Stats row: value (light) + unit (grey), gap 12, 13px.

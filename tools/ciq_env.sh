@@ -14,18 +14,33 @@ export CIQ_SDK CIQ_DEVICES
 
 # ---- interactive pickers (only when stdin is a terminal; CI never prompts) ----
 
-# ciq_devices: installed target devices from tools/devices.txt as "id<TAB>display name" lines.
+# ciq_face_devices FACE: the device ids a face supports, from faces/<Dir>/face.json ("devices": [...]),
+# the faces <-> devices map. A face without face.json supports every device in tools/devices.txt.
+ciq_face_devices() {
+  python3 - "faces/${1#faces/}" <<'PY2'
+import json, os, sys
+f = os.path.join(sys.argv[1].rstrip("/"), "face.json")
+if os.path.exists(f):
+    ids = json.load(open(f)).get("devices", [])
+else:
+    ids = [l.split("#")[0].strip() for l in open("tools/devices.txt")]
+print("\n".join(i for i in ids if i))
+PY2
+}
+
+# ciq_devices [FACE]: installed target devices as "id<TAB>display name" lines — every device in
+# tools/devices.txt, or only the ones FACE supports (its face.json).
 ciq_devices() {
-  python3 - "$CIQ_DEVICES" <<'PY'
+  if [ -n "$1" ]; then ciq_face_devices "$1"; else sed 's/#.*//' tools/devices.txt | awk 'NF{print $1}'; fi |
+  python3 -c '
 import json, os, sys
 d = sys.argv[1]
-for line in open("tools/devices.txt"):
-    i = line.split("#")[0].strip()
-    if not i: continue
+for i in sys.stdin.read().split():
     p = os.path.join(d, i, "compiler.json")
     if os.path.exists(p):
-        print(f"{i}\t{json.load(open(p)).get('displayName', i)}")
-PY
+        n = json.load(open(p)).get("displayName", i)
+        print(i + chr(9) + n)
+' "$CIQ_DEVICES"
 }
 
 # ciq_pick PROMPT DEFAULT < "value<TAB>label" lines  ->  prints the chosen value.
@@ -43,11 +58,15 @@ ciq_pick() {
   done
 }
 
-# ciq_device [given]: the device to use — the given one, else ask (terminal), else vivoactive6.
+# ciq_device [given] [FACE]: the device to use — the given one, else ask (terminal; only FACE's devices
+# when given), else vivoactive6.
 ciq_device() {
   if [ -n "$1" ]; then echo "$1"; return; fi
-  if ciq_interactive; then ciq_devices | ciq_pick "Device" vivoactive6; else echo vivoactive6; fi
+  if ciq_interactive; then ciq_devices "$2" | ciq_pick "Device" vivoactive6; else echo vivoactive6; fi
 }
+
+# ciq_supports FACE DEVICE: true when FACE's face.json lists DEVICE.
+ciq_supports() { ciq_face_devices "$1" | grep -qx "$2"; }
 
 # ciq_faces: "FaceDir<TAB>display name" for every face (name = AppName string in its resources).
 ciq_faces() {

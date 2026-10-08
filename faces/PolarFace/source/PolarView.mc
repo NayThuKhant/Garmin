@@ -13,6 +13,7 @@ class PolarView extends WatchUi.WatchFace {
 
     const SPAN = 330.0;
     const RADII = [170, 148, 126, 104];
+    // Hour ring (index 0) is the accent color; see onUpdate.
     const COLORS = [0xFF6B5A, 0xFFB347, 0x5EEAD4, 0xA78BFA];
     const TRACK = 0x151515;
     const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -67,9 +68,10 @@ class PolarView extends WatchUi.WatchFace {
             return;
         }
 
+        var colors = [Gfx.accent(0xFF6B5A), COLORS[1], COLORS[2], COLORS[3]];
         for (var i = 0; i < 4; i++) {
             ring(dc, RADII[i], 0, SPAN, TRACK, 14);
-            ring(dc, RADII[i], 0, SPAN * fr[i], COLORS[i], 14);
+            ring(dc, RADII[i], 0, SPAN * fr[i], colors[i] as Number, 14);
         }
 
         var h12 = hour % 12;
@@ -81,7 +83,7 @@ class PolarView extends WatchUi.WatchFace {
             day.format("%02d") + " " + (m.month as String).toUpper()
         ];
         for (var i = 0; i < 4; i++) {
-            Gfx.text(dc, 182, 195 - RADII[i], fLabel, labels[i] as String, COLORS[i], Graphics.TEXT_JUSTIFY_RIGHT);
+            Gfx.text(dc, 182, 195 - RADII[i], fLabel, labels[i] as String, colors[i] as Number, Graphics.TEXT_JUSTIFY_RIGHT);
         }
 
         Gfx.text(dc, 195, 188, fTime, time, 0xFFFFFF, Graphics.TEXT_JUSTIFY_CENTER);
@@ -91,7 +93,7 @@ class PolarView extends WatchUi.WatchFace {
         var bat = Data.battery() + "%";
         var w1 = Gfx.width(dc, hr, fInfo);
         var x = 195 - (w1 + 10 + Gfx.width(dc, bat, fInfo)) / 2;
-        Gfx.text(dc, x, 223, fInfo, hr, 0xFF6B5A, Graphics.TEXT_JUSTIFY_LEFT);
+        Gfx.text(dc, x, 223, fInfo, hr, colors[0] as Number, Graphics.TEXT_JUSTIFY_LEFT);
         Gfx.text(dc, x + w1 + 10, 223, fInfo, bat, 0x8A8A8A, Graphics.TEXT_JUSTIFY_LEFT);
         if (mSleep) {
             Gfx.aodMask(dc);

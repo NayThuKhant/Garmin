@@ -1,3 +1,9 @@
 <strings>
     <string id="AppName">V · Night sky</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorCream">Cream</string>
+    <string id="ColorGold">Gold</string>
+    <string id="ColorSilver">Silver</string>
+    <string id="ColorRose">Rose</string>
+    <string id="ColorIce">Ice</string>
 </strings>

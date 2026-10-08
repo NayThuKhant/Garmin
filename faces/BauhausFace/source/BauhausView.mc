@@ -6,7 +6,6 @@ import Toybox.WatchUi;
 class BauhausView extends WatchUi.WatchFace {
 
     const RED = 0xE63B2E;
-    const YELLOW = 0xF2C230;
     const BLUE = 0x2D5BD8;
     const WHITE = 0xEDEDED;
 
@@ -107,6 +106,8 @@ class BauhausView extends WatchUi.WatchFace {
     }
 
     function drawActive(dc as Dc) as Void {
+        // Accent (setting, default yellow): header square, time dot, stress triangle.
+        var accent = Gfx.accent(0xF2C230);
         // Header row: red dot · date · temp · yellow square, gap 10, centered at y 56.6.
         var f11 = fHead;
         var date = Data.dateStr();
@@ -121,9 +122,9 @@ class BauhausView extends WatchUi.WatchFace {
         x += w1 + 10;
         Gfx.text(dc, x, 56.6, f11, tstr, 0xD0D0D0, Graphics.TEXT_JUSTIFY_LEFT);
         x += w2 + 10;
-        Gfx.rect(dc, x, 52.6, 8, 8, YELLOW);
+        Gfx.rect(dc, x, 52.6, 8, 8, accent);
 
-        drawTime(dc, 108.2, fTime, 0xFFFFFF, YELLOW);
+        drawTime(dc, 108.2, fTime, 0xFFFFFF, accent);
 
         // Four tiles: 48 wide, gap 16, top 163.2; value at 224.2, label at 242.
         var steps = Data.steps();
@@ -133,7 +134,7 @@ class BauhausView extends WatchUi.WatchFace {
         var ty = 163.2;
         circleTile(dc, 75, ty, 1.0, Extra.frac(steps, Data.stepGoal()), RED, 1.5);
         squareTile(dc, 139, ty, 1.0, Extra.frac(bb, 100), BLUE, 1.5);
-        triangleTile(dc, 203, ty, 1.0, Extra.frac(st, 100), YELLOW, 1.5);
+        triangleTile(dc, 203, ty, 1.0, Extra.frac(st, 100), accent, 1.5);
         domeTile(dc, 267, ty, Extra.frac(batt, 100), WHITE);
 
         var stepsStr = "--";

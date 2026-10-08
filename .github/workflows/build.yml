@@ -24,6 +24,9 @@ jobs:
         run: |
           python3 tools/build_gallery.py
           git diff --quiet -- faces.html || { echo "::error::faces.html is out of date - run python3 tools/build_gallery.py and commit it"; git diff --stat -- faces.html; exit 1; }
+      # manifest.xml products must match each face's face.json (the faces <-> devices map).
+      - name: Check manifests match face.json
+        run: tools/set_products.sh --check
       # Every run builds all faces (public repo: Actions minutes are unlimited).
       - id: faces
         run: echo "list=$(ls -d faces/*Face | xargs -n1 basename | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"

@@ -1,3 +1,8 @@
 <strings>
     <string id="AppName">R · Guilloché</string>
+    <string id="AccentTitle">Accent color</string>
+    <string id="ColorGold">Gold</string>
+    <string id="ColorRoseGold">Rose gold</string>
+    <string id="ColorSilver">Silver</string>
+    <string id="ColorAzure">Azure</string>
 </strings>

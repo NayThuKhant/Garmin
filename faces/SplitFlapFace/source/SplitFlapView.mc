@@ -8,8 +8,6 @@ class SplitFlapView extends WatchUi.WatchFace {
 
     var mSleep as Boolean = false;
 
-    const AMBER = 0xFFC94D;
-
     // Mockup fonts as bitmap fonts (faces/SplitFlapFace/fonts.json, tools/mkfont.py).
     var fFlap as FontResource;
     var fMini as FontResource;
@@ -107,13 +105,14 @@ class SplitFlapView extends WatchUi.WatchFace {
     }
 
     function drawActive(dc as Dc) as Void {
+        var accent = Gfx.accent(0xFFC94D);
         // Header, 11px spacing 3, box top 58.
         var temp = Data.temperature();
         var unit = System.getDeviceSettings().temperatureUnits == System.UNIT_STATUTE ? "°F" : "°C";
         Gfx.text(dc, 195, 64.6, fHead,
-            Data.dateStr() + " · " + (temp != null ? temp + unit : "--" + unit), AMBER, Graphics.TEXT_JUSTIFY_CENTER);
+            Data.dateStr() + " · " + (temp != null ? temp + unit : "--" + unit), accent, Graphics.TEXT_JUSTIFY_CENTER);
 
-        drawTime(dc, 81.2, 0xF2F2F2, AMBER, false);
+        drawTime(dc, 81.2, 0xF2F2F2, accent, false);
 
         // 3x2 grid of 4-tile counters; columns 62 wide, gap 14 -> centers 119/195/271.
         var labels = ["HR", "STEPS", "KCAL", "BODY", "STRESS", "BATT"];
@@ -123,7 +122,7 @@ class SplitFlapView extends WatchUi.WatchFace {
         for (var i = 0; i < 6; i++) {
             var cx = 119 + 76 * (i % 3);
             var top = 179.2 + 42.6 * (i / 3);
-            Gfx.text(dc, cx, top + 4.8, lf, labels[i] as String, AMBER, Graphics.TEXT_JUSTIFY_CENTER);
+            Gfx.text(dc, cx, top + 4.8, lf, labels[i] as String, accent, Graphics.TEXT_JUSTIFY_CENTER);
             var s = four(values[i] as Number or Null);
             for (var j = 0; j < 4; j++) {
                 tile(dc, cx - 31 + 16 * j, top + 12.6, 14, 20, s.substring(j, j + 1), tf, 0xF2F2F2, false);
@@ -138,7 +137,7 @@ class SplitFlapView extends WatchUi.WatchFace {
         var w2 = Gfx.width(dc, notif, ff);
         var x = 195 - (w1 + 14 + w2) / 2;
         Gfx.text(dc, x, 274.4, ff, sun, 0x8A8A8A, Graphics.TEXT_JUSTIFY_LEFT);
-        Gfx.text(dc, x + w1 + 14, 274.4, ff, notif, AMBER, Graphics.TEXT_JUSTIFY_LEFT);
+        Gfx.text(dc, x + w1 + 14, 274.4, ff, notif, accent, Graphics.TEXT_JUSTIFY_LEFT);
     }
 
     function drawAod(dc as Dc) as Void {

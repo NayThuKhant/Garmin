@@ -10,8 +10,6 @@ class TideView extends WatchUi.WatchFace {
 
     var mSleep as Boolean = false;
 
-    const LABEL = 0x8FB7E0;
-
     // Mockup fonts as bitmap fonts (faces/TideFace/fonts.json, tools/mkfont.py).
     var fTime as FontResource;
     var fDate as FontResource;
@@ -117,6 +115,8 @@ class TideView extends WatchUi.WatchFace {
     }
 
     function drawActive(dc as Dc) as Void {
+        // Accent (setting): body tag + grid labels.
+        var label = Gfx.accent(0x8FB7E0);
         fillWave(dc, 120.8, 7.0, 156.0, 12.0, Gfx.dim(0x0E3A66, 0.55));
         fillWave(dc, 124.8, 6.0, 132.0, 30.0, 0x0A2E52);
         fillWave(dc, 170.8, 4.0, 108.0, 102.0, 0x08243F);
@@ -144,7 +144,7 @@ class TideView extends WatchUi.WatchFace {
         Gfx.text(dc, x, y, f12, set, col, Graphics.TEXT_JUSTIFY_LEFT);
 
         // Body battery tag above the swell.
-        Gfx.text(dc, 286, 104, fTag, "BODY " + Data.fmt(Data.bodyBattery()), LABEL, Graphics.TEXT_JUSTIFY_LEFT);
+        Gfx.text(dc, 286, 104, fTag, "BODY " + Data.fmt(Data.bodyBattery()), label, Graphics.TEXT_JUSTIFY_LEFT);
 
         // Time: 96px, line-height 1, top 140.
         Gfx.text(dc, 195, 188, fTime, timeStr(), 0xFFFFFF, Graphics.TEXT_JUSTIFY_CENTER);
@@ -162,7 +162,7 @@ class TideView extends WatchUi.WatchFace {
             var cx = 111.67 + 83.33 * (i % 3);
             var top = 254 + 39.2 * (i / 3);
             Gfx.text(dc, cx, top + 10.2, vf, values[i] as String, 0xFFFFFF, Graphics.TEXT_JUSTIFY_CENTER);
-            Gfx.text(dc, cx, top + 25.8, lf, labels[i] as String, LABEL, Graphics.TEXT_JUSTIFY_CENTER);
+            Gfx.text(dc, cx, top + 25.8, lf, labels[i] as String, label, Graphics.TEXT_JUSTIFY_CENTER);
         }
     }
 

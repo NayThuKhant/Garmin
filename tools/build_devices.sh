@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build every face for every product in its manifest and check device fit.
+# Build every face for every device it supports (faces/<Dir>/face.json) and check device fit.
 #   tools/build_devices.sh [Face ...]   (default: all faces/*Face)
 # Devices whose files aren't installed (SDK Manager > Devices) are reported as MISSING.
 # Per device it also checks: vector fonts used by Gfx.mc present, watch-face memory limit,
@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.." || exit 1
 [ $# -eq 0 ] && set -- faces/*Face
 for d in "$@"; do
   d=${d%/}; d=faces/${d#faces/}
-  ids=$(grep -o 'iq:product id="[^"]*"' "$d/manifest.xml" | sed 's/.*id="//;s/"//')
+  ids=$(ciq_face_devices "$d")
   mkdir -p "$d/bin/devices"
   for id in $ids; do
     if [ ! -f "$CIQ_DEVICES/$id/compiler.json" ]; then

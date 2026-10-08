@@ -1,0 +1,16 @@
+<resources>
+    <properties>
+        <property id="AccentColor" type="number">16739162</property>
+    </properties>
+    <settings>
+        <setting propertyKey="@Properties.AccentColor" title="@Strings.AccentTitle">
+            <settingConfig type="list">
+                <listEntry value="16739162">@Strings.ColorCoral</listEntry>
+                <listEntry value="16736162">@Strings.ColorPink</listEntry>
+                <listEntry value="12121434">@Strings.ColorLime</listEntry>
+                <listEntry value="5945599">@Strings.ColorSky</listEntry>
+                <listEntry value="15921906">@Strings.ColorWhite</listEntry>
+            </settingConfig>
+        </setting>
+    </settings>
+</resources>
