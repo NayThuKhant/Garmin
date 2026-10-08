@@ -74,8 +74,7 @@ Other tools:
 
 - Downloads SDK 9.2 and all devices once with
   [connect-iq-sdk-manager-cli](https://github.com/lindell/connect-iq-sdk-manager-cli) and caches them.
-- Builds only the faces whose folder changed (everything when the build setup changes), checks every
-  device, and uploads the `.iq` + vívoactive 6 and 5 `.prg` per face.
+- Builds every face, checks every device, and uploads the `.iq` + vívoactive 6 and 5 `.prg` per face.
 - Pushing a version tag publishes a GitHub Release with every `.iq`, `<Face>-vivoactive6.prg` and `<Face>-vivoactive5.prg`,
   keeping only the 3 newest releases:
 
