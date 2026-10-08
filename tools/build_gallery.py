@@ -115,6 +115,16 @@ def swatches_of(settings, mock_props):
     return rows
 
 
+def repo_url():
+    import subprocess
+    try:
+        u = subprocess.run(["git", "-C", ROOT, "remote", "get-url", "origin"], capture_output=True, text=True).stdout.strip()
+    except Exception:
+        u = ""
+    u = re.sub(r"^git@github\.com:", "https://github.com/", u)
+    return re.sub(r"\.git$", "", u)
+
+
 def main():
     canvas = json.load(open(os.path.join(MOCK, "canvas.json")))
     faces, fonts = [], []
@@ -140,7 +150,9 @@ def main():
                                 "script": script})
     data = json.dumps(faces, ensure_ascii=False).replace("</", "<\\/")
     links = "\n".join(f'<link rel="stylesheet" href="{u.replace("&", "&amp;")}">' for u in dict.fromkeys(fonts))
-    html = PAGE.replace("{{LINKS}}", links).replace("{{DATA}}", data).replace("{{COUNT}}", str(len(faces)))
+    repo = repo_url()
+    html = (PAGE.replace("{{LINKS}}", links).replace("{{DATA}}", data).replace("{{COUNT}}", str(len(faces)))
+            .replace("{{RELEASES}}", repo + "/releases/latest" if repo else "#"))
     out = os.path.join(ROOT, "faces.html")
     open(out, "w").write(html)
     print(f"wrote {out}: {len(faces)} faces")
@@ -164,6 +176,7 @@ header p { margin: 0; color: var(--muted); }
 .controls button { background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
 .controls button[aria-pressed="true"] { border-color: #888; }
 main { max-width: 1600px; margin: 0 auto; padding: 12px 24px 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 14px; }
+.face[hidden] { display: none; }
 .face { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
 .face h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
 .face h2 small { color: var(--muted); font-weight: 400; }
@@ -178,37 +191,47 @@ main { max-width: 1600px; margin: 0 auto; padding: 12px 24px 48px; display: grid
 .face-foot { margin-top: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--muted); }
 .settings-btn { background: var(--card); color: var(--text); border: 1px solid #3a3a3a; border-radius: 8px; padding: 4px 10px; font: inherit; cursor: pointer; }
 .settings-btn:hover { border-color: #777; }
-.settings-dialog { width: min(920px, calc(100vw - 32px)); max-height: calc(100vh - 48px); background: #161616; color: var(--text); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+.settings-dialog { box-sizing: border-box; width: min(920px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow-x: hidden; overflow-wrap: anywhere; background: #161616; color: var(--text); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
 .settings-dialog::backdrop { background: rgba(0,0,0,.6); }
 .dlg-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .dlg-head h2 { margin: 0; font-size: 17px; }
 .dlg-close { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 14px; }
 .dlg-sub { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
-.dlg-body { display: grid; grid-template-columns: 300px 1fr; gap: 24px; margin-top: 16px; align-items: start; }
+.dlg-body { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; margin-top: 16px; align-items: start; }
 .dlg-preview .screen { width: 300px; }
 .settings-dialog .settings { margin: 0; border: 0; padding: 0; }
-@media (max-width: 680px) { .dlg-body { grid-template-columns: 1fr; } .dlg-preview .screen { width: min(300px, 100%); margin: 0 auto; } }
 
 .settings h3 { margin: 12px 0 4px; font-size: 12px; color: var(--text); font-weight: 600; }
-.settings dl { margin: 0; display: grid; grid-template-columns: minmax(90px, 34%) 1fr; gap: 6px 10px; }
+.settings dl { margin: 0; display: grid; grid-template-columns: minmax(90px, 34%) minmax(0, 1fr); gap: 6px 10px; }
 .settings dt { color: var(--text); }
-.settings dd { margin: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.settings dd { margin: 0; display: flex; flex-wrap: wrap; gap: 4px; min-width: 0; }
 .settings .more { width: 100%; }
 .settings .more > summary { cursor: pointer; }
-.settings .more[open] { display: flex; flex-wrap: wrap; gap: 4px; }
-.settings .more[open] > summary { width: 100%; }
-.chip { border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+.settings .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .chip.on { border-color: #888; color: var(--text); }
 .settings .note { margin: 10px 0 0; }
 .swatches button { width: 16px; height: 16px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
 .swatches button[aria-pressed="true"] { border-color: #fff; }
 body.only-active .board.aod, body.only-aod .board.active { display: none; }
+.download-btn { background: #e8e8e8; color: #111; border-radius: 8px; padding: 7px 12px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.download-btn:hover { background: #fff; }
+.card-download { margin-left: auto; color: var(--text); }
+.dlg-files { margin: 8px 0 0; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.dlg-files a { color: #8fc2ff; }
+.search { flex: 1 1 220px; max-width: 360px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font: inherit; }
+.search:focus { outline: none; border-color: #777; }
+.empty { grid-column: 1 / -1; color: var(--muted); padding: 24px 0; text-align: center; }
+@media (max-width: 680px) { .dlg-body { grid-template-columns: minmax(0, 1fr); } .dlg-preview .screen { width: min(260px, 100%); margin: 0 auto; } .settings-dialog { padding: 14px; } }
+@media (max-width: 480px) { .settings dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .settings dd { margin-bottom: 8px; } header { padding: 16px 12px 4px; } main { padding: 8px 12px 32px; } .controls { margin-left: 0; } .search { max-width: none; } }
 </style>
 </head>
 <body>
 <header>
   <h1>Watch faces</h1>
   <p>{{COUNT}} faces · active + always-on · 390 × 390</p>
+  <input class="search" id="search" type="search" placeholder="Search faces or settings…" aria-label="Search faces">
+  <a class="download-btn" href="{{RELEASES}}" target="_blank" rel="noopener">Download ↓</a>
   <div class="controls" role="group" aria-label="Show">
     <button type="button" data-show="both" aria-pressed="true">Both</button>
     <button type="button" data-show="active" aria-pressed="false">Active</button>
@@ -220,6 +243,7 @@ body.only-active .board.aod, body.only-aod .board.active { display: none; }
 <script>
 class DCLogic { constructor(props) { this.props = props || {}; } }
 const faces = JSON.parse(document.getElementById('faces-data').textContent);
+const RELEASES = '{{RELEASES}}';   // latest GitHub release
 const grid = document.getElementById('grid');
 
 function lookup(vals, path) {
@@ -273,7 +297,9 @@ function settingsBody(face) {
       } else {
         const more = el('details', 'more');
         more.appendChild(el('summary', null, it.options.length + ' options · default ' + it.default));
-        for (const o of it.options) more.appendChild(el('span', 'chip' + (o.label === it.default ? ' on' : ''), o.label));
+        const box = el('div', 'chips');
+        for (const o of it.options) box.appendChild(el('span', 'chip' + (o.label === it.default ? ' on' : ''), o.label));
+        more.appendChild(box);
         dd.appendChild(more);
       }
       dl.appendChild(dd);
@@ -286,7 +312,9 @@ function settingsBody(face) {
     dl.appendChild(el('dt', null, 'Style'));
     const st = el('dd'); const more = el('details', 'more');
     more.appendChild(el('summary', null, s.native.styles.length + ' styles'));
-    for (const x of s.native.styles) more.appendChild(el('span', 'chip', x));
+    const box = el('div', 'chips');
+    for (const x of s.native.styles) box.appendChild(el('span', 'chip', x));
+    more.appendChild(box);
     st.appendChild(more); dl.appendChild(st);
     if (s.native.accentAny) { dl.appendChild(el('dt', null, 'Accent color')); dl.appendChild(el('dd', null, 'any color (color picker)')); }
     if (s.native.dataColors.length) {
@@ -341,6 +369,16 @@ function openSettings(face, state, redrawCard) {
   head.appendChild(h); head.appendChild(x); dlg.appendChild(head);
   const sub = settingsSummary(face);
   if (sub) dlg.appendChild(el('p', 'dlg-sub', sub));
+  const dir = (face.dir || '').split('/').pop();
+  if (dir && RELEASES !== '#') {
+    const files = el('p', 'dlg-files');
+    files.appendChild(el('span', null, 'Download: '));
+    for (const [label, file] of [['All devices (.iq)', dir + '.iq'], ['vívoactive 6 (.prg)', dir + '-vivoactive6.prg'], ['vívoactive 5 (.prg)', dir + '-vivoactive5.prg']]) {
+      const a = el('a', null, label); a.href = RELEASES.replace(/\/latest$/, '/latest/download/') + file;
+      files.appendChild(a);
+    }
+    dlg.appendChild(files);
+  }
   const body = el('div', 'dlg-body');
   const left = el('div', 'dlg-preview');
   const screen = el('div', 'screen'); const inner = el('div', 'inner');
@@ -398,10 +436,38 @@ for (const face of faces) {
   } else {
     foot.appendChild(el('span', 'note', 'No settings (fixed design)'));
   }
+  const dir = (face.dir || '').split('/').pop();
+  if (dir) {
+    const dl = el('a', 'card-download', 'Download');
+    dl.href = RELEASES; dl.target = '_blank'; dl.rel = 'noopener';
+    dl.setAttribute('aria-label', 'Download ' + face.title + ' from the latest release');
+    foot.appendChild(dl);
+  }
   card.appendChild(foot);
+  const s = face.settings, words = [face.title];
+  if (s) {
+    for (const g of s.groups) { words.push(g.title); for (const it of g.items) { words.push(it.title); for (const o of it.options) words.push(o.label); } }
+    if (s.native) words.push('on-watch editor customize', ...s.native.styles, ...s.native.dataColors);
+    if (s.menu) words.push('on-watch menu');
+  }
+  card.dataset.search = words.join(' ').toLowerCase();
   redrawCard();
   grid.appendChild(card);
 }
+const empty = el('p', 'empty', 'No faces match.');
+empty.hidden = true;
+grid.appendChild(empty);
+document.getElementById('search').addEventListener('input', ev => {
+  const q = ev.target.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  let shown = 0;
+  for (const c of grid.querySelectorAll('.face')) {
+    const hit = q.every(w => c.dataset.search.includes(w));
+    c.hidden = !hit;
+    if (hit) shown++;
+  }
+  empty.hidden = shown > 0;
+  refit();
+});
 const refit = () => inners.forEach(fit);
 new ResizeObserver(refit).observe(grid);
 refit();

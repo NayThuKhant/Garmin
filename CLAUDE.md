@@ -14,7 +14,8 @@ in the same turn, without being asked:
    code: it reads each face's settings straight from `faces/<Dir>/resources/properties/properties.xml`
    (+ strings, + the native editor's `watchface.xml`), shows every configurable setting in a Settings
    popup (card button "Settings (N)"), and turns color settings (AccentColor/SecondaryColor; Meridian's Theme) into swatches that
-   recolor the mockup. So any settings change in code shows up after regenerating. CI fails the build
+   recolor the mockup. It also has a search box (names + settings) and Download links to the latest
+   GitHub release (repo URL read from `git remote`). So any settings change in code shows up after regenerating. CI fails the build
    if the committed `faces.html` is stale, and the Pages workflow republishes a freshly generated one.
    New face with settings: name the color properties AccentColor/SecondaryColor and give the mockup
    matching `accent`/`secondary` props so the swatches work.
