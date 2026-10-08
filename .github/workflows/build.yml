@@ -7,6 +7,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+# A newer push to the same branch cancels the older, still-running build; tag (release) runs always finish.
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
 env:
   CIQ_SDK_VERSION: "9.2.0"
   CIQ_CLI_VERSION: "v0.8.4"   # github.com/lindell/connect-iq-sdk-manager-cli

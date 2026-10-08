@@ -81,7 +81,7 @@ W SplitFlap · X DotMatrix · Y Eclipse · Z Polar · AA Words · AB Segment · 
   variable CIQ_AGREEMENT_HASH), caches them, then builds every face for every device and uploads the
   `.iq` + a vivoactive6 `.prg` per face as artifacts. Pushing a `v*` tag also creates a GitHub Release with
   one `<Face>.zip` per face (folder `<Face>/` with `<Face>.iq`,
-  `vivoactive6.prg`, `vivoactive5.prg`) + `AllFaces.zip` and keeps only the 3 newest releases. Every run builds all faces (public repo,
+  `vivoactive6.prg`, `vivoactive5.prg`) + `AllFaces.zip` and keeps only the 3 newest releases. A newer push cancels an older main build (tag runs always finish). Every run builds all faces (public repo,
   unlimited minutes).
   Never tag a commit whose message has `[skip ci]`: GitHub skips the tag's run too (no release). Scripts read `CIQ_SDK` / `CIQ_DEVICES` (tools/ciq_env.sh).
 - Sideload: build with `-d vivoactive6 -r` (not `_sim`), copy the `.prg` to `GARMIN/APPS/` with OpenMTP
