@@ -108,13 +108,14 @@ jobs:
           path: |
             dist/${{ matrix.face }}.iq
             faces/${{ matrix.face }}/bin/devices/vivoactive6.prg
+            faces/${{ matrix.face }}/bin/devices/vivoactive5.prg
           if-no-files-found: error
       - name: Remove signing key
         if: always()
         run: rm -f developer_key
 
-  # On a version tag (v1.0, v1.1, ...): publish a Release with every face's .iq and vivoactive 6 .prg
-  # (<Face>-vivoactive6.prg, for sideloading), then keep only the
+  # On a version tag (v1.0, v1.1, ...): publish a Release with every face's .iq and vivoactive 6 / 5 .prg
+  # (<Face>-vivoactive6.prg / <Face>-vivoactive5.prg, for sideloading), then keep only the
   # 3 newest releases (older releases and their tags are deleted).
   release:
     needs: build
@@ -129,14 +130,16 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
-      - name: Collect .iq files and vivoactive 6 .prg files
+      - name: Collect .iq files and vivoactive 6 / 5 .prg files
         run: |
           mkdir -p release
           find artifacts -name "*.iq" -exec cp {} release/ \;
           for d in artifacts/*/; do
             face=$(basename "$d")
-            prg="$d/faces/$face/bin/devices/vivoactive6.prg"
-            [ -f "$prg" ] && cp "$prg" "release/$face-vivoactive6.prg"
+            for dev in vivoactive6 vivoactive5; do
+              prg="$d/faces/$face/bin/devices/$dev.prg"
+              [ -f "$prg" ] && cp "$prg" "release/$face-$dev.prg"
+            done
           done
           ls -la release
           test "$(ls release/*.iq | wc -l)" -gt 0

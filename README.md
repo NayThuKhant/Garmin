@@ -29,7 +29,7 @@ related Garmin app.
 
 **From a release** — download from [Releases](../../releases):
 
-- `<Face>-vivoactive6.prg` — sideload to a vívoactive 6: connect the watch by USB (watch
+- `<Face>-vivoactive6.prg` / `<Face>-vivoactive5.prg` — sideload to a vívoactive 6 or 5: connect the watch by USB (watch
   *Settings → System → USB Mode* = **MTP**), open it with [OpenMTP](https://openmtp.ganeshrvel.com)
   on macOS, copy the file to `GARMIN/APPS/`, quit OpenMTP and unplug. Pick the face under
   *Settings → Watch Face*. Sideloaded faces don't get phone settings.
@@ -37,7 +37,7 @@ related Garmin app.
   [Connect IQ Store](https://apps.garmin.com/developer/) (or as a private **beta**) and install from
   the Connect IQ app to get the phone settings.
 
-Each CI run also keeps the `.iq` and vívoactive 6 `.prg` per face as downloadable artifacts (Actions → run → Artifacts).
+Each CI run also keeps the `.iq` and the vívoactive 6 and 5 `.prg` per face as downloadable artifacts (Actions → run → Artifacts).
 
 ## Build locally
 
@@ -72,8 +72,8 @@ Other tools:
 - Downloads SDK 9.2 and all devices once with
   [connect-iq-sdk-manager-cli](https://github.com/lindell/connect-iq-sdk-manager-cli) and caches them.
 - Builds only the faces whose folder changed (everything when the build setup changes), checks every
-  device, and uploads the `.iq` + vívoactive 6 `.prg` per face.
-- Pushing a version tag publishes a GitHub Release with every `.iq` and `<Face>-vivoactive6.prg`,
+  device, and uploads the `.iq` + vívoactive 6 and 5 `.prg` per face.
+- Pushing a version tag publishes a GitHub Release with every `.iq`, `<Face>-vivoactive6.prg` and `<Face>-vivoactive5.prg`,
   keeping only the 3 newest releases:
 
   ```sh
