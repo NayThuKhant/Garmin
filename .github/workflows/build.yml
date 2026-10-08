@@ -35,7 +35,7 @@ jobs:
           else
             changed=$(git diff --name-only "$BEFORE" "$GITHUB_SHA")
             echo "changed files:"; echo "$changed" | sed 's/^/  /'
-            if echo "$changed" | grep -qE '^(tools/[^/]+\.sh|tools/devices\.txt|\.github/workflows/)'; then
+            if echo "$changed" | grep -qE '^(tools/[^/]+\.sh|tools/devices\.txt|\.github/workflows/build\.yml)'; then
               faces="$all"
             else
               faces=$(echo "$changed" | sed -n 's|^faces/\([^/]*Face\)/.*|\1|p' | sort -u)

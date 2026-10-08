@@ -4,7 +4,10 @@
 vívoactive 6 (390×390) and built for 49 devices — from Venu 2 and vívoactive 5 to fēnix 8,
 Forerunner 970 and Venu 4. Every face has an active and an always-on (AOD) design.
 
-Open **[`faces.html`](faces.html)** in a browser to see all faces, active and always-on, side by side.
+**[▶ Browse all faces](https://naythukhant.github.io/Garmin/)** — every face, active and always-on, with
+its accent color options ([`faces.html`](faces.html), published by GitHub Pages).
+
+[![Watch faces gallery](docs/preview.png)](https://naythukhant.github.io/Garmin/)
 
 ## Faces
 
