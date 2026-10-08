@@ -9,25 +9,6 @@ its color options and every setting it offers ([`faces.html`](faces.html), publi
 
 [![Watch faces gallery](docs/preview.png)](https://naythukhant.github.io/Garmin/)
 
-## Faces
-
-| | | | |
-|---|---|---|---|
-| A · Ring | B · Data grid | C · Quad dial | D · Info bands |
-| E · Analog chrono | F · Health trend | G · Six gauges | H · Terminal |
-| I · Split | J · Sun arc | K · Day timeline | L · Bold stack |
-| M · Orbit | N · Contour | O · Tide | P · 24h pulse ring |
-| Q · Kinetic type | R · Guilloché | S · Bauhaus | T · Radar |
-| U · Neon | V · Night sky | W · Split-flap | X · Dot matrix |
-| Y · Eclipse | Z · Polar | AA · Words | AB · Segment |
-| AC · Bento | AD · Bezel | **AE · Meridian** | |
-
-**AE · Meridian** is fully customizable: 8 data fields (4 circles + 4 arc gauges) with 37 data
-options, background themes, 4 time fonts, circle/hexagon frames, and colors — through the phone
-settings, Garmin's native on-watch editor (vívoactive 6, Venu 4, fēnix 8, FR 570/970, …) or an
-on-watch menu (vívoactive 5, Venu 2/3, FR 165/265/965, epix 2, …). Tapping a field opens the
-related Garmin app.
-
 ## Install
 
 **From a release** — download from [Releases](../../releases):
