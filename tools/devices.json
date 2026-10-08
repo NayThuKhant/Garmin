@@ -1,0 +1,198 @@
+[
+ {
+  "id": "approachs50",
+  "name": "Approach® S50"
+ },
+ {
+  "id": "approachs7042mm",
+  "name": "Approach® S70 42mm"
+ },
+ {
+  "id": "approachs7047mm",
+  "name": "Approach® S70 47mm"
+ },
+ {
+  "id": "approachs7243mm",
+  "name": "Approach® S72 43mm"
+ },
+ {
+  "id": "approachs7247mm",
+  "name": "Approach® S72 47mm"
+ },
+ {
+  "id": "d2airx10",
+  "name": "D2™ Air X10"
+ },
+ {
+  "id": "d2mach1",
+  "name": "D2™ Mach 1"
+ },
+ {
+  "id": "d2mach2",
+  "name": "D2™ Mach 2"
+ },
+ {
+  "id": "d2mach2pro",
+  "name": "D2™ Mach 2 Pro"
+ },
+ {
+  "id": "descentg2",
+  "name": "Descent™ G2"
+ },
+ {
+  "id": "descentmk343mm",
+  "name": "Descent™ Mk3 43mm / Mk3i 43mm"
+ },
+ {
+  "id": "descentmk351mm",
+  "name": "Descent™ Mk3i 51mm"
+ },
+ {
+  "id": "epix2",
+  "name": "epix™ (Gen 2) / quatix® 7 Sapphire"
+ },
+ {
+  "id": "epix2pro42mm",
+  "name": "epix™ Pro (Gen 2) 42mm"
+ },
+ {
+  "id": "epix2pro47mm",
+  "name": "epix™ Pro (Gen 2) 47mm / quatix® 7 Pro"
+ },
+ {
+  "id": "epix2pro51mm",
+  "name": "epix™ Pro (Gen 2) 51mm / D2™ Mach 1 Pro / tactix® 7 – AMOLED Edition"
+ },
+ {
+  "id": "fenix843mm",
+  "name": "fēnix® 8 43mm"
+ },
+ {
+  "id": "fenix847mm",
+  "name": "fēnix® 8 47mm / 51mm / tactix® 8 47mm / 51mm / quatix® 8 47mm / 51mm"
+ },
+ {
+  "id": "fenix8pro47mm",
+  "name": "fēnix® 8 Pro 47mm / 51mm / MicroLED / quatix® 8 Pro 47mm / 51mm"
+ },
+ {
+  "id": "fenix943mm",
+  "name": "fēnix® 9 43mm"
+ },
+ {
+  "id": "fenix947mm",
+  "name": "fēnix® 9 47mm / 51mm"
+ },
+ {
+  "id": "fenix9pro43mm",
+  "name": "fēnix® 9 Pro 43mm"
+ },
+ {
+  "id": "fenix9pro47mm",
+  "name": "fēnix® 9 Pro 47mm"
+ },
+ {
+  "id": "fenix9pro51mm",
+  "name": "fēnix® 9 Pro 51mm"
+ },
+ {
+  "id": "fenixe",
+  "name": "fēnix® E"
+ },
+ {
+  "id": "fr165",
+  "name": "Forerunner® 165"
+ },
+ {
+  "id": "fr165m",
+  "name": "Forerunner® 165 Music"
+ },
+ {
+  "id": "fr170",
+  "name": "Forerunner® 170"
+ },
+ {
+  "id": "fr170m",
+  "name": "Forerunner® 170 Music"
+ },
+ {
+  "id": "fr265",
+  "name": "Forerunner® 265"
+ },
+ {
+  "id": "fr265s",
+  "name": "Forerunner® 265s"
+ },
+ {
+  "id": "fr57042mm",
+  "name": "Forerunner® 570 42mm"
+ },
+ {
+  "id": "fr57047mm",
+  "name": "Forerunner® 570 47mm"
+ },
+ {
+  "id": "fr965",
+  "name": "Forerunner® 965"
+ },
+ {
+  "id": "fr970",
+  "name": "Forerunner® 970"
+ },
+ {
+  "id": "instinct3amoled45mm",
+  "name": "Instinct® 3 AMOLED 45mm"
+ },
+ {
+  "id": "instinct3amoled50mm",
+  "name": "Instinct® 3 AMOLED 50mm"
+ },
+ {
+  "id": "instinctcrossoveramoled",
+  "name": "Instinct® Crossover AMOLED"
+ },
+ {
+  "id": "marq2",
+  "name": "MARQ® (Gen 2) Athlete / Adventurer / Captain / Golfer / Carbon Edition / Commander - Carbon Edition"
+ },
+ {
+  "id": "marq2aviator",
+  "name": "MARQ® (Gen 2) Aviator"
+ },
+ {
+  "id": "venu2",
+  "name": "Venu® 2"
+ },
+ {
+  "id": "venu2plus",
+  "name": "Venu® 2 Plus"
+ },
+ {
+  "id": "venu2s",
+  "name": "Venu® 2S"
+ },
+ {
+  "id": "venu3",
+  "name": "Venu® 3"
+ },
+ {
+  "id": "venu3s",
+  "name": "Venu® 3S"
+ },
+ {
+  "id": "venu441mm",
+  "name": "Venu® 4 41mm"
+ },
+ {
+  "id": "venu445mm",
+  "name": "Venu® 4 45mm / D2™ Air X15"
+ },
+ {
+  "id": "vivoactive5",
+  "name": "vívoactive® 5"
+ },
+ {
+  "id": "vivoactive6",
+  "name": "vívoactive® 6"
+ }
+]

@@ -29,6 +29,8 @@ The local `mockups/` + `faces.html` are the only design source; there is no onli
   vector fonts, icons, AOD shift) are shared: copy them unchanged into each new face; put
   face-specific helpers in the view or a `<Name>Extra.mc`.
 - `faces/<Name>Face/` — one project per face (e.g. `RingFace`, `DialFace`), classes `<Name>App`/`<Name>View`.
+- `tools/devices.json` — supported device ids + display names for faces.html; regenerate after editing
+  `tools/devices.txt`: `. tools/ciq_env.sh && ciq_devices` (see git history for the one-liner).
 - `tools/` — `build.sh` (vivoactive6 sim build), `build_devices.sh` (build + fit check for every
   manifest product), `set_products.sh` (writes `devices.txt` into manifests), `icon.py`
   (54x54 launcher icon from a JSON shape list, `faces/<Dir>/icon.json`). Scripts take face

@@ -77,6 +77,17 @@ main { max-width: 1600px; margin: 0 auto; padding: 12px 24px 48px; display: grid
 body.only-active .board.aod, body.only-aod .board.active { display: none; }
 .download-btn { background: #e8e8e8; color: #111; border-radius: 8px; padding: 7px 12px; font-weight: 600; text-decoration: none; white-space: nowrap; }
 .download-btn:hover { background: #fff; }
+.dl-list { display: grid; gap: 8px; margin-top: 14px; }
+.dl-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); text-decoration: none; background: #1d1d1d; }
+.dl-item:hover { border-color: #777; }
+.dl-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.dl-text span { color: var(--muted); font-size: 12px; }
+.dl-item code { color: var(--muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 45%; }
+.dlg-dl { flex: none; margin-top: 10px; }
+.dl-devices { margin-top: 14px; font-size: 12px; color: var(--muted); }
+.dl-devices > summary { cursor: pointer; }
+.dl-devices .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+@media (max-width: 480px) { .dl-item code { display: none; } }
 .card-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--card); color: var(--text); border: 1px solid #3a3a3a; border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 12px; cursor: pointer; text-decoration: none; }
 .card-btn:hover { border-color: #777; }
 .download-btn { display: inline-flex; align-items: center; gap: 6px; }
@@ -94,7 +105,7 @@ body.only-active .board.aod, body.only-aod .board.active { display: none; }
   <h1>Watch faces</h1>
   <p>31 faces · active + always-on · 390 × 390</p>
   <input class="search" id="search" type="search" placeholder="Search faces or settings…" aria-label="Search faces">
-  <a class="download-btn" href="https://github.com/NayThuKhant/Garmin/releases/latest" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Download</span></a>
+  <a class="download-btn" id="download-all" href="https://github.com/NayThuKhant/Garmin/releases/latest" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Download</span></a>
   <div class="controls" role="group" aria-label="Show">
     <button type="button" data-show="both" aria-pressed="true">Both</button>
     <button type="button" data-show="active" aria-pressed="false">Active</button>
@@ -107,6 +118,7 @@ body.only-active .board.aod, body.only-aod .board.active { display: none; }
 class DCLogic { constructor(props) { this.props = props || {}; } }
 const faces = JSON.parse(document.getElementById('faces-data').textContent);
 const RELEASES = 'https://github.com/NayThuKhant/Garmin/releases/latest';   // latest GitHub release
+const DEVICES = [{"id": "approachs50", "name": "Approach® S50"}, {"id": "approachs7042mm", "name": "Approach® S70 42mm"}, {"id": "approachs7047mm", "name": "Approach® S70 47mm"}, {"id": "approachs7243mm", "name": "Approach® S72 43mm"}, {"id": "approachs7247mm", "name": "Approach® S72 47mm"}, {"id": "d2airx10", "name": "D2™ Air X10"}, {"id": "d2mach1", "name": "D2™ Mach 1"}, {"id": "d2mach2", "name": "D2™ Mach 2"}, {"id": "d2mach2pro", "name": "D2™ Mach 2 Pro"}, {"id": "descentg2", "name": "Descent™ G2"}, {"id": "descentmk343mm", "name": "Descent™ Mk3 43mm / Mk3i 43mm"}, {"id": "descentmk351mm", "name": "Descent™ Mk3i 51mm"}, {"id": "epix2", "name": "epix™ (Gen 2) / quatix® 7 Sapphire"}, {"id": "epix2pro42mm", "name": "epix™ Pro (Gen 2) 42mm"}, {"id": "epix2pro47mm", "name": "epix™ Pro (Gen 2) 47mm / quatix® 7 Pro"}, {"id": "epix2pro51mm", "name": "epix™ Pro (Gen 2) 51mm / D2™ Mach 1 Pro / tactix® 7 – AMOLED Edition"}, {"id": "fenix843mm", "name": "fēnix® 8 43mm"}, {"id": "fenix847mm", "name": "fēnix® 8 47mm / 51mm / tactix® 8 47mm / 51mm / quatix® 8 47mm / 51mm"}, {"id": "fenix8pro47mm", "name": "fēnix® 8 Pro 47mm / 51mm / MicroLED / quatix® 8 Pro 47mm / 51mm"}, {"id": "fenix943mm", "name": "fēnix® 9 43mm"}, {"id": "fenix947mm", "name": "fēnix® 9 47mm / 51mm"}, {"id": "fenix9pro43mm", "name": "fēnix® 9 Pro 43mm"}, {"id": "fenix9pro47mm", "name": "fēnix® 9 Pro 47mm"}, {"id": "fenix9pro51mm", "name": "fēnix® 9 Pro 51mm"}, {"id": "fenixe", "name": "fēnix® E"}, {"id": "fr165", "name": "Forerunner® 165"}, {"id": "fr165m", "name": "Forerunner® 165 Music"}, {"id": "fr170", "name": "Forerunner® 170"}, {"id": "fr170m", "name": "Forerunner® 170 Music"}, {"id": "fr265", "name": "Forerunner® 265"}, {"id": "fr265s", "name": "Forerunner® 265s"}, {"id": "fr57042mm", "name": "Forerunner® 570 42mm"}, {"id": "fr57047mm", "name": "Forerunner® 570 47mm"}, {"id": "fr965", "name": "Forerunner® 965"}, {"id": "fr970", "name": "Forerunner® 970"}, {"id": "instinct3amoled45mm", "name": "Instinct® 3 AMOLED 45mm"}, {"id": "instinct3amoled50mm", "name": "Instinct® 3 AMOLED 50mm"}, {"id": "instinctcrossoveramoled", "name": "Instinct® Crossover AMOLED"}, {"id": "marq2", "name": "MARQ® (Gen 2) Athlete / Adventurer / Captain / Golfer / Carbon Edition / Commander - Carbon Edition"}, {"id": "marq2aviator", "name": "MARQ® (Gen 2) Aviator"}, {"id": "venu2", "name": "Venu® 2"}, {"id": "venu2plus", "name": "Venu® 2 Plus"}, {"id": "venu2s", "name": "Venu® 2S"}, {"id": "venu3", "name": "Venu® 3"}, {"id": "venu3s", "name": "Venu® 3S"}, {"id": "venu441mm", "name": "Venu® 4 41mm"}, {"id": "venu445mm", "name": "Venu® 4 45mm / D2™ Air X15"}, {"id": "vivoactive5", "name": "vívoactive® 5"}, {"id": "vivoactive6", "name": "vívoactive® 6"}];       // supported watches (tools/devices.json)
 const grid = document.getElementById('grid');
 
 function lookup(vals, path) {
@@ -265,15 +277,11 @@ function openSettings(face, state, redrawCard) {
   head.appendChild(h); head.appendChild(x); dlg.appendChild(head);
   const sub = settingsSummary(face);
   if (sub) dlg.appendChild(el('p', 'dlg-sub', sub));
-  const dir = (face.dir || '').split('/').pop();
-  if (dir && RELEASES !== '#') {
-    const files = el('p', 'dlg-files');
-    files.appendChild(el('span', null, 'Download: '));
-    const a = el('a', null, dir + '.zip');
-    a.href = RELEASES.replace(/\/latest$/, '/latest/download/') + dir + '.zip';
-    files.appendChild(a);
-    files.appendChild(el('span', null, '(' + dir + '.iq for all devices, vivoactive6.prg, vivoactive5.prg)'));
-    dlg.appendChild(files);
+  if (face.dir && RELEASES !== '#') {
+    const b = iconButton('button', 'card-btn dlg-dl', SVG_DOWNLOAD, 'Download');
+    b.type = 'button';
+    b.addEventListener('click', () => openDownload(face));
+    dlg.appendChild(b);
   }
   const body = el('div', 'dlg-body');
   const left = el('div', 'dlg-preview');
@@ -299,6 +307,53 @@ function openSettings(face, state, redrawCard) {
   refresh();
   dlg.showModal();
   fit(inner);
+}
+// Download popup: pick a file from the latest release.
+const DL = RELEASES.replace(/\/latest$/, '/latest/download/');
+function openDownload(face) {
+  dlg.textContent = '';
+  dlg.dataset.face = '';
+  const head = el('div', 'dlg-head');
+  const h = el('h2', null, face ? 'Download ' + face.title : 'Download all faces'); h.id = 'dlg-title';
+  const x = el('button', 'dlg-close', '✕'); x.type = 'button'; x.setAttribute('aria-label', 'Close');
+  x.addEventListener('click', () => dlg.close());
+  head.appendChild(h); head.appendChild(x); dlg.appendChild(head);
+  dlg.appendChild(el('p', 'dlg-sub', 'From the latest release on GitHub. Sideload a .prg to GARMIN/APPS on the watch (USB, MTP mode); upload the .iq to the Connect IQ Store or as a private beta.'));
+  const list = el('div', 'dl-list');
+  const dir = face ? (face.dir || '').split('/').pop() : '';
+  const items = face ? [
+    ['vívoactive 6', 'Sideload to your watch', dir + '-vivoactive6.prg'],
+    ['vívoactive 5', 'Sideload to your watch', dir + '-vivoactive5.prg'],
+    ['All devices', 'Connect IQ Store / private beta package', dir + '.iq'],
+    ['Everything', 'Folder ' + dir + '/ with all three files', dir + '.zip'],
+  ] : [
+    ['All faces', 'One folder per face (.iq + vívoactive 6 and 5 .prg)', 'AllFaces.zip'],
+  ];
+  for (const [title, desc, file] of items) {
+    const a = el('a', 'dl-item');
+    a.href = DL + file;
+    a.innerHTML = SVG_DOWNLOAD;
+    const txt = el('span', 'dl-text');
+    txt.appendChild(el('strong', null, title));
+    txt.appendChild(el('span', null, desc));
+    a.appendChild(txt);
+    a.appendChild(el('code', null, file));
+    list.appendChild(a);
+  }
+  const all = el('a', 'dl-item');
+  all.href = RELEASES.replace(/\/latest$/, ''); all.target = '_blank'; all.rel = 'noopener';
+  all.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>';
+  const t2 = el('span', 'dl-text'); t2.appendChild(el('strong', null, 'All releases')); t2.appendChild(el('span', null, 'Every version on GitHub'));
+  all.appendChild(t2);
+  list.appendChild(all);
+  dlg.appendChild(list);
+  const sup = el('details', 'more dl-devices');
+  sup.appendChild(el('summary', null, 'Supported devices (' + DEVICES.length + ') — the .iq covers all of them'));
+  const box = el('div', 'chips');
+  for (const d of DEVICES) { const c = el('span', 'chip', d.name); c.title = d.id; box.appendChild(c); }
+  sup.appendChild(box);
+  dlg.appendChild(sup);
+  dlg.showModal();
 }
 const inners = [];
 for (const face of faces) {
@@ -331,9 +386,10 @@ for (const face of faces) {
   foot.appendChild(btn);
   const dir = (face.dir || '').split('/').pop();
   if (dir) {
-    const dl = iconButton('a', 'card-btn', SVG_DOWNLOAD, 'Download');
-    dl.href = RELEASES.replace(/\/latest$/, '/latest/download/') + dir + '.zip';
-    dl.setAttribute('aria-label', 'Download ' + face.title + ' (' + dir + '.zip) from the latest release');
+    const dl = iconButton('button', 'card-btn', SVG_DOWNLOAD, 'Download');
+    dl.type = 'button';
+    dl.setAttribute('aria-label', 'Download ' + face.title);
+    dl.addEventListener('click', () => openDownload(face));
     foot.appendChild(dl);
   }
   card.appendChild(foot);
@@ -361,6 +417,7 @@ document.getElementById('search').addEventListener('input', ev => {
   empty.hidden = shown > 0;
   refit();
 });
+document.getElementById('download-all').addEventListener('click', ev => { ev.preventDefault(); openDownload(null); });
 const refit = () => inners.forEach(fit);
 new ResizeObserver(refit).observe(grid);
 refit();

@@ -14,7 +14,7 @@ its color options and every setting it offers ([`faces.html`](faces.html), publi
 **From a release** — download from [Releases](../../releases):
 
 - `<Face>.zip` — unzips to a `<Face>/` folder with `<Face>.iq`, `vivoactive6.prg` and `vivoactive5.prg`
-  (`AllFaces.zip` has every face). Sideload the `.prg` to a vívoactive 6 or 5: connect the watch by USB (watch
+  (`AllFaces.zip` has every face); the same files are also attached individually. Sideload the `.prg` to a vívoactive 6 or 5: connect the watch by USB (watch
   *Settings → System → USB Mode* = **MTP**), open it with [OpenMTP](https://openmtp.ganeshrvel.com)
   on macOS, copy the file to `GARMIN/APPS/`, quit OpenMTP and unplug. Pick the face under
   *Settings → Watch Face*. Sideloaded faces don't get phone settings.
