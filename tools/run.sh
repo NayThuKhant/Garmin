@@ -1,10 +1,17 @@
 #!/bin/sh
 # Build a face and run it in the simulator, with its settings available in
-# File > Edit Persistent Storage / App Settings Editor.   Usage: tools/run.sh MeridianFace [device]
+# File > Edit Persistent Storage / App Settings Editor.
+#   tools/run.sh [Face] [device]   — anything left out is picked from a list (Enter = default).
 cd "$(dirname "$0")/.." || exit 1
-d=${1%/}; d=faces/${d#faces/}; name=$(basename "$d"); dev=${2:-vivoactive6}
 . tools/ciq_env.sh
-tools/build.sh "$name" || exit 1
+face=${1%/}
+if [ -z "$face" ]; then
+  ciq_interactive || { echo "usage: tools/run.sh Face [device]" >&2; exit 1; }
+  face=$(ciq_faces | ciq_pick "Face" MeridianFace) || exit 1
+fi
+d=faces/${face#faces/}; name=$(basename "$d")
+dev=$(ciq_device "$2") || exit 1
+tools/build.sh -d "$dev" "$name" || exit 1
 pgrep -f ConnectIQ.app >/dev/null || { "$SDK/bin/connectiq" >/dev/null 2>&1 & sleep 5; }
 # The simulator's App Settings Editor reads <APP>-settings.json from its GARMIN/Settings folder.
 SIMDIR="${TMPDIR%/}/com.garmin.connectiq/GARMIN/Settings"

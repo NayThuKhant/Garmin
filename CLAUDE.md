@@ -58,12 +58,14 @@ W SplitFlap · X DotMatrix · Y Eclipse · Z Polar · AA Words · AB Segment · 
 - SDK: Connect IQ 9.2 at
   `~/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-*/`
 - Build: `java -jar <sdk>/bin/monkeybrains.jar -o bin/<App>.prg -f monkey.jungle -y ../../developer_key -d vivoactive6_sim -w` (run inside `faces/<Dir>`)
-  or `tools/build.sh <Dir>...` (no args = all `faces/*Face`).
+  or `tools/build.sh [-d device] [Dir...]`: in a terminal it asks for the face (Enter = all) and the
+  device (Enter = vivoactive6) from numbered lists; with no terminal (CI) it builds all faces for
+  vivoactive6 without asking. Pass `-d`/faces to skip the prompts in scripts.
 - All devices: `tools/set_products.sh` then `tools/build_devices.sh [<Dir>...]`. A device only
   builds if its files are installed in `~/Library/Application Support/Garmin/ConnectIQ/Devices/`
   (SDK Manager → Devices; otherwise "Invalid device id"). Missing devices are reported as MISSING.
   The "Invalid device id found in the application manifest" warnings mean the same thing.
-- Simulator: `tools/run.sh <Dir>` (builds, starts the simulator, installs the settings file so
+- Simulator: `tools/run.sh [Dir] [device]` (asks for whatever is left out; builds, starts the simulator, installs the settings file so
   File > Edit Persistent Storage > App Settings Editor works, runs the face).
 - CI: `.github/workflows/build.yml` (GitHub Actions) downloads SDK 9.2 + all devices with
   lindell/connect-iq-sdk-manager-cli (secrets GARMIN_USERNAME, GARMIN_PASSWORD, DEVELOPER_KEY_B64; repo

@@ -29,8 +29,10 @@ Requirements: Connect IQ SDK 9.2 and the device files (installed with Garmin's S
 Java 17+, Python 3, and a signing key at `./developer_key` (never committed).
 
 ```sh
-tools/build.sh MeridianFace          # build for the vívoactive 6 simulator (no args = all faces)
-tools/run.sh MeridianFace            # build + run in the simulator (settings editor works)
+tools/build.sh                       # asks for the face (or all) and device from lists
+tools/run.sh                         # asks for face + device, builds and runs it in the simulator
+tools/build.sh -d venu3 MeridianFace # or pass them directly (no prompts; CI: all faces, vivoactive6)
+tools/run.sh MeridianFace venu3
 tools/build_devices.sh MeridianFace  # build + fit-check every device in the manifest
 tools/export.sh MeridianFace         # Store package -> dist/MeridianFace.iq
 ```
