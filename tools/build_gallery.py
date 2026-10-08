@@ -5,9 +5,17 @@ Usage: python3 tools/build_gallery.py   -> writes faces.html at the repo root
 
 Faces are listed in mockups/canvas.json order, active + always-on side by side. Each mockup's
 markup ({{holes}}) and its renderVals() script are embedded and evaluated in the page, with the
-props' defaults; accent swatches re-render a face with another option.
+props' defaults.
+
+Settings come from the face's CODE (faces/<Name>Face/resources/properties/properties.xml + strings,
+and the native editor's watchface.xml), so the page always shows what the watch really offers:
+  - color settings (AccentColor -> mockup prop "accent", SecondaryColor -> "secondary") become
+    swatches that re-render the mockup with that color;
+  - every setting is listed in a "Settings" panel (phone settings, on-watch editor, on-watch menu).
+CI fails if faces.html is out of date (rerun this script after any face/mockup change).
 """
 import json, os, re
+import xml.etree.ElementTree as ET
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MOCK = os.path.join(ROOT, "mockups")
@@ -23,6 +31,90 @@ def parse(path):
     return body, props, script, fonts
 
 
+FACES = os.path.join(ROOT, "faces")
+PROP_FOR = {"AccentColor": "accent", "SecondaryColor": "secondary"}   # code color setting -> mockup prop
+# Non-color code settings driven by a mockup color prop, matched option-by-option (same order):
+INDEX_PROP = {"Theme": "accent"}
+
+
+def face_dir(mockup_file):
+    """mockups/Tide.dc.html / TideAOD.dc.html -> faces/TideFace (Main/RingAOD -> RingFace)."""
+    name = mockup_file.replace(".dc.html", "")
+    name = name[:-3] if name.endswith("AOD") else name
+    name = "Ring" if name == "Main" else name
+    d = os.path.join(FACES, name + "Face")
+    return d if os.path.isdir(d) else None
+
+
+def strings_of(d):
+    out = {}
+    p = os.path.join(d, "resources", "strings", "strings.xml")
+    if os.path.exists(p):
+        for s in ET.parse(p).getroot().iter("string"):
+            out[s.get("id")] = "".join(s.itertext())
+    return out
+
+
+def settings_of(d):
+    """Settings exactly as the face's code defines them."""
+    res = {"groups": [], "native": None, "menu": False}
+    strings = strings_of(d)
+    lab = lambda v: strings.get(v[len("@Strings."):], v) if v and v.startswith("@Strings.") else (v or "")
+    p = os.path.join(d, "resources", "properties", "properties.xml")
+    if os.path.exists(p):
+        root = ET.parse(p).getroot()
+        defaults = {pr.get("id"): (pr.text or "").strip() for pr in root.iter("property")}
+        sets = root.find("settings")
+        if sets is not None:
+            def item(s):
+                key = s.get("propertyKey", "").replace("@Properties.", "")
+                cfg = s.find("settingConfig")
+                typ = cfg.get("type") if cfg is not None else "?"
+                opts = [{"label": lab("".join(e.itertext()).strip()), "value": e.get("value")}
+                        for e in (cfg.findall("listEntry") if cfg is not None else [])]
+                d0 = defaults.get(key, "")
+                dl = next((o["label"] for o in opts if o["value"] == d0), "On" if d0 == "true" else "Off" if d0 == "false" else d0)
+                return {"key": key, "title": lab(s.get("title")), "type": typ, "options": opts, "default": dl}
+            groups = sets.findall("group")
+            if groups:
+                for g in groups:
+                    res["groups"].append({"title": lab(g.get("title")), "items": [item(s) for s in g.findall("setting")]})
+            else:
+                res["groups"].append({"title": "", "items": [item(s) for s in sets.findall("setting")]})
+    for wf in (os.path.join(d, "resources-wfconfig", "configs", "watchface.xml"), os.path.join(d, "resources", "configs", "watchface.xml")):
+        if os.path.exists(wf):
+            r = ET.parse(wf).getroot().find("watchface-config")
+            styles = [lab(s.get("label")) for s in r.iter("style")]
+            dcol = [lab(c.get("label")) for c in r.iter("color")] if r.find("dataColors") is not None else []
+            acc = r.find("accentColors")
+            res["native"] = {"styles": styles, "dataColors": dcol,
+                             "accentAny": acc is not None and acc.get("allowAny") == "true",
+                             "fields": len(r.findall("data/complication"))}
+            break
+    src = "".join(open(os.path.join(d, "source", f)).read() for f in os.listdir(os.path.join(d, "source")) if f.endswith(".mc"))
+    res["menu"] = "function getSettingsView" in src
+    return res
+
+
+def swatches_of(settings, mock_props):
+    rows = []
+    for g in settings["groups"]:
+        for it in g["items"]:
+            prop = INDEX_PROP.get(it["key"])
+            mp = mock_props.get(prop) if prop else None
+            if mp and mp.get("options") and len(mp["options"]) == len(it["options"]):
+                rows.append({"prop": prop, "title": it["title"],
+                             "options": [{"color": c, "label": o["label"]} for c, o in zip(mp["options"], it["options"])]})
+    for g in settings["groups"]:
+        for it in g["items"]:
+            prop = PROP_FOR.get(it["key"])
+            if prop and it["type"] == "list" and it["options"]:
+                rows.append({"prop": prop, "title": it["title"],
+                             "options": [{"color": "#%06X" % (int(o["value"]) & 0xFFFFFF), "label": o["label"]}
+                                         for o in it["options"] if o["value"].lstrip("-").isdigit() and int(o["value"]) >= 0]})
+    return rows
+
+
 def main():
     canvas = json.load(open(os.path.join(MOCK, "canvas.json")))
     faces, fonts = [], []
@@ -36,7 +128,12 @@ def main():
                 fonts.append(u.replace("&amp;", "&"))
         entry = next((x for x in faces if x["title"] == base), None)
         if entry is None:
-            entry = {"title": base, "boards": []}
+            entry = {"title": base, "boards": [], "settings": None, "swatches": []}
+            d = face_dir(name)
+            if d:
+                entry["dir"] = os.path.relpath(d, ROOT)
+                entry["settings"] = settings_of(d)
+                entry["swatches"] = swatches_of(entry["settings"], props)
             faces.append(entry)
         entry["boards"].append({"mode": mode or "active", "file": name, "html": body,
                                 "props": {k: v for k, v in props.items() if not k.startswith("$")},
@@ -74,7 +171,22 @@ main { max-width: 1400px; margin: 0 auto; padding: 16px 24px 48px; display: grid
 .board { flex: 1; min-width: 0; text-align: center; color: var(--muted); font-size: 12px; }
 .screen { width: 100%; aspect-ratio: 1; position: relative; }
 .screen > .inner { position: absolute; left: 0; top: 0; width: 390px; height: 390px; transform-origin: 0 0; }
-.swatches { display: flex; gap: 6px; margin-top: 10px; }
+.swatches { display: flex; gap: 10px; align-items: center; margin-top: 10px; font-size: 12px; color: var(--muted); }
+.swatches > span { min-width: 72px; }
+.swatches > div { display: flex; gap: 6px; flex-wrap: wrap; }
+.settings { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 8px; font-size: 12px; color: var(--muted); }
+.settings > summary { cursor: pointer; color: var(--text); }
+.settings h3 { margin: 12px 0 4px; font-size: 12px; color: var(--text); font-weight: 600; }
+.settings dl { margin: 0; display: grid; grid-template-columns: minmax(90px, 34%) 1fr; gap: 6px 10px; }
+.settings dt { color: var(--text); }
+.settings dd { margin: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.settings .more { width: 100%; }
+.settings .more > summary { cursor: pointer; }
+.settings .more[open] { display: flex; flex-wrap: wrap; gap: 4px; }
+.settings .more[open] > summary { width: 100%; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+.chip.on { border-color: #888; color: var(--text); }
+.settings .note { margin: 10px 0 0; }
 .swatches button { width: 20px; height: 20px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
 .swatches button[aria-pressed="true"] { border-color: #fff; }
 body.only-active .board.aod, body.only-aod .board.active { display: none; }
@@ -115,6 +227,62 @@ function fit(el) {
   const s = el.parentElement.clientWidth / 390;
   el.style.transform = 'scale(' + s + ')';
 }
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+// Every setting the face's code defines: phone settings, on-watch editor, on-watch menu.
+function settingsPanel(face) {
+  const s = face.settings;
+  const d = el('details', 'settings');
+  const n = s ? s.groups.reduce((a, g) => a + g.items.length, 0) : 0;
+  const where = [];
+  if (n) where.push(n + ' phone setting' + (n > 1 ? 's' : ''));
+  if (s && s.native) where.push('on-watch editor');
+  if (s && s.menu) where.push('on-watch menu');
+  d.appendChild(el('summary', null, where.length ? 'Settings · ' + where.join(' · ') : 'No settings (fixed design)'));
+  if (!s) return d;
+  for (const g of s.groups) {
+    if (g.title) d.appendChild(el('h3', null, g.title));
+    const dl = el('dl');
+    for (const it of g.items) {
+      dl.appendChild(el('dt', null, it.title));
+      const dd = el('dd');
+      if (it.type === 'boolean') {
+        dd.appendChild(el('span', 'def', 'On / Off · default ' + it.default));
+      } else if (it.options.length <= 12) {
+        for (const o of it.options) dd.appendChild(el('span', 'chip' + (o.label === it.default ? ' on' : ''), o.label));
+      } else {
+        const more = el('details', 'more');
+        more.appendChild(el('summary', null, it.options.length + ' options · default ' + it.default));
+        for (const o of it.options) more.appendChild(el('span', 'chip' + (o.label === it.default ? ' on' : ''), o.label));
+        dd.appendChild(more);
+      }
+      dl.appendChild(dd);
+    }
+    d.appendChild(dl);
+  }
+  if (s.native) {
+    d.appendChild(el('h3', null, 'On-watch editor (Watch Face → Customize)'));
+    const dl = el('dl');
+    dl.appendChild(el('dt', null, 'Style'));
+    const st = el('dd'); const more = el('details', 'more');
+    more.appendChild(el('summary', null, s.native.styles.length + ' styles'));
+    for (const x of s.native.styles) more.appendChild(el('span', 'chip', x));
+    st.appendChild(more); dl.appendChild(st);
+    if (s.native.accentAny) { dl.appendChild(el('dt', null, 'Accent color')); dl.appendChild(el('dd', null, 'any color (color picker)')); }
+    if (s.native.dataColors.length) {
+      dl.appendChild(el('dt', null, 'Data color'));
+      const dd = el('dd'); for (const x of s.native.dataColors) dd.appendChild(el('span', 'chip', x)); dl.appendChild(dd);
+    }
+    if (s.native.fields) { dl.appendChild(el('dt', null, 'Data fields')); dl.appendChild(el('dd', null, s.native.fields + ' fields, any Garmin complication')); }
+    d.appendChild(dl);
+  }
+  if (s.menu) d.appendChild(el('p', 'note', 'Watches without the editor (vívoactive 5, Venu 2/3, FR 165/265/965, epix 2, …) get the same phone settings as an on-watch menu.'));
+  return d;
+}
 const inners = [];
 for (const face of faces) {
   const card = document.createElement('section');
@@ -145,26 +313,36 @@ for (const face of faces) {
     draw.push(() => { inner.innerHTML = render(b, state); });
   }
   card.appendChild(pair);
-  if (accent && accent.props.accent.options) {
-    const sw = document.createElement('div');
-    sw.className = 'swatches';
-    sw.setAttribute('role', 'group');
-    sw.setAttribute('aria-label', face.title + ' accent');
-    for (const c of accent.props.accent.options) {
+  // Color swatches = the face's real color settings (from its code), applied to the mockup.
+  for (const row of face.swatches || []) {
+    const wrap = document.createElement('div');
+    wrap.className = 'swatches';
+    const lbl = document.createElement('span');
+    lbl.textContent = row.title;
+    wrap.appendChild(lbl);
+    const grp = document.createElement('div');
+    grp.setAttribute('role', 'group');
+    grp.setAttribute('aria-label', face.title + ' ' + row.title);
+    const mp = (face.boards.find(b => b.props[row.prop]) || {props: {}}).props[row.prop];
+    const def = mp && mp.default ? String(mp.default).toUpperCase() : (row.options[0] || {}).color;
+    for (const o of row.options) {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.style.background = c;
-      btn.setAttribute('aria-label', 'Accent ' + c);
-      btn.setAttribute('aria-pressed', c === accent.props.accent.default ? 'true' : 'false');
+      btn.style.background = o.color;
+      btn.title = o.label;
+      btn.setAttribute('aria-label', row.title + ' ' + o.label);
+      btn.setAttribute('aria-pressed', o.color.toUpperCase() === def ? 'true' : 'false');
       btn.addEventListener('click', () => {
-        state.accent = c;
-        sw.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'));
+        state[row.prop] = o.color;
+        grp.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'));
         draw.forEach(f => f());
       });
-      sw.appendChild(btn);
+      grp.appendChild(btn);
     }
-    card.appendChild(sw);
+    wrap.appendChild(grp);
+    card.appendChild(wrap);
   }
+  card.appendChild(settingsPanel(face));
   draw.forEach(f => f());
   grid.appendChild(card);
 }

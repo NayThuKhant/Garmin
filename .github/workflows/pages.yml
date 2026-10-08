@@ -4,7 +4,7 @@ name: Publish faces.html
 on:
   push:
     branches: [main]
-    paths: ["faces.html", ".github/workflows/pages.yml"]
+    paths: ["faces.html", "mockups/**", "faces/**", "tools/build_gallery.py", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -24,6 +24,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Always publish a fresh gallery generated from the current code (settings) and mockups.
+      - run: python3 tools/build_gallery.py
       - run: mkdir _site && cp faces.html _site/index.html && cp faces.html _site/faces.html
       - uses: actions/upload-pages-artifact@v3
         with:

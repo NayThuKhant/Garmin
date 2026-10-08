@@ -19,6 +19,11 @@ jobs:
       faces: ${{ steps.faces.outputs.list }}
     steps:
       - uses: actions/checkout@v4
+      # faces.html must match the code (settings) and mockups: regenerate and compare.
+      - name: Check faces.html is up to date
+        run: |
+          python3 tools/build_gallery.py
+          git diff --quiet -- faces.html || { echo "::error::faces.html is out of date - run python3 tools/build_gallery.py and commit it"; git diff --stat -- faces.html; exit 1; }
       # Every run builds all faces (public repo: Actions minutes are unlimited).
       - id: faces
         run: echo "list=$(ls -d faces/*Face | xargs -n1 basename | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"

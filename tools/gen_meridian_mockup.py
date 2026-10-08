@@ -118,12 +118,14 @@ script = '''class Component extends DCLogic {
       '#F4EEE3': { hourEnd: '#1F4E5F', track: '#3E8EA3', outline: '#C9B79A', text: '#2B2B2B', hour: '#1F4E5F', min: '#B3412E', day: '#B3412E',
                    steps: '#3E8EA3', batt: '#3E8EA3', weather: '#3E8EA3', heart: '#3E8EA3', cal: '#B3412E', sun: '#B3412E', bell: '#B3412E' },
       '#20262E': { hourEnd: '#5FD3F3', track: '#55606C', outline: '#4A5562', text: '#FFFFFF', hour: '#9BF0B0', min: '#5FD3F3', day: '#5FD3F3',
-                   steps: '#C6F432', batt: '#C6F432', weather: '#C6F432', heart: '#C6F432', cal: '#E6E6E6', sun: '#C6F432', bell: '#C6F432' }
+                   steps: '#C6F432', batt: '#C6F432', weather: '#C6F432', heart: '#C6F432', cal: '#E6E6E6', sun: '#C6F432', bell: '#C6F432' },
+      '#FFFFFF': { hourEnd: '#1F4E5F', track: '#D6D6D6', outline: '#BDBDBD', text: '#1B1B1B', hour: '#1F4E5F', min: '#B3412E', day: '#4A90E2',
+                   steps: '#F0399F', batt: '#3FBF3F', weather: '#F5A33A', heart: '#EF3348', cal: '#8A8A8A', sun: '#F7B52C', bell: '#E0B800' }
     };
     return Object.assign({ accent: bg, bg: bg }, themes[bg] || themes['#0B0B0B']);
   }
 }'''
-props = {"accent": {"editor": "color", "default": "#0B0B0B", "options": ["#0B0B0B", "#1B2A44", "#F4EEE3", "#20262E"]},
+props = {"accent": {"editor": "color", "default": "#0B0B0B", "options": ["#0B0B0B", "#1B2A44", "#20262E", "#F4EEE3", "#FFFFFF"]},  # same order as the code's Theme setting
          "$preview": {"width": 390, "height": 390}}
 open(os.path.join(OUT, 'Meridian.dc.html'), 'w').write(page('Watch face AE: Meridian', build(HOLES), props, script))
 open(os.path.join(OUT, 'MeridianAOD.dc.html'), 'w').write(page('Watch face AE: Always-on mode', build(HOLES, aod=True),

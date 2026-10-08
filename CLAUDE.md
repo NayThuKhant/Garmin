@@ -10,7 +10,14 @@ Any UI change to a face (e.g. "remove the white battery block on H") must be app
 in the same turn, without being asked:
 1. the watch face code in `faces/<Name>Face/` (rebuild with `tools/build.sh <Name>Face`),
 2. the mockups `mockups/<Name>.dc.html` and, if affected, `mockups/<Name>AOD.dc.html`,
-3. `faces.html` — regenerate with `python3 tools/build_gallery.py`.
+3. `faces.html` — regenerate with `python3 tools/build_gallery.py` and commit it. It must ALWAYS match the
+   code: it reads each face's settings straight from `faces/<Dir>/resources/properties/properties.xml`
+   (+ strings, + the native editor's `watchface.xml`), shows every configurable setting in a Settings
+   panel, and turns color settings (AccentColor/SecondaryColor; Meridian's Theme) into swatches that
+   recolor the mockup. So any settings change in code shows up after regenerating. CI fails the build
+   if the committed `faces.html` is stale, and the Pages workflow republishes a freshly generated one.
+   New face with settings: name the color properties AccentColor/SecondaryColor and give the mockup
+   matching `accent`/`secondary` props so the swatches work.
 The local `mockups/` + `faces.html` are the only design source; there is no online canvas to keep in sync.
 
 ## Layout of this folder
