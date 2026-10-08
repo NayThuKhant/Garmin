@@ -33,8 +33,6 @@ def parse(path):
 
 FACES = os.path.join(ROOT, "faces")
 PROP_FOR = {"AccentColor": "accent", "SecondaryColor": "secondary"}   # code color setting -> mockup prop
-# Non-color code settings driven by a mockup color prop, matched option-by-option (same order):
-INDEX_PROP = {"Theme": "accent"}
 
 
 def face_dir(mockup_file):
@@ -100,17 +98,19 @@ def swatches_of(settings, mock_props):
     rows = []
     for g in settings["groups"]:
         for it in g["items"]:
-            prop = INDEX_PROP.get(it["key"])
-            mp = mock_props.get(prop) if prop else None
-            if mp and mp.get("options") and len(mp["options"]) == len(it["options"]):
-                rows.append({"prop": prop, "title": it["title"],
-                             "options": [{"color": c, "label": o["label"]} for c, o in zip(mp["options"], it["options"])]})
+            # a non-color setting whose mockup prop lists a swatch color per option (Meridian's Theme)
+            mp = mock_props.get(it["key"])
+            if mp and mp.get("swatches") and len(mp["swatches"]) == len(it["options"]):
+                rows.append({"prop": it["key"], "title": it["title"],
+                             "options": [{"color": c, "label": o["label"], "value": int(o["value"])}
+                                         for c, o in zip(mp["swatches"], it["options"])]})
     for g in settings["groups"]:
         for it in g["items"]:
             prop = PROP_FOR.get(it["key"])
             if prop and it["type"] == "list" and it["options"]:
                 rows.append({"prop": prop, "title": it["title"],
-                             "options": [{"color": "#%06X" % (int(o["value"]) & 0xFFFFFF), "label": o["label"]}
+                             "options": [{"color": "#%06X" % (int(o["value"]) & 0xFFFFFF), "label": o["label"],
+                                          "value": "#%06X" % (int(o["value"]) & 0xFFFFFF)}
                                          for o in it["options"] if o["value"].lstrip("-").isdigit() and int(o["value"]) >= 0]})
     return rows
 
@@ -144,6 +144,14 @@ def main():
                 entry["dir"] = os.path.relpath(d, ROOT)
                 entry["settings"] = settings_of(d)
                 entry["swatches"] = swatches_of(entry["settings"], props)
+                for g in entry["settings"]["groups"]:
+                    for it in g["items"]:
+                        # a setting is playable when the mockup has a prop for it: same name (value as-is)
+                        # or a color prop (AccentColor -> accent, value as #RRGGBB)
+                        if it["key"] in props:
+                            it["prop"], it["hex"] = it["key"], False
+                        elif PROP_FOR.get(it["key"]) in props:
+                            it["prop"], it["hex"] = PROP_FOR[it["key"]], True
             faces.append(entry)
         entry["boards"].append({"mode": mode or "active", "file": name, "html": body,
                                 "props": {k: v for k, v in props.items() if not k.startswith("$")},
@@ -210,13 +218,18 @@ main { max-width: 1600px; margin: 0 auto; padding: 12px 24px 48px; display: grid
 .settings .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .chip { border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .chip.on { border-color: #888; color: var(--text); }
+.chip.play { background: none; color: var(--muted); font: inherit; cursor: pointer; }
+.chip.play:hover { border-color: #666; color: var(--text); }
+.chip.play.on { border-color: #ddd; color: var(--text); background: #2a2a2a; }
 .settings .note { margin: 10px 0 0; }
 .swatches button { width: 16px; height: 16px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
 .swatches button[aria-pressed="true"] { border-color: #fff; }
 body.only-active .board.aod, body.only-aod .board.active { display: none; }
 .download-btn { background: #e8e8e8; color: #111; border-radius: 8px; padding: 7px 12px; font-weight: 600; text-decoration: none; white-space: nowrap; }
 .download-btn:hover { background: #fff; }
-.card-download { margin-left: auto; color: var(--text); }
+.card-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--card); color: var(--text); border: 1px solid #3a3a3a; border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 12px; cursor: pointer; text-decoration: none; }
+.card-btn:hover { border-color: #777; }
+.download-btn { display: inline-flex; align-items: center; gap: 6px; }
 .dlg-files { margin: 8px 0 0; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 12px; }
 .dlg-files a { color: #8fc2ff; }
 .search { flex: 1 1 220px; max-width: 360px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font: inherit; }
@@ -231,7 +244,7 @@ body.only-active .board.aod, body.only-aod .board.active { display: none; }
   <h1>Watch faces</h1>
   <p>{{COUNT}} faces · active + always-on · 390 × 390</p>
   <input class="search" id="search" type="search" placeholder="Search faces or settings…" aria-label="Search faces">
-  <a class="download-btn" href="{{RELEASES}}" target="_blank" rel="noopener">Download ↓</a>
+  <a class="download-btn" href="{{RELEASES}}" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Download</span></a>
   <div class="controls" role="group" aria-label="Show">
     <button type="button" data-show="both" aria-pressed="true">Both</button>
     <button type="button" data-show="active" aria-pressed="false">Active</button>
@@ -270,7 +283,28 @@ function el(tag, cls, text) {
   if (text != null) n.textContent = text;
   return n;
 }
+// A setting option's value as the mockup prop expects it.
+function optValue(it, o) {
+  if (it.hex) return '#' + (Number(o.value) & 0xFFFFFF).toString(16).padStart(6, '0').toUpperCase();
+  if (o.value === 'true' || o.value === 'false') return o.value === 'true';
+  return isNaN(Number(o.value)) ? o.value : Number(o.value);
+}
+function currentValue(face, state, prop) {
+  if (state[prop] !== undefined) return state[prop];
+  const b = face.boards.find(x => x.props[prop]);
+  return b ? b.props[prop].default : undefined;
+}
 // Every setting the face's code defines: phone settings, on-watch editor, on-watch menu.
+// Icons (Lucide-style strokes)
+const SVG_SETTINGS = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>';
+const SVG_DOWNLOAD = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>';
+function iconButton(tag, cls, svg, label) {
+  const b = el(tag, cls);
+  b.innerHTML = svg;
+  b.appendChild(el('span', null, label));
+  return b;
+}
+const openLists = new Set();   // keeps expanded option lists open while you click
 function settingCount(s) { return s ? s.groups.reduce((a, g) => a + g.items.length, 0) : 0; }
 function settingsSummary(face) {
   const s = face.settings, n = settingCount(s), where = [];
@@ -279,7 +313,7 @@ function settingsSummary(face) {
   if (s && s.menu) where.push('on-watch menu');
   return where.join(' · ');
 }
-function settingsBody(face) {
+function settingsBody(face, state, onChange) {
   const s = face.settings;
   const d = el('div', 'settings');
   if (!s || (!settingCount(s) && !s.native)) { d.appendChild(el('p', 'note', 'No settings: this face has a fixed design.')); return d; }
@@ -289,16 +323,28 @@ function settingsBody(face) {
     for (const it of g.items) {
       dl.appendChild(el('dt', null, it.title));
       const dd = el('dd');
-      if (it.type === 'boolean') {
-        dd.appendChild(el('span', 'chip on', 'default ' + it.default));
-        dd.appendChild(el('span', 'chip', it.default === 'On' ? 'Off' : 'On'));
-      } else if (it.options.length <= 12) {
-        for (const o of it.options) dd.appendChild(el('span', 'chip' + (o.label === it.default ? ' on' : ''), o.label));
+      const opts = it.type === 'boolean' ? [{label: 'On', value: 'true'}, {label: 'Off', value: 'false'}] : it.options;
+      const cur = it.prop ? currentValue(face, state, it.prop) : undefined;
+      const chip = o => {
+        const on = it.prop ? String(optValue(it, o)).toUpperCase() === String(cur).toUpperCase() : o.label === it.default;
+        if (!it.prop) return el('span', 'chip' + (on ? ' on' : ''), o.label);
+        const b = el('button', 'chip play' + (on ? ' on' : ''), o.label);
+        b.type = 'button';
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        b.addEventListener('click', () => { state[it.prop] = optValue(it, o); onChange(); });
+        return b;
+      };
+      const curLabel = it.prop ? (opts.find(o => String(optValue(it, o)).toUpperCase() === String(cur).toUpperCase()) || {}).label : it.default;
+      if (opts.length <= 12) {
+        for (const o of opts) dd.appendChild(chip(o));
       } else {
         const more = el('details', 'more');
-        more.appendChild(el('summary', null, it.options.length + ' options · default ' + it.default));
+        more.dataset.key = it.key;
+        if (openLists.has(face.title + '/' + it.key)) more.open = true;
+        more.addEventListener('toggle', () => { const k = face.title + '/' + it.key; more.open ? openLists.add(k) : openLists.delete(k); });
+        more.appendChild(el('summary', null, opts.length + ' options · ' + (it.prop ? (curLabel || it.default) : 'default ' + it.default)));
         const box = el('div', 'chips');
-        for (const o of it.options) box.appendChild(el('span', 'chip' + (o.label === it.default ? ' on' : ''), o.label));
+        for (const o of opts) box.appendChild(chip(o));
         more.appendChild(box);
         dd.appendChild(more);
       }
@@ -337,15 +383,15 @@ function swatchRows(face, state, onChange) {
     grp.setAttribute('role', 'group');
     grp.setAttribute('aria-label', face.title + ' ' + row.title);
     const mp = (face.boards.find(b => b.props[row.prop]) || {props: {}}).props[row.prop];
-    const cur = (state[row.prop] || (mp && mp.default) || (row.options[0] || {}).color || '').toUpperCase();
+    const cur = String(state[row.prop] !== undefined ? state[row.prop] : (mp && mp.default !== undefined ? mp.default : (row.options[0] || {}).value)).toUpperCase();
     for (const o of row.options) {
       const btn = el('button');
       btn.type = 'button';
       btn.style.background = o.color;
       btn.title = o.label;
       btn.setAttribute('aria-label', row.title + ' ' + o.label);
-      btn.setAttribute('aria-pressed', o.color.toUpperCase() === cur ? 'true' : 'false');
-      btn.addEventListener('click', () => { state[row.prop] = o.color; onChange(); });
+      btn.setAttribute('aria-pressed', String(o.value).toUpperCase() === cur ? 'true' : 'false');
+      btn.addEventListener('click', () => { state[row.prop] = o.value; onChange(); });
       grp.appendChild(btn);
     }
     wrap.appendChild(grp);
@@ -373,10 +419,10 @@ function openSettings(face, state, redrawCard) {
   if (dir && RELEASES !== '#') {
     const files = el('p', 'dlg-files');
     files.appendChild(el('span', null, 'Download: '));
-    for (const [label, file] of [['All devices (.iq)', dir + '.iq'], ['vívoactive 6 (.prg)', dir + '-vivoactive6.prg'], ['vívoactive 5 (.prg)', dir + '-vivoactive5.prg']]) {
-      const a = el('a', null, label); a.href = RELEASES.replace(/\/latest$/, '/latest/download/') + file;
-      files.appendChild(a);
-    }
+    const a = el('a', null, dir + '.zip');
+    a.href = RELEASES.replace(/\/latest$/, '/latest/download/') + dir + '.zip';
+    files.appendChild(a);
+    files.appendChild(el('span', null, '(' + dir + '.iq for all devices, vivoactive6.prg, vivoactive5.prg)'));
     dlg.appendChild(files);
   }
   const body = el('div', 'dlg-body');
@@ -385,13 +431,19 @@ function openSettings(face, state, redrawCard) {
   screen.appendChild(inner); left.appendChild(screen);
   const sw = el('div'); left.appendChild(sw);
   body.appendChild(left);
-  body.appendChild(settingsBody(face));
+  const right = el('div');
+  body.appendChild(right);
   dlg.appendChild(body);
   const active = face.boards.find(b => !/always/i.test(b.mode)) || face.boards[0];
+  const change = () => { redrawCard(); refresh(); };
   const refresh = () => {
     inner.innerHTML = render(active, state);
     sw.textContent = '';
-    for (const r of swatchRows(face, state, () => { redrawCard(); refresh(); })) sw.appendChild(r);
+    for (const r of swatchRows(face, state, change)) sw.appendChild(r);
+    const y = dlg.scrollTop;
+    right.textContent = '';
+    right.appendChild(settingsBody(face, state, change));
+    dlg.scrollTop = y;
   };
   dlgRefresh = refresh;
   refresh();
@@ -416,31 +468,22 @@ for (const face of faces) {
     draw.push(() => { inner.innerHTML = render(b, state); });
   }
   card.appendChild(pair);
-  const sw = el('div');
-  card.appendChild(sw);
   const redrawCard = () => {
     draw.forEach(f => f());
-    sw.textContent = '';
-    for (const r of swatchRows(face, state, redrawCard)) sw.appendChild(r);
     if (dlgRefresh && dlg.open && dlg.dataset.face === face.title) dlgRefresh();
   };
   const foot = el('div', 'face-foot');
   const n = settingCount(face.settings);
-  if (n || (face.settings && face.settings.native)) {
-    const btn = el('button', 'settings-btn', 'Settings' + (n ? ' (' + n + ')' : ''));
-    btn.type = 'button';
-    btn.addEventListener('click', () => { dlg.dataset.face = face.title; openSettings(face, state, redrawCard); });
-    foot.appendChild(btn);
-    const sum = settingsSummary(face);
-    if (sum) foot.appendChild(el('span', 'note', sum));
-  } else {
-    foot.appendChild(el('span', 'note', 'No settings (fixed design)'));
-  }
+  const btn = iconButton('button', 'card-btn', SVG_SETTINGS, n ? 'Settings (' + n + ')' : 'Settings');
+  btn.type = 'button';
+  btn.setAttribute('aria-label', face.title + ' settings');
+  btn.addEventListener('click', () => { dlg.dataset.face = face.title; openSettings(face, state, redrawCard); });
+  foot.appendChild(btn);
   const dir = (face.dir || '').split('/').pop();
   if (dir) {
-    const dl = el('a', 'card-download', 'Download');
-    dl.href = RELEASES; dl.target = '_blank'; dl.rel = 'noopener';
-    dl.setAttribute('aria-label', 'Download ' + face.title + ' from the latest release');
+    const dl = iconButton('a', 'card-btn', SVG_DOWNLOAD, 'Download');
+    dl.href = RELEASES.replace(/\/latest$/, '/latest/download/') + dir + '.zip';
+    dl.setAttribute('aria-label', 'Download ' + face.title + ' (' + dir + '.zip) from the latest release');
     foot.appendChild(dl);
   }
   card.appendChild(foot);

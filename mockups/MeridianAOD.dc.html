@@ -8,24 +8,138 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&amp;family=Roboto+Condensed:wght@500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&amp;family=Chakra+Petch:wght@700&amp;family=DM+Serif+Display&amp;family=Barlow+Condensed:wght@600&amp;family=Roboto+Condensed:wght@500;600;700&amp;display=swap">
 <style>
 body{margin:0;background:#1a1a1a}
 </style>
 </helmet>
-<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: #000000; overflow: hidden">
-<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position: absolute; left: 0; top: 0" aria-hidden="true">
-
-</svg>
-<div style="position: absolute; left: 0; top: 86px; width: 390px; height: 120px; display: flex; align-items: center; justify-content: center; font-family: 'M PLUS Rounded 1c', sans-serif; font-weight: 800; font-size: 132px; line-height: 1; letter-spacing: -4px; -webkit-text-stroke: 2px #8A8A8A; color: transparent;"><span style="position: relative; top: 4px">12</span></div>
-<div style="position: absolute; left: 0; top: 184px; width: 390px; height: 120px; display: flex; align-items: center; justify-content: center; font-family: 'M PLUS Rounded 1c', sans-serif; font-weight: 800; font-size: 132px; line-height: 1; letter-spacing: -4px; -webkit-text-stroke: 2px #8A8A8A; color: transparent;"><span style="position: relative; top: 4px">31</span></div>
-<div style="position: absolute; left: 95px; top: 319.2px; width: 200px; height: 21.6px; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed', sans-serif; font-weight: 600; font-size: 18px; line-height: 1; color: #6A6A6A">SAT 24 · ♥ 61</div>
-</div>
+<div style="position: relative; width: 390px; height: 390px; border-radius: 50%; background: {{bg}}; overflow: hidden; color: #FFFFFF">{{content}}</div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 390, "height": 390}}'>
+<script type="text/x-dc" data-dc-script data-props='{"FontStyle": {"default": 0}, "TimeFormat": {"default": 0}, "LeadingZero": {"default": true}, "$preview": {"width": 390, "height": 390}}'>
+
+const G = {"AR": 175, "TRACK": 3.5, "FILL": 8, "CR": 51, "SLOT": [[195, 36], [36, 195], [354, 195], [195, 354]], "ICON": [[195, 17], [39, 177], [351, 177], [195, 330]], "ICON_SZ": [34, 36, 36, 36], "VALUE": [[195, 60], [39, 217], [351, 217], [195, 373]], "ARC_A": [291, 21, 201, 111], "ARC_B": [339, 69, 249, 159], "ARC_BASE": [291, 69, 249, 111], "ARC_END": [339, 21, 201, 159], "ARC_TEXT": [315, 45, 225, 135], "ARC_TEXT_R": 141, "HOUR_Y": 146, "MIN_Y": 244}, T = {"BG": ["#0B0B0B", "#1B2A44", "#20262E", "#F4EEE3", "#FFFFFF"], "TEXT": ["#FFFFFF", "#E8E8EA", "#FFFFFF", "#2B2B2B", "#1B1B1B"], "OUTLINE": ["#3C3C3C", "#8E8E93", "#4A5562", "#C9B79A", "#BDBDBD"], "TRACK": ["#4A4A4A", "#8E8E93", "#55606C", "#3E8EA3", "#D6D6D6"], "WEEKDAY": ["#4A90E2", "#F2B9A6", "#5FD3F3", "#B3412E", "#4A90E2"], "HOUR": ["#FFFFFF", "#C9E86B", "#9BF0B0", "#1F4E5F", "#1F4E5F"], "HOUR_END": ["#BDBDBD", "#9EE6C8", "#5FD3F3", "#1F4E5F", "#1F4E5F"], "MINUTE": ["#FFFFFF", "#A9D6FF", "#5FD3F3", "#B3412E", "#B3412E"], "NAVY_ARCS": ["#7FB2E8", "#D7DE8A", "#E3A04E", "#C8443A"], "CREAM_ACCENT": "#3E8EA3", "CREAM_ICON": "#B3412E", "CHARCOAL_ACCENT": "#C6F432", "GRAD": ["#FFFFFF", "#B4B4B4", "#C6F432", "#2DD4BF", "#C6F432", "#CFE8C8", "#C6F432", "#A9D3FF", "#FF3DA5", "#FFA62B", "#A9D3FF", "#B9B4F5", "#FFC21A", "#FF3B4E", "#2DD4BF", "#4DA3FF"]}, OPTS = [[null, null, "", null, "#8A8A8A"], ["FOOT", null, "12k", 0.72, "#F0399F"], ["TARGET", null, "72%", 0.72, "#F0399F"], ["PIN", null, "5.6km", null, "#4DA3FF"], ["FLAME", null, "1.8k", null, "#FF7A3D"], ["STOPWATCH", null, "95", 0.63, "#F5A33A"], ["HEART", null, "61", 0.32, "#EF3348"], ["HEART", null, "52", 0.52, "#FF6B7A"], ["BODY", null, "68", 0.68, "#4DC3FF"], ["STRESS", null, "24", 0.24, "#F5A33A"], ["O2", null, "97%", 0.97, "#4DA3FF"], ["LUNGS", null, "14", null, "#7DD3FC"], ["BATT4", null, "82%", 0.82, "#5BE15B"], ["BOLT", null, "9d", 0.6, "#5BE15B"], ["THERMO", null, "27°", null, "#F5A33A"], ["PARTLY", null, "27°", null, "#F5A33A"], ["THERMO", null, "31/24", null, "#F5A33A"], ["UMBRELLA", null, "20%", 0.2, "#4DA3FF"], ["DROP", null, "64%", 0.64, "#4DA3FF"], ["WIND", null, "12kmh", null, "#7DD3FC"], [null, "UV", "7", 0.64, "#FFC21A"], ["SUNRISE", null, "7:24", null, "#F7B52C"], ["SUNSET", null, "17:52", null, "#FF7A3D"], ["SUNSET", null, "17:52", null, "#F7B52C"], ["BELL", null, "2", null, "#F7E03A"], ["ALARM", null, "1", null, "#FFC21A"], ["PHONE", null, "ON", null, "#4DA3FF"], [null, "SAT", "24", null, "#4A90E2"], [null, "WK", "40", null, "#C8C8C8"], ["MOUNTAIN", null, "42", null, "#B9A6FF"], ["RECOVERY", null, "26h", 0.3, "#FFE11A"], ["TREND", null, "PRODUCTI", null, "#5BE15B"], ["GAUGE", null, "48", null, "#FF7A3D"], ["MOON", null, "81", 0.81, "#B9A6FF"], ["CALENDAR", null, "11:00", null, "#C8C8C8"], ["STAIRS", null, "12", null, "#6EE7B7"], ["BARO", null, "1013", null, "#B9A6FF"]], ICONS = {"FOOT": ["<ellipse cx=\"7\" cy=\"7.2\" rx=\"3.4\" ry=\"4.8\"/><ellipse cx=\"7.4\" cy=\"15.6\" rx=\"2.6\" ry=\"2.9\"/><ellipse cx=\"16.6\" cy=\"10.4\" rx=\"3.4\" ry=\"4.8\"/><ellipse cx=\"17\" cy=\"18.8\" rx=\"2.6\" ry=\"2.9\"/>", 32], "TARGET": ["<path fill-rule=\"evenodd\" d=\"M12 2a10 10 0 1 1 0 20a10 10 0 1 1 0-20zm0 3a7 7 0 1 0 0 14a7 7 0 1 0 0-14zm0 3a4 4 0 1 1 0 8a4 4 0 1 1 0-8zm0 2.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 1 0 0-3z\"/>", 30], "PIN": ["<path fill-rule=\"evenodd\" d=\"M12 1.5a7.5 7.5 0 0 1 7.5 7.5c0 5.4-7.5 13.5-7.5 13.5S4.5 14.4 4.5 9A7.5 7.5 0 0 1 12 1.5zm0 4.6a2.9 2.9 0 1 0 0 5.8a2.9 2.9 0 1 0 0-5.8z\"/>", 30], "FLAME": ["<path fill-rule=\"evenodd\" d=\"M12.5 1.5c.6 3.6 4.9 6.2 6 10.2 1.6 5.6-2.5 10.8-7 10.8-4.3 0-7.5-3.4-7.5-7.6 0-3 1.6-5 3.4-6.6.1 2.3 1 3.7 2.3 4.3-.6-4.4 1.5-8.4 2.8-11.1zm-.6 12.2c-1.6 1.6-2.7 2.9-2.7 4.7a2.8 2.8 0 0 0 5.6 0c0-1.8-1.3-3.1-2.9-4.7z\"/>", 32], "STOPWATCH": ["<path fill-rule=\"evenodd\" d=\"M9.5 1.5h5v2.2h-5zM18.6 4.6l1.6 1.6-1.6 1.6-1.6-1.6zM12 5a8.5 8.5 0 1 1 0 17a8.5 8.5 0 1 1 0-17zm-1.1 4v5.3l4.2 2.5 1-1.6-3.2-1.9V9z\"/>", 30], "HEART": ["<path d=\"M12 21.2 10.4 19.8C4.9 14.8 1.3 11.5 1.3 7.5 1.3 4.2 3.9 1.7 7.1 1.7c1.9 0 3.7.9 4.9 2.3 1.2-1.4 3-2.3 4.9-2.3 3.2 0 5.8 2.5 5.8 5.8 0 4-3.6 7.3-9.1 12.3L12 21.2z\"/>", 36], "BODY": ["<path fill-rule=\"evenodd\" d=\"M6 2h12a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm7.6 3.5-6.1 8.6h4.2l-1 5.4 6-8.5h-4.2z\"/>", 32], "STRESS": ["<path fill-rule=\"evenodd\" d=\"M12 2.5c5.3 0 9.5 3.9 9.5 8.8 0 2.6-1.2 4.6-3.2 6.1V21.5h-8v-2.8H7.6a2.6 2.6 0 0 1-2.6-2.6V13l-2.3-.8 2.4-3.6C6.2 5 8.8 2.5 12 2.5zm.4 4.1a3.8 3.8 0 0 0-3.7 3.8 2.6 2.6 0 0 0 2.6 2.6 1.6 1.6 0 0 0 1.6-1.6 1 1 0 0 0-1-1l-.3 1.3a.3.3 0 0 1-.3-.3 1.2 1.2 0 0 1 1.2-1.2 2.3 2.3 0 0 1 2.3 2.3 3.2 3.2 0 0 1-3.2 3.2 4.6 4.6 0 0 1-4.6-4.6v.6a5.6 5.6 0 0 0 5.6 5.6 4.6 4.6 0 0 0 4.6-4.6 4.8 4.8 0 0 0-4.8-6.1z\"/>", 32], "O2": ["<path fill-rule=\"evenodd\" d=\"M12 2s7 7.6 7 12.4A7 7 0 0 1 5 14.4C5 9.6 12 2 12 2zm-1.6 10.2a2.4 2.4 0 1 0 0 4.8a2.4 2.4 0 1 0 0-4.8zm0 1.3a1.1 1.1 0 1 1 0 2.2a1.1 1.1 0 1 1 0-2.2zm3.8 2.3h2.2v.9h-1.2l1.2-1.3a.8.8 0 0 0-1.2-1\"/>", 30], "LUNGS": ["<path d=\"M11 3h2v7.5l3.3 2.4-1.1 1.6L12 12.2l-3.2 2.3-1.1-1.6L11 10.5z\"/><path d=\"M8.3 6.5c-2.3.4-5.3 5.4-5.3 10.3 0 3 1.3 4.2 3.2 4.2 2.4 0 4.3-1.5 4.3-4.6V9.6c0-2-.9-3.4-2.2-3.1zM15.7 6.5c2.3.4 5.3 5.4 5.3 10.3 0 3-1.3 4.2-3.2 4.2-2.4 0-4.3-1.5-4.3-4.6V9.6c0-2 .9-3.4 2.2-3.1z\"/>", 32], "BATTERY": ["<path fill-rule=\"evenodd\" d=\"M3.5 6.5h15a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zm.5 2.4v6.2h14V8.9zM21.5 10h1.5v4h-1.5z\"/><rect x=\"5\" y=\"10\" width=\"7\" height=\"4\" rx=\".6\"/>", 32], "BOLT": ["<path fill-rule=\"evenodd\" d=\"M12 .5a11.5 11.5 0 1 1 0 23a11.5 11.5 0 1 1 0-23zM13.2 4.5 7 13.4h4.6l-1 6.1 6.4-9.2h-4.7l.9-5.8z\"/>", 30], "THERMO": ["<path fill-rule=\"evenodd\" d=\"M12 1.5a3.3 3.3 0 0 1 3.3 3.3v8.6a5.4 5.4 0 1 1-6.6 0V4.8A3.3 3.3 0 0 1 12 1.5zm0 2a1.3 1.3 0 0 0-1.3 1.3v9.6l-.6.4a3.4 3.4 0 1 0 3.8 0l-.6-.4V4.8A1.3 1.3 0 0 0 12 3.5z\"/><path d=\"M11 8h2v8.3a2.2 2.2 0 1 1-2 0z\"/>", 32], "SUN": ["<circle cx=\"12\" cy=\"12\" r=\"5\"/><path d=\"M12 .5l1.4 3.6h-2.8zM12 23.5l-1.4-3.6h2.8zM.5 12l3.6-1.4v2.8zM23.5 12l-3.6 1.4v-2.8zM3.9 3.9l3.5 1.6-1.9 1.9zM20.1 20.1l-3.5-1.6 1.9-1.9zM20.1 3.9l-1.6 3.5-1.9-1.9zM3.9 20.1l1.6-3.5 1.9 1.9z\"/>", 34], "PARTLY": ["<path d=\"M9.5 1.5l.8 2.3h-1.6zM3.3 3.6l2.2 1-1.2 1.2zM15.7 3.6l-1 2.2-1.2-1.2zM1 9.8l2.3-.8v1.6z\"/><path d=\"M5.6 9.8a3.9 3.9 0 0 1 7.6-1.2A5.6 5.6 0 0 0 9 12.6 3.6 3.6 0 0 0 5.9 11.3z\"/><path d=\"M6.8 22.5h11.4a4.6 4.6 0 0 0 .9-9.1 6 6 0 0 0-11.4 1.9 3.6 3.6 0 0 0-.9 7.2z\"/>", 38], "CLOUD": ["<path d=\"M6.3 19h11.6a4.6 4.6 0 0 0 .9-9.1 6.3 6.3 0 0 0-12 1.9 3.6 3.6 0 0 0-.5 7.2z\"/>", 36], "RAIN": ["<path d=\"M6.3 15.5h11.6a4.6 4.6 0 0 0 .9-9.1 6.3 6.3 0 0 0-12 1.9 3.6 3.6 0 0 0-.5 7.2z\"/><path d=\"M8 17.5l-1.2 3.6M12 17.5l-1.2 3.6M16 17.5l-1.2 3.6\" stroke-width=\"2\" stroke-linecap=\"round\" fill=\"none\"/>", 36], "SNOW": ["<path d=\"M6.3 15.5h11.6a4.6 4.6 0 0 0 .9-9.1 6.3 6.3 0 0 0-12 1.9 3.6 3.6 0 0 0-.5 7.2z\"/><circle cx=\"8\" cy=\"19.5\" r=\"1.4\"/><circle cx=\"12\" cy=\"21\" r=\"1.4\"/><circle cx=\"16\" cy=\"19.5\" r=\"1.4\"/>", 36], "STORM": ["<path d=\"M6.3 14h11.6a4.6 4.6 0 0 0 .9-9.1 6.3 6.3 0 0 0-12 1.9 3.6 3.6 0 0 0-.5 7.2z\"/><path d=\"M13.6 14.6 8.8 20.6h3.4l-1 3.2 5-6.3h-3.4l1-2.9z\"/>", 36], "UMBRELLA": ["<path d=\"M12 2c5.5 0 10 4 10 9.2H2C2 6 6.5 2 12 2z\"/><path d=\"M12 11v8.2a2 2 0 0 1-4 0\" stroke-width=\"2\" stroke-linecap=\"round\" fill=\"none\"/>", 32], "DROP": ["<path d=\"M12 2s7 7.6 7 12.4A7 7 0 0 1 5 14.4C5 9.6 12 2 12 2z\"/>", 30], "WIND": ["<path d=\"M2.5 9h11.3a3 3 0 1 0-3-3M2.5 13h16.3a3 3 0 1 1-3 3M2.5 17h8\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"/>", 32], "SUNRISE": ["<path d=\"M12 1 8.4 5.4h2.4V9.6h2.4V5.4h2.4z\"/><path d=\"M6.2 18.6a5.8 5.8 0 0 1 11.6 0z\"/><rect x=\"1.5\" y=\"19.4\" width=\"21\" height=\"2.4\" rx=\"1.2\"/><path d=\"M12 10.4l.9 1.9h-1.8zM5.4 12.4l1.9.9-1.2 1.3zM18.6 12.4l-1.9.9 1.2 1.3zM2.2 16.6l2.2.3-.8 1.6zM21.8 16.6l-2.2.3.8 1.6zM8.2 10.9l1.4 1.5-1.7.6zM15.8 10.9l-1.4 1.5 1.7.6z\"/>", 36], "SUNSET": ["<path d=\"M12 9.8 8.4 5.4h2.4V1.2h2.4v4.2h2.4z\"/><path d=\"M6.2 18.6a5.8 5.8 0 0 1 11.6 0z\"/><rect x=\"1.5\" y=\"19.4\" width=\"21\" height=\"2.4\" rx=\"1.2\"/><path d=\"M5.4 12.4l1.9.9-1.2 1.3zM18.6 12.4l-1.9.9 1.2 1.3zM2.2 16.6l2.2.3-.8 1.6zM21.8 16.6l-2.2.3.8 1.6z\"/>", 36], "BELL": ["<path d=\"M12 1.8a1.7 1.7 0 0 1 1.7 1.7v.6a6.8 6.8 0 0 1 5.1 6.6v4.6l2.4 2.8v1.2H2.8v-1.2l2.4-2.8v-4.6a6.8 6.8 0 0 1 5.1-6.6v-.6A1.7 1.7 0 0 1 12 1.8zM9.2 20.4h5.6a2.8 2.8 0 0 1-5.6 0z\"/>", 36], "ALARM": ["<path fill-rule=\"evenodd\" d=\"M12 4.5a8.5 8.5 0 1 1 0 17a8.5 8.5 0 1 1 0-17zm-1.1 3.8v5.6l4.4 2.6 1-1.6-3.3-2V8.3zM5.4 1.8 7 3.4 3 7.2 1.5 5.6zM18.6 1.8 17 3.4l4 3.8 1.5-1.6z\"/>", 32], "PHONE": ["<path fill-rule=\"evenodd\" d=\"M7.5 1.5h9a2 2 0 0 1 2 2v17a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-17a2 2 0 0 1 2-2zm.5 3v13.5h8V4.5zm4 15a1 1 0 1 0 0 2a1 1 0 1 0 0-2z\"/>", 30], "CALENDAR": ["<path fill-rule=\"evenodd\" d=\"M4.7 4h14.6a2.2 2.2 0 0 1 2.2 2.2v13.6a2.2 2.2 0 0 1-2.2 2.2H4.7a2.2 2.2 0 0 1-2.2-2.2V6.2A2.2 2.2 0 0 1 4.7 4zM2.5 8.2v1.4h19V8.2zM5.5 11.5v2.6h3v-2.6zm5 0v2.6h3v-2.6zm5 0v2.6h3v-2.6zM5.5 16v2.6h3V16zm5 0v2.6h3V16zm5 0v2.6h3V16z\"/><rect x=\"6\" y=\"1.5\" width=\"2.4\" height=\"5\" rx=\"1.2\"/><rect x=\"15.6\" y=\"1.5\" width=\"2.4\" height=\"5\" rx=\"1.2\"/>", 34], "MOUNTAIN": ["<path d=\"M1.5 20.5 9 7.5l3.4 5.8 2.2-3.4 7.9 10.6z\"/><path d=\"M9 7.5l2.2 3.8-1.6-.8-1.2 1.4-1.1-1z\" fill=\"#000\"/>", 34], "RECOVERY": ["<path fill-rule=\"evenodd\" d=\"M12 1.5a10.5 10.5 0 1 1 0 21a10.5 10.5 0 1 1 0-21zm0 2.6a7.9 7.9 0 1 0 0 15.8a7.9 7.9 0 1 0 0-15.8zM10.7 7.5h2.6v3.2h3.2v2.6h-3.2v3.2h-2.6v-3.2H7.5v-2.6h3.2z\"/>", 32], "TREND": ["<path d=\"M2.5 18.5l6-6.3 4 3.6 7.5-8.2\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/><path d=\"M15.5 5.3h6v6z\"/>", 32], "GAUGE": ["<path fill-rule=\"evenodd\" d=\"M12 3a10.5 10.5 0 0 1 9.1 15.8l-.3.5H3.2l-.3-.5A10.5 10.5 0 0 1 12 3zm0 2.6a7.9 7.9 0 0 0-7.2 11.2h14.4A7.9 7.9 0 0 0 12 5.6z\"/><path d=\"M11 15.4 16.2 8.6l1.2.9-4.4 7.3a1.4 1.4 0 0 1-2-1.4z\"/>", 32], "MOON": ["<path d=\"M14.5 2.2a9.8 9.8 0 1 0 7.3 13.6A8 8 0 0 1 14.5 2.2z\"/>", 32], "STAIRS": ["<path d=\"M2 21.5V17h5v-4.5h5V8h5V3.5h5v18z\"/>", 32], "BARO": ["<path fill-rule=\"evenodd\" d=\"M12 1.5a10.5 10.5 0 1 1 0 21a10.5 10.5 0 1 1 0-21zm0 2.6a7.9 7.9 0 1 0 0 15.8a7.9 7.9 0 1 0 0-15.8z\"/><path d=\"M11 12.6 15.8 6.8l1 .8-4.1 6a1.3 1.3 0 0 1-1.7-1z\"/><circle cx=\"12\" cy=\"17\" r=\"1.3\"/>", 32], "BATT0": ["<path fill-rule=\"evenodd\" d=\"M3.5 6.5h15a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zm.5 2.4v6.2h14V8.9zM21.5 10h1.5v4h-1.5z\"/>", 32], "BATT1": ["<path fill-rule=\"evenodd\" d=\"M3.5 6.5h15a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zm.5 2.4v6.2h14V8.9zM21.5 10h1.5v4h-1.5z\"/><rect x=\"5\" y=\"10\" width=\"3\" height=\"4\" rx=\".6\"/>", 32], "BATT2": ["<path fill-rule=\"evenodd\" d=\"M3.5 6.5h15a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zm.5 2.4v6.2h14V8.9zM21.5 10h1.5v4h-1.5z\"/><rect x=\"5\" y=\"10\" width=\"6\" height=\"4\" rx=\".6\"/>", 32], "BATT3": ["<path fill-rule=\"evenodd\" d=\"M3.5 6.5h15a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zm.5 2.4v6.2h14V8.9zM21.5 10h1.5v4h-1.5z\"/><rect x=\"5\" y=\"10\" width=\"9\" height=\"4\" rx=\".6\"/>", 32], "BATT4": ["<path fill-rule=\"evenodd\" d=\"M3.5 6.5h15a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zm.5 2.4v6.2h14V8.9zM21.5 10h1.5v4h-1.5z\"/><rect x=\"5\" y=\"10\" width=\"12.5\" height=\"4\" rx=\".6\"/>", 32]}, FONTS = [["'M PLUS Rounded 1c'", 800, -4], ["'Chakra Petch'", 700, -4], ["'DM Serif Display'", 400, -3], ["'Barlow Condensed'", 600, -2]], NOTE = {"CALENDAR": 34, "SUNRISE": 21, "SUNSET": 22, "NEXT_SUN": 23, "NOTIF": 24};
+const AUTO = -1, DYN = -10;
+const hex = v => typeof v === 'string' ? v : '#' + (v & 0xFFFFFF).toString(16).padStart(6, '0').toUpperCase();
+const num = (p, k, d) => { const v = p[k]; if (v === undefined || v === null || v === '') return d; return typeof v === 'boolean' ? v : Number(v); };
+function P(r, deg) { const a = deg * Math.PI / 180; return [195 + r * Math.sin(a), 195 - r * Math.cos(a)]; }
+function arcPath(r, a0, a1) {
+  const lo = Math.min(a0, a1), hi = Math.max(a0, a1), [x0, y0] = P(r, lo), [x1, y1] = P(r, hi);
+  return `M${x0.toFixed(1)} ${y0.toFixed(1)} A${r} ${r} 0 ${hi - lo > 180 ? 1 : 0} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`;
+}
+function iconHtml(name, x, y, size, color, bg) {
+  const ic = ICONS[name]; if (!ic) return '';
+  const halo = bg ? `filter: drop-shadow(2.5px 0 0 ${bg}) drop-shadow(-2.5px 0 0 ${bg}) drop-shadow(0 2.5px 0 ${bg}) drop-shadow(0 -2.5px 0 ${bg});` : '';
+  return `<div style="position:absolute;left:${(x - size / 2).toFixed(1)}px;top:${(y - size / 2).toFixed(1)}px;width:${size}px;height:${size}px;display:flex;${halo}">` +
+         `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" stroke="${color}" stroke-width="0">${ic[0]}</svg></div>`;
+}
+function textHtml(x, y, s, size, color, weight) {
+  return `<div style="position:absolute;left:${x - 70}px;top:${(y - size * 0.6).toFixed(1)}px;width:140px;height:${(size * 1.2).toFixed(1)}px;display:flex;align-items:center;justify-content:center;font-family:'Roboto Condensed',sans-serif;font-weight:${weight};font-size:${size}px;line-height:1;color:${color};white-space:nowrap">${s}</div>`;
+}
+function settings(p) {
+  const s = {};
+  for (const k of Object.keys({"Theme": 0, "FontStyle": 0, "Frame": 0, "TimeFormat": 0, "LeadingZero": true, "SlotTop": 34, "SlotLeft": 21, "SlotRight": 27, "SlotBottom": 24, "ArcTL": 1, "ArcTR": 13, "ArcBL": 15, "ArcBR": 6, "HourColor": -1, "MinuteColor": -1, "WeekdayColor": -1, "TextColor": -1, "IconColor": -1, "OutlineColor": -1, "TrackColor": -1, "ArcColorTL": -1, "ArcColorTR": -1, "ArcColorBL": -1, "ArcColorBR": -1})) s[k] = num(p, k, {"Theme": 0, "FontStyle": 0, "Frame": 0, "TimeFormat": 0, "LeadingZero": true, "SlotTop": 34, "SlotLeft": 21, "SlotRight": 27, "SlotBottom": 24, "ArcTL": 1, "ArcTR": 13, "ArcBL": 15, "ArcBR": 6, "HourColor": -1, "MinuteColor": -1, "WeekdayColor": -1, "TextColor": -1, "IconColor": -1, "OutlineColor": -1, "TrackColor": -1, "ArcColorTL": -1, "ArcColorTR": -1, "ArcColorBL": -1, "ArcColorBR": -1}[k]);
+  s.Theme = Math.min(4, Math.max(0, s.Theme | 0));
+  return s;
+}
+function arcColor(s, i, opt) {
+  let c = s['ArcColor' + ['TL', 'TR', 'BL', 'BR'][i]];
+  if (c === AUTO) {
+    if (s.Theme === 1) return T.NAVY_ARCS[i];
+    if (s.Theme === 2) return T.CHARCOAL_ACCENT;
+    if (s.Theme === 3) return T.CREAM_ACCENT;
+    c = DYN;
+  }
+  return c === DYN ? OPTS[opt][4] : hex(c);
+}
+function iconColor(s, opt) {
+  let c = s.IconColor;
+  if (c === AUTO) {
+    if (s.Theme === 1) {
+      if (opt === NOTE.CALENDAR) return '#C8CCD6';
+      if (opt === NOTE.SUNRISE || opt === NOTE.SUNSET || opt === NOTE.NEXT_SUN) return '#E8E070';
+      if (opt === NOTE.NOTIF) return '#E3A04E';
+    } else if (s.Theme === 2) return opt === NOTE.CALENDAR ? '#E6E6E6' : T.CHARCOAL_ACCENT;
+    else if (s.Theme === 3) return T.CREAM_ICON;
+    c = DYN;
+  }
+  return c === DYN ? OPTS[opt][4] : hex(c);
+}
+const pick = (v, auto) => v === AUTO ? auto : hex(v);
+function digitStyle(c, autoTop, autoEnd) {
+  // solid color, theme auto (solid to 55%, then fading), or a gradient setting (negative value)
+  if (c === AUTO) return autoTop === autoEnd ? `color:${autoTop};` :
+    `background:linear-gradient(180deg, ${autoTop} 55%, ${autoEnd} 100%);-webkit-background-clip:text;background-clip:text;color:transparent;`;
+  if (c >= 0) return `color:${hex(c)};`;
+  let g = (-c - 2) * 2; if (g < 0 || g + 1 >= T.GRAD.length) g = 0;
+  return `background:linear-gradient(180deg, ${T.GRAD[g]}, ${T.GRAD[g + 1]});-webkit-background-clip:text;background-clip:text;color:transparent;`;
+}
+function timeHtml(s, aod) {
+  const f = FONTS[Math.min(3, Math.max(0, s.FontStyle | 0))];
+  const is24 = s.TimeFormat === 2 || s.TimeFormat === 0;   // sample time 12:31; "Follow watch" shown as 24 h
+  let h = 12; if (!is24) { h = h % 12 || 12; }
+  const hs = s.LeadingZero ? String(h).padStart(2, '0') : String(h);
+  const line = (txt, y, style) => `<div style="position:absolute;left:0;top:${y - 60}px;width:390px;height:120px;display:flex;align-items:center;justify-content:center;font-family:${f[0]},sans-serif;font-weight:${f[1]};font-size:132px;line-height:1;letter-spacing:${f[2]}px;${style}"><span style="position:relative;top:4px">${txt}</span></div>`;
+  if (aod) {
+    const st = 'color:transparent;-webkit-text-stroke:2px #8A8A8A;';
+    return line(hs, G.HOUR_Y, st) + line('31', G.MIN_Y, st);
+  }
+  const th = s.Theme;
+  return line(hs, G.HOUR_Y, digitStyle(s.HourColor, T.HOUR[th], T.HOUR_END[th])) +
+         line('31', G.MIN_Y, digitStyle(s.MinuteColor, T.MINUTE[th], T.MINUTE[th]));
+}
+function frameSvg(s, k, color) {
+  const [cx, cy] = G.SLOT[k];
+  if (s.Frame === 2) return '';
+  if (s.Frame === 0) return `<circle cx="${cx}" cy="${cy}" r="${G.CR}" stroke="${color}" stroke-width="2.5"></circle>`;
+  const r = G.CR + 3, rot = (k === 0 || k === 3) ? Math.PI / 6 : 0, pts = [];
+  for (let i = 0; i < 6; i++) pts.push((cx + r * Math.cos(rot + Math.PI * i / 3)).toFixed(1) + ',' + (cy + r * Math.sin(rot + Math.PI * i / 3)).toFixed(1));
+  return `<polygon points="${pts.join(' ')}" stroke="${color}" stroke-width="2.5" stroke-linejoin="round"></polygon>`;
+}
+function render(p, aod) {
+  const s = settings(p), th = s.Theme, bg = T.BG[th];
+  const text = pick(s.TextColor, T.TEXT[th]), outline = pick(s.OutlineColor, T.OUTLINE[th]), track = pick(s.TrackColor, T.TRACK[th]);
+  let svg = '', html = '';
+  if (aod) {
+    html = timeHtml(s, true) + textHtml(195, 330, 'SAT 24 · ♥ 61', 18, '#6A6A6A', 600);
+    return { bg: '#000000', content: html };
+  }
+  // circles (top, left, right, bottom)
+  ['SlotTop', 'SlotLeft', 'SlotRight', 'SlotBottom'].forEach((key, k) => {
+    svg += frameSvg(s, k, outline);
+    const opt = s[key] | 0, o = OPTS[opt] || OPTS[0];
+    if (!opt) return;
+    if (o[1]) html += textHtml(G.ICON[k][0], G.SLOT[k][1] - 17, o[1], 30, pick(s.WeekdayColor, T.WEEKDAY[th]), 700);
+    else html += iconHtml(o[0], G.ICON[k][0], G.ICON[k][1], G.ICON_SZ[k], iconColor(s, opt), null);
+    html += textHtml(G.VALUE[k][0], G.VALUE[k][1], o[2], o[2].length > 5 ? 24 : 33, text, 500);
+  });
+  // arcs (TL, TR, BL, BR): identical mirrored shape, fill grows from the side circle
+  const cap = (G.FILL / 2) / G.AR * 180 / Math.PI;
+  ['ArcTL', 'ArcTR', 'ArcBL', 'ArcBR'].forEach((key, i) => {
+    const opt = s[key] | 0, o = OPTS[opt] || OPTS[0];
+    if (!opt) return;
+    svg += `<path d="${arcPath(G.AR, G.ARC_A[i], G.ARC_B[i])}" stroke="${track}" stroke-width="${G.TRACK}" stroke-linecap="round"></path>`;
+    const d = G.ARC_END[i] > G.ARC_BASE[i] ? 1 : -1, base = G.ARC_BASE[i] + d * cap, end = G.ARC_END[i] - d * cap;
+    const color = arcColor(s, i, opt), prog = o[3] == null ? 0 : o[3];
+    let head = base + (end - base) * prog;
+    if ((head - base) * d < 2) {
+      const [x, y] = P(G.AR, base); head = base;
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${G.FILL / 2}" fill="${color}"></circle>`;
+    } else svg += `<path d="${arcPath(G.AR, base, head)}" stroke="${color}" stroke-width="${G.FILL}" stroke-linecap="round"></path>`;
+    let ia = head + 3 * d;
+    if ((ia - base) * d < 12) ia = base + 12 * d;
+    const lim = G.ARC_END[i] - 6 * d; if ((ia - lim) * d > 0) ia = lim;
+    const [ix, iy] = P(G.AR - 2, ia);
+    if (o[0]) html += iconHtml(o[0], ix, iy, Math.round((ICONS[o[0]] || [0, 32])[1] * 0.8), color, bg);
+    const ta = G.ARC_TEXT[i], [tx, ty] = P(G.ARC_TEXT_R, ta), rot = (ta > 270 || ta < 90) ? ta : ta - 180;
+    const val = (o[1] ? o[1] + ' ' : '') + o[2];
+    svg += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" transform="rotate(${rot} ${tx.toFixed(1)} ${ty.toFixed(1)})" text-anchor="middle" dominant-baseline="central" font-family="Roboto Condensed" font-weight="500" font-size="33" fill="${text}">${val}</text>`;
+  });
+  html = `<svg width="390" height="390" viewBox="0 0 390 390" fill="none" style="position:absolute;left:0;top:0" aria-hidden="true">${svg}</svg>` + html + timeHtml(s, false);
+  return { bg, content: html };
+}
 class Component extends DCLogic {
   renderVals() {
-    return {};
+    return render(this.props, true);
   }
 }
 </script>

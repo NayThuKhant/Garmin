@@ -97,8 +97,8 @@ jobs:
         if: always()
         run: rm -f developer_key
 
-  # On a version tag (v1.0, v1.1, ...): publish a Release with every face's .iq and vivoactive 6 / 5 .prg
-  # (<Face>-vivoactive6.prg / <Face>-vivoactive5.prg, for sideloading), then keep only the
+  # On a version tag (v1.0, v1.1, ...): publish a Release with one zip per face (<Face>.zip holding the folder
+  # <Face>/ with <Face>.iq, vivoactive6.prg, vivoactive5.prg) plus AllFaces.zip, then keep only the
   # 3 newest releases (older releases and their tags are deleted).
   release:
     needs: build
@@ -113,22 +113,24 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
-      - name: Collect .iq files and vivoactive 6 / 5 .prg files
+      - name: Package one folder per face (zip)
         run: |
-          mkdir -p release
-          find artifacts -name "*.iq" -exec cp {} release/ \;
+          mkdir -p pkg release
           for d in artifacts/*/; do
             face=$(basename "$d")
+            mkdir -p "pkg/$face"
+            cp "$d/dist/$face.iq" "pkg/$face/$face.iq"
             for dev in vivoactive6 vivoactive5; do
               prg="$d/faces/$face/bin/devices/$dev.prg"
-              [ -f "$prg" ] && cp "$prg" "release/$face-$dev.prg"
+              [ -f "$prg" ] && cp "$prg" "pkg/$face/$dev.prg"
             done
+            (cd pkg && zip -qr "../release/$face.zip" "$face")
           done
+          (cd pkg && zip -qr ../release/AllFaces.zip .)
           ls -la release
-          test "$(ls release/*.iq | wc -l)" -gt 0
-          test "$(ls release/*.prg | wc -l)" -gt 0
+          test "$(ls release/*Face.zip | wc -l)" -gt 0
       - name: Create release
-        run: gh release create "${GITHUB_REF_NAME}" release/*.iq release/*.prg --title "${GITHUB_REF_NAME}" --generate-notes
+        run: gh release create "${GITHUB_REF_NAME}" release/*.zip --title "${GITHUB_REF_NAME}" --generate-notes
       - name: Keep only the 3 newest releases
         run: |
           gh release list --limit 100 --json tagName,createdAt \

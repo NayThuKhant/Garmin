@@ -13,7 +13,8 @@ its color options and every setting it offers ([`faces.html`](faces.html), publi
 
 **From a release** — download from [Releases](../../releases):
 
-- `<Face>-vivoactive6.prg` / `<Face>-vivoactive5.prg` — sideload to a vívoactive 6 or 5: connect the watch by USB (watch
+- `<Face>.zip` — unzips to a `<Face>/` folder with `<Face>.iq`, `vivoactive6.prg` and `vivoactive5.prg`
+  (`AllFaces.zip` has every face). Sideload the `.prg` to a vívoactive 6 or 5: connect the watch by USB (watch
   *Settings → System → USB Mode* = **MTP**), open it with [OpenMTP](https://openmtp.ganeshrvel.com)
   on macOS, copy the file to `GARMIN/APPS/`, quit OpenMTP and unplug. Pick the face under
   *Settings → Watch Face*. Sideloaded faces don't get phone settings.
@@ -59,7 +60,8 @@ Other tools:
 - Downloads SDK 9.2 and all devices once with
   [connect-iq-sdk-manager-cli](https://github.com/lindell/connect-iq-sdk-manager-cli) and caches them.
 - Builds every face, checks every device, and uploads the `.iq` + vívoactive 6 and 5 `.prg` per face.
-- Pushing a version tag publishes a GitHub Release with every `.iq`, `<Face>-vivoactive6.prg` and `<Face>-vivoactive5.prg`,
+- Pushing a version tag publishes a GitHub Release with one zip per face (`<Face>/` folder: `.iq`,
+  `vivoactive6.prg`, `vivoactive5.prg`) plus `AllFaces.zip`,
   keeping only the 3 newest releases:
 
   ```sh
