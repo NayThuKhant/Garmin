@@ -1,10 +1,11 @@
 name: Publish faces.html
 
-# Serves faces.html (the gallery of every face) at https://naythukhant.github.io/Garmin/
+# Serves faces.html (the gallery of every face) at https://naythukhant.github.io/Garmin/ and keeps
+# docs/preview.png (the README image) in sync: it is re-rendered here and committed when it changed.
 on:
   push:
     branches: [main]
-    paths: ["faces.html", "mockups/**", "faces/**", "tools/build_gallery.py", ".github/workflows/pages.yml"]
+    paths: ["faces.html", "mockups/**", "faces/**", "tools/build_gallery.py", "tools/render_preview.py", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -32,3 +33,25 @@ jobs:
           path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # README image: render every face's active design from the fresh gallery and commit it if it changed.
+  # Pushed with GITHUB_TOKEN, which never triggers other workflows (no loop, no extra face build).
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install --quiet Pillow
+      - run: python3 tools/build_gallery.py
+      - run: python3 tools/render_preview.py
+        env:
+          CHROME: google-chrome
+      - name: Commit docs/preview.png if it changed
+        run: |
+          git diff --quiet -- docs/preview.png && { echo "preview unchanged"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898900+github-actions[bot]@users.noreply.github.com"
+          git add docs/preview.png
+          git commit -m "Update README preview"
+          git pull --rebase origin main && git push origin HEAD:main

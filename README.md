@@ -50,7 +50,7 @@ Other tools:
 | `tools/set_products.sh` | Writes each face's `face.json` device list (faces ↔ devices map) into its manifest; `--check` verifies (CI). |
 | `tools/build_gallery.py` | Regenerates `faces.html` from `mockups/`. |
 | `tools/render_mockup.py` | Renders one mockup to PNG with headless Chrome. |
-| `tools/render_preview.py` | Renders `docs/preview.png` (this README's image: every face's active design) from `faces.html`. |
+| `tools/render_preview.py` | Renders `docs/preview.png` (this README's image: every face's active design) from `faces.html`. CI re-renders and commits it on every face change. |
 | `tools/gen_meridian_settings.py` / `gen_meridian_mockup.py` / `check_meridian.py` | Meridian's generated settings, mockup and symmetry check. |
 
 ## CI and releases

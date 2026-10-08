@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Render docs/preview.png (the README image): every face's active design in one compact grid.
 
-Usage: python3 tools/render_preview.py   (needs Google Chrome; run after tools/build_gallery.py)
+Usage: python3 tools/render_preview.py   (needs Google Chrome + Pillow; run after tools/build_gallery.py)
+CI (.github/workflows/pages.yml) runs it on every face change and commits the image, so it rarely needs
+running by hand. CHROME overrides the browser path (CI: google-chrome).
 """
 import os, subprocess, sys, tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+CHROME = os.environ.get("CHROME") or next((c for c in ("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+                                                         "/usr/bin/google-chrome", "/usr/bin/chromium") if os.path.exists(c)), "google-chrome")
 COLS, CARD = 6, 230          # grid columns, card width (px)
 
 STYLE = f"""<style>
@@ -25,7 +28,8 @@ def main():
     with tempfile.TemporaryDirectory() as d:
         src, shot = os.path.join(d, "p.html"), os.path.join(d, "p.png")
         open(src, "w").write(html)
-        subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
+        linux = ["--no-sandbox"] if sys.platform.startswith("linux") else []
+        subprocess.run([CHROME, *linux, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
                         f"--window-size={width},3200", "--virtual-time-budget=9000", f"--screenshot={shot}",
                         "file://" + src], check=True, capture_output=True)
         im = Image.open(shot).convert("RGB")
