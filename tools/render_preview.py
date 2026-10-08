@@ -10,7 +10,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 COLS, CARD = 6, 230          # grid columns, card width (px)
 
 STYLE = f"""<style>
-header p, header .controls, .board.aod, .swatches, .settings, .board > div:last-child {{ display: none !important; }}
+header p, header .controls, .board.aod, .swatches, .settings, .face-foot, .board > div:last-child {{ display: none !important; }}
 header {{ padding: 24px 24px 4px; }}
 main {{ grid-template-columns: repeat({COLS}, {CARD}px) !important; gap: 14px !important; max-width: none !important; padding: 12px 24px 24px !important; }}
 .face {{ padding: 12px !important; }}

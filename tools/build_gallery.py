@@ -174,8 +174,21 @@ main { max-width: 1400px; margin: 0 auto; padding: 16px 24px 48px; display: grid
 .swatches { display: flex; gap: 10px; align-items: center; margin-top: 10px; font-size: 12px; color: var(--muted); }
 .swatches > span { min-width: 72px; }
 .swatches > div { display: flex; gap: 6px; flex-wrap: wrap; }
-.settings { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 8px; font-size: 12px; color: var(--muted); }
-.settings > summary { cursor: pointer; color: var(--text); }
+.settings { font-size: 12px; color: var(--muted); }
+.face-foot { margin-top: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.settings-btn { background: var(--card); color: var(--text); border: 1px solid #3a3a3a; border-radius: 8px; padding: 6px 12px; font: inherit; cursor: pointer; }
+.settings-btn:hover { border-color: #777; }
+.settings-dialog { width: min(920px, calc(100vw - 32px)); max-height: calc(100vh - 48px); background: #161616; color: var(--text); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+.settings-dialog::backdrop { background: rgba(0,0,0,.6); }
+.dlg-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.dlg-head h2 { margin: 0; font-size: 17px; }
+.dlg-close { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 14px; }
+.dlg-sub { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+.dlg-body { display: grid; grid-template-columns: 300px 1fr; gap: 24px; margin-top: 16px; align-items: start; }
+.dlg-preview .screen { width: 300px; }
+.settings-dialog .settings { margin: 0; border: 0; padding: 0; }
+@media (max-width: 680px) { .dlg-body { grid-template-columns: 1fr; } .dlg-preview .screen { width: min(300px, 100%); margin: 0 auto; } }
+
 .settings h3 { margin: 12px 0 4px; font-size: 12px; color: var(--text); font-weight: 600; }
 .settings dl { margin: 0; display: grid; grid-template-columns: minmax(90px, 34%) 1fr; gap: 6px 10px; }
 .settings dt { color: var(--text); }
@@ -234,24 +247,27 @@ function el(tag, cls, text) {
   return n;
 }
 // Every setting the face's code defines: phone settings, on-watch editor, on-watch menu.
-function settingsPanel(face) {
-  const s = face.settings;
-  const d = el('details', 'settings');
-  const n = s ? s.groups.reduce((a, g) => a + g.items.length, 0) : 0;
-  const where = [];
+function settingCount(s) { return s ? s.groups.reduce((a, g) => a + g.items.length, 0) : 0; }
+function settingsSummary(face) {
+  const s = face.settings, n = settingCount(s), where = [];
   if (n) where.push(n + ' phone setting' + (n > 1 ? 's' : ''));
   if (s && s.native) where.push('on-watch editor');
   if (s && s.menu) where.push('on-watch menu');
-  d.appendChild(el('summary', null, where.length ? 'Settings · ' + where.join(' · ') : 'No settings (fixed design)'));
-  if (!s) return d;
+  return where.join(' · ');
+}
+function settingsBody(face) {
+  const s = face.settings;
+  const d = el('div', 'settings');
+  if (!s || (!settingCount(s) && !s.native)) { d.appendChild(el('p', 'note', 'No settings: this face has a fixed design.')); return d; }
   for (const g of s.groups) {
-    if (g.title) d.appendChild(el('h3', null, g.title));
+    d.appendChild(el('h3', null, g.title || 'Phone settings (Connect IQ app)'));
     const dl = el('dl');
     for (const it of g.items) {
       dl.appendChild(el('dt', null, it.title));
       const dd = el('dd');
       if (it.type === 'boolean') {
-        dd.appendChild(el('span', 'def', 'On / Off · default ' + it.default));
+        dd.appendChild(el('span', 'chip on', 'default ' + it.default));
+        dd.appendChild(el('span', 'chip', it.default === 'On' ? 'Off' : 'On'));
       } else if (it.options.length <= 12) {
         for (const o of it.options) dd.appendChild(el('span', 'chip' + (o.label === it.default ? ' on' : ''), o.label));
       } else {
@@ -283,67 +299,107 @@ function settingsPanel(face) {
   if (s.menu) d.appendChild(el('p', 'note', 'Watches without the editor (vívoactive 5, Venu 2/3, FR 165/265/965, epix 2, …) get the same phone settings as an on-watch menu.'));
   return d;
 }
+// Swatch rows bound to a face's state: the face's real color settings, applied to the mockup.
+function swatchRows(face, state, onChange) {
+  const out = [];
+  for (const row of face.swatches || []) {
+    const wrap = el('div', 'swatches');
+    wrap.appendChild(el('span', null, row.title));
+    const grp = el('div');
+    grp.setAttribute('role', 'group');
+    grp.setAttribute('aria-label', face.title + ' ' + row.title);
+    const mp = (face.boards.find(b => b.props[row.prop]) || {props: {}}).props[row.prop];
+    const cur = (state[row.prop] || (mp && mp.default) || (row.options[0] || {}).color || '').toUpperCase();
+    for (const o of row.options) {
+      const btn = el('button');
+      btn.type = 'button';
+      btn.style.background = o.color;
+      btn.title = o.label;
+      btn.setAttribute('aria-label', row.title + ' ' + o.label);
+      btn.setAttribute('aria-pressed', o.color.toUpperCase() === cur ? 'true' : 'false');
+      btn.addEventListener('click', () => { state[row.prop] = o.color; onChange(); });
+      grp.appendChild(btn);
+    }
+    wrap.appendChild(grp);
+    out.push(wrap);
+  }
+  return out;
+}
+// One shared popup for settings.
+const dlg = el('dialog', 'settings-dialog');
+dlg.setAttribute('aria-labelledby', 'dlg-title');
+document.body.appendChild(dlg);
+dlg.addEventListener('click', ev => { if (ev.target === dlg) dlg.close(); });
+let dlgRefresh = null;
+dlg.addEventListener('close', () => { dlgRefresh = null; });
+function openSettings(face, state, redrawCard) {
+  dlg.textContent = '';
+  const head = el('div', 'dlg-head');
+  const h = el('h2', null, face.title + ' — settings'); h.id = 'dlg-title';
+  const x = el('button', 'dlg-close', '✕'); x.type = 'button'; x.setAttribute('aria-label', 'Close');
+  x.addEventListener('click', () => dlg.close());
+  head.appendChild(h); head.appendChild(x); dlg.appendChild(head);
+  const sub = settingsSummary(face);
+  if (sub) dlg.appendChild(el('p', 'dlg-sub', sub));
+  const body = el('div', 'dlg-body');
+  const left = el('div', 'dlg-preview');
+  const screen = el('div', 'screen'); const inner = el('div', 'inner');
+  screen.appendChild(inner); left.appendChild(screen);
+  const sw = el('div'); left.appendChild(sw);
+  body.appendChild(left);
+  body.appendChild(settingsBody(face));
+  dlg.appendChild(body);
+  const active = face.boards.find(b => !/always/i.test(b.mode)) || face.boards[0];
+  const refresh = () => {
+    inner.innerHTML = render(active, state);
+    sw.textContent = '';
+    for (const r of swatchRows(face, state, () => { redrawCard(); refresh(); })) sw.appendChild(r);
+  };
+  dlgRefresh = refresh;
+  refresh();
+  dlg.showModal();
+  fit(inner);
+}
 const inners = [];
 for (const face of faces) {
-  const card = document.createElement('section');
-  card.className = 'face';
-  const h = document.createElement('h2');
-  h.textContent = face.title;
-  card.appendChild(h);
-  const pair = document.createElement('div');
-  pair.className = 'pair';
-  const accent = face.boards.find(b => b.props.accent);
+  const card = el('section', 'face');
+  card.appendChild(el('h2', null, face.title));
+  const pair = el('div', 'pair');
   const state = {};
   const draw = [];
   for (const b of face.boards) {
-    const box = document.createElement('div');
     const aod = /always/i.test(b.mode);
-    box.className = 'board ' + (aod ? 'aod' : 'active');
-    const screen = document.createElement('div');
-    screen.className = 'screen';
-    const inner = document.createElement('div');
-    inner.className = 'inner';
-    screen.appendChild(inner);
-    box.appendChild(screen);
-    const cap = document.createElement('div');
-    cap.textContent = aod ? 'always-on' : 'active';
-    box.appendChild(cap);
+    const box = el('div', 'board ' + (aod ? 'aod' : 'active'));
+    const screen = el('div', 'screen'); const inner = el('div', 'inner');
+    screen.appendChild(inner); box.appendChild(screen);
+    box.appendChild(el('div', null, aod ? 'always-on' : 'active'));
     pair.appendChild(box);
     inners.push(inner);
     draw.push(() => { inner.innerHTML = render(b, state); });
   }
   card.appendChild(pair);
-  // Color swatches = the face's real color settings (from its code), applied to the mockup.
-  for (const row of face.swatches || []) {
-    const wrap = document.createElement('div');
-    wrap.className = 'swatches';
-    const lbl = document.createElement('span');
-    lbl.textContent = row.title;
-    wrap.appendChild(lbl);
-    const grp = document.createElement('div');
-    grp.setAttribute('role', 'group');
-    grp.setAttribute('aria-label', face.title + ' ' + row.title);
-    const mp = (face.boards.find(b => b.props[row.prop]) || {props: {}}).props[row.prop];
-    const def = mp && mp.default ? String(mp.default).toUpperCase() : (row.options[0] || {}).color;
-    for (const o of row.options) {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.style.background = o.color;
-      btn.title = o.label;
-      btn.setAttribute('aria-label', row.title + ' ' + o.label);
-      btn.setAttribute('aria-pressed', o.color.toUpperCase() === def ? 'true' : 'false');
-      btn.addEventListener('click', () => {
-        state[row.prop] = o.color;
-        grp.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'));
-        draw.forEach(f => f());
-      });
-      grp.appendChild(btn);
-    }
-    wrap.appendChild(grp);
-    card.appendChild(wrap);
+  const sw = el('div');
+  card.appendChild(sw);
+  const redrawCard = () => {
+    draw.forEach(f => f());
+    sw.textContent = '';
+    for (const r of swatchRows(face, state, redrawCard)) sw.appendChild(r);
+    if (dlgRefresh && dlg.open && dlg.dataset.face === face.title) dlgRefresh();
+  };
+  const foot = el('div', 'face-foot');
+  const n = settingCount(face.settings);
+  if (n || (face.settings && face.settings.native)) {
+    const btn = el('button', 'settings-btn', 'Settings' + (n ? ' (' + n + ')' : ''));
+    btn.type = 'button';
+    btn.addEventListener('click', () => { dlg.dataset.face = face.title; openSettings(face, state, redrawCard); });
+    foot.appendChild(btn);
+    const sum = settingsSummary(face);
+    if (sum) foot.appendChild(el('span', 'note', sum));
+  } else {
+    foot.appendChild(el('span', 'note', 'No settings (fixed design)'));
   }
-  card.appendChild(settingsPanel(face));
-  draw.forEach(f => f());
+  card.appendChild(foot);
+  redrawCard();
   grid.appendChild(card);
 }
 const refit = () => inners.forEach(fit);
