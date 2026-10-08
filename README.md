@@ -5,7 +5,7 @@ vívoactive 6 (390×390) and built for 49 devices — from Venu 2 and vívoactiv
 Forerunner 970 and Venu 4. Every face has an active and an always-on (AOD) design.
 
 **[▶ Browse all faces](https://naythukhant.github.io/Garmin/)** — every face, active and always-on, with
-its accent color options ([`faces.html`](faces.html), published by GitHub Pages).
+its color options and every setting it offers ([`faces.html`](faces.html), published by GitHub Pages).
 
 [![Watch faces gallery](docs/preview.png)](https://naythukhant.github.io/Garmin/)
 
@@ -66,6 +66,7 @@ Other tools:
 | `tools/set_products.sh` | Writes `tools/devices.txt` (the 49 target devices) into every manifest. |
 | `tools/build_gallery.py` | Regenerates `faces.html` from `mockups/`. |
 | `tools/render_mockup.py` | Renders one mockup to PNG with headless Chrome. |
+| `tools/render_preview.py` | Renders `docs/preview.png` (this README's image: every face's active design) from `faces.html`. |
 | `tools/gen_meridian_settings.py` / `gen_meridian_mockup.py` / `check_meridian.py` | Meridian's generated settings, mockup and symmetry check. |
 
 ## CI and releases

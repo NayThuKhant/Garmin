@@ -42,7 +42,8 @@ The local `mockups/` + `faces.html` are the only design source; there is no onli
   `canvas.json` is the local index (order + titles) that `build_gallery.py` reads; add new boards there.
 - `faces.html` — all faces (active + always-on) on one page; open it in a browser. Published to
   https://naythukhant.github.io/Garmin/ by `.github/workflows/pages.yml` on every push that changes it;
-  `docs/preview.png` (README image) is a headless-Chrome screenshot of it — refresh it when faces change. Generated from
+  `docs/preview.png` (README image: ALL faces' active designs) — regenerate with
+  `tools/.venv/bin/python tools/render_preview.py` after `build_gallery.py` whenever a face changes or is added. Generated from
   `mockups/` by `python3 tools/build_gallery.py`; rerun after changing or adding a mockup.
 - `developer_key` — signing key. Never regenerate or commit it.
 
