@@ -190,10 +190,19 @@ header p { margin: 0; color: var(--muted); }
 .field { position: relative; display: flex; align-items: center; min-width: 0; }
 .field > svg { position: absolute; left: 11px; color: var(--muted); pointer-events: none; }
 .field.search-field { flex: 1 1 auto; }
-.field.device-field { flex: 0 1 260px; }
-.field.device-field > svg:last-child { left: auto; right: 11px; }
+.field.device-field { flex: 0 1 300px; }
+.field.device-field > svg.chev { left: auto; right: 11px; }
+.combo-clear { position: absolute; right: 30px; width: 22px; height: 22px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); font: inherit; font-size: 12px; cursor: pointer; }
+.combo-clear:hover { background: #2a2a2a; color: var(--text); }
+.combo-list { position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 10; margin: 0; padding: 6px; list-style: none; max-height: min(360px, 60vh); overflow-y: auto; background: #1c1c1c; border: 1px solid #333; border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, .5); }
+.combo-list li { display: flex; justify-content: space-between; gap: 10px; padding: 7px 10px; border-radius: 8px; cursor: pointer; white-space: nowrap; }
+.combo-list li span { overflow: hidden; text-overflow: ellipsis; }
+.combo-list li small { color: var(--muted); }
+.combo-list li[aria-selected="true"] { color: #fff; font-weight: 600; }
+.combo-list li.active { background: #2b2b2b; }
+.combo-list li.none { color: var(--muted); cursor: default; }
 .search, .device-filter { height: 38px; width: 100%; background: var(--card); color: var(--text); border: 1px solid #2e2e2e; border-radius: 10px; padding: 0 12px 0 34px; font: inherit; transition: border-color .15s; }
-.device-filter { appearance: none; -webkit-appearance: none; padding-right: 32px; cursor: pointer; text-overflow: ellipsis; }
+.device-filter { padding-right: 56px; text-overflow: ellipsis; }
 .search:hover, .device-filter:hover { border-color: #444; }
 .search:focus, .device-filter:focus { outline: none; border-color: #777; }
 .dl-filter { width: 100%; box-sizing: border-box; margin-top: 8px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font: inherit; }
@@ -238,8 +247,6 @@ main { max-width: 1600px; margin: 0 auto; padding: 4px 24px 48px; display: grid;
 .settings .note { margin: 10px 0 0; }
 .swatches button { width: 16px; height: 16px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
 .swatches button[aria-pressed="true"] { border-color: #fff; }
-.download-btn { height: 38px; flex: none; background: #ececec; color: #111; border-radius: 10px; padding: 0 16px; font-weight: 600; text-decoration: none; white-space: nowrap; }
-.download-btn:hover { background: #fff; }
 .dl-list { display: grid; gap: 8px; margin-top: 14px; }
 .dl-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); text-decoration: none; background: #1d1d1d; }
 .dl-item:hover { border-color: #777; }
@@ -253,13 +260,12 @@ main { max-width: 1600px; margin: 0 auto; padding: 4px 24px 48px; display: grid;
 @media (max-width: 480px) { .dl-item code { display: none; } }
 .card-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--card); color: var(--text); border: 1px solid #3a3a3a; border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 12px; cursor: pointer; text-decoration: none; }
 .card-btn:hover { border-color: #777; }
-.download-btn { display: inline-flex; align-items: center; gap: 6px; }
 .dlg-files { margin: 8px 0 0; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 12px; }
 .dlg-files a { color: #8fc2ff; }
 .empty { grid-column: 1 / -1; color: var(--muted); padding: 24px 0; text-align: center; }
 @media (max-width: 680px) { .dlg-body { grid-template-columns: minmax(0, 1fr); } .dlg-preview .screen { width: min(260px, 100%); margin: 0 auto; } .settings-dialog { padding: 14px; } }
 @media (max-width: 480px) { .settings dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .settings dd { margin-bottom: 8px; } header { padding: 20px 12px 0; } .toolbar > div { padding: 12px; } main { padding: 4px 12px 32px; } }
-@media (max-width: 640px) { .toolbar > div { flex-wrap: wrap; } .field.search-field { flex: 1 1 100%; } .field.device-field { flex: 1 1 0; } .download-btn span { display: none; } .download-btn { padding: 0 12px; } }
+@media (max-width: 640px) { .toolbar > div { flex-wrap: wrap; } .field.search-field { flex: 1 1 100%; } .field.device-field { flex: 1 1 0; } }
 </style>
 </head>
 <body>
@@ -269,10 +275,11 @@ main { max-width: 1600px; margin: 0 auto; padding: 4px 24px 48px; display: grid;
 <div class="toolbar"><div>
   <label class="field search-field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <input class="search" id="search" type="search" placeholder="Search faces or settings…" aria-label="Search faces"></label>
-  <label class="field device-field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="6"/><path d="M9 6 10 2h4l1 4M9 18l1 4h4l1-4"/></svg>
-    <select class="device-filter" id="device" aria-label="Filter by watch"><option value="">All watches</option></select>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></label>
-  <a class="download-btn" id="download-all" href="{{RELEASES}}" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Download</span></a>
+  <div class="field device-field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="6"/><path d="M9 6 10 2h4l1 4M9 18l1 4h4l1-4"/></svg>
+    <input class="device-filter" id="device" type="text" placeholder="All watches" autocomplete="off" spellcheck="false" role="combobox" aria-label="Filter by watch" aria-expanded="false" aria-controls="device-list" aria-autocomplete="list">
+    <button class="combo-clear" id="device-clear" type="button" aria-label="Show all watches" hidden>✕</button>
+    <ul class="combo-list" id="device-list" role="listbox" aria-label="Watches" hidden></ul>
+    <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div>
 </div></div>
 <main id="grid"></main>
 <script id="faces-data" type="application/json">{{DATA}}</script>
@@ -477,8 +484,9 @@ function faceDevices(face) {
                    : [...new Set(faces.flatMap(f => f.devices || DEVICES.map(d => d.id)))];
   return DEVICES.filter(d => ids.includes(d.id)).concat(ids.filter(i => !DEVICE_NAME[i]).map(i => ({id: i, name: i})));
 }
-const deviceSel = document.getElementById('device');
-const pickedDevice = () => deviceSel.value;
+const deviceInput = document.getElementById('device');
+let deviceId = '';                    // picked watch ('' = all)
+const pickedDevice = () => deviceId;
 // Download popup: pick a file from the latest release.
 const DL = RELEASES.replace(/\/latest$/, '/latest/download/');
 function openDownload(face) {
@@ -587,9 +595,53 @@ for (const face of faces) {
 const empty = el('p', 'empty', 'No faces match.');
 empty.hidden = true;
 grid.appendChild(empty);
-for (const d of faceDevices(null)) {
-  const o = el('option', null, d.name); o.value = d.id; deviceSel.appendChild(o);
+const fold = s => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();   // fēnix -> fenix
+// Watch filter: a searchable combobox (type to narrow the list, arrows + Enter, Esc to close).
+const deviceList = document.getElementById('device-list'), deviceClear = document.getElementById('device-clear');
+const allDevices = faceDevices(null).map(d => ({...d, n: faces.filter(f => faceDevices(f).some(x => x.id === d.id)).length,
+                                                q: fold(d.name + ' ' + d.id)}));
+let comboItems = [], comboActive = 0;
+function comboOpen() {
+  const q = fold((deviceInput.value === nameOf(deviceId) ? '' : deviceInput.value).trim()).split(/\s+/).filter(Boolean);
+  comboItems = [{id: '', name: 'All watches', n: faces.length}].filter(() => !q.length)
+    .concat(allDevices.filter(d => q.every(w => d.q.includes(w))));
+  deviceList.textContent = '';
+  if (!comboItems.length) deviceList.appendChild(el('li', 'none', 'No watch matches'));
+  comboItems.forEach((d, i) => {
+    const li = el('li'); li.setAttribute('role', 'option'); li.setAttribute('aria-selected', d.id === deviceId ? 'true' : 'false');
+    li.appendChild(el('span', null, d.name)); li.appendChild(el('small', null, d.n + (d.n === 1 ? ' face' : ' faces')));
+    li.addEventListener('mousedown', ev => { ev.preventDefault(); comboPick(d.id); });
+    li.addEventListener('mousemove', () => comboMark(i));
+    deviceList.appendChild(li);
+  });
+  comboMark(Math.max(0, comboItems.findIndex(d => d.id === deviceId && q.length === 0)));
+  deviceList.hidden = false; deviceInput.setAttribute('aria-expanded', 'true');
 }
+function comboMark(i) {
+  comboActive = i;
+  [...deviceList.children].forEach((li, j) => li.classList.toggle('active', j === i));
+  const li = deviceList.children[i]; if (li && li.scrollIntoView) li.scrollIntoView({block: 'nearest'});
+}
+function comboClose() {
+  deviceList.hidden = true; deviceInput.setAttribute('aria-expanded', 'false');
+  deviceInput.value = nameOf(deviceId);
+}
+const nameOf = id => id ? (allDevices.find(d => d.id === id) || {name: id}).name : '';
+function comboPick(id) {
+  deviceId = id; deviceClear.hidden = !id;
+  comboClose(); deviceInput.blur(); applyFilter();
+}
+deviceInput.addEventListener('focus', () => { deviceInput.select(); comboOpen(); });
+deviceInput.addEventListener('input', comboOpen);
+deviceInput.addEventListener('blur', comboClose);
+deviceInput.addEventListener('keydown', ev => {
+  if (deviceList.hidden && ev.key === 'ArrowDown') { comboOpen(); ev.preventDefault(); return; }
+  if (ev.key === 'ArrowDown') { comboMark(Math.min(comboItems.length - 1, comboActive + 1)); ev.preventDefault(); }
+  else if (ev.key === 'ArrowUp') { comboMark(Math.max(0, comboActive - 1)); ev.preventDefault(); }
+  else if (ev.key === 'Enter') { if (comboItems[comboActive]) comboPick(comboItems[comboActive].id); ev.preventDefault(); }
+  else if (ev.key === 'Escape') { comboClose(); deviceInput.blur(); }
+});
+deviceClear.addEventListener('click', () => comboPick(''));
 function applyFilter() {
   const q = document.getElementById('search').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const dev = pickedDevice();
@@ -600,13 +652,11 @@ function applyFilter() {
     if (hit) shown++;
   }
   empty.hidden = shown > 0;
-  const total = faces.length, forDev = dev ? ' for ' + deviceSel.selectedOptions[0].textContent : '';
+  const total = faces.length, forDev = dev ? ' for ' + nameOf(dev) : '';
   document.getElementById('count').textContent = (shown === total ? total + ' faces' : shown + ' of ' + total + ' faces') + forDev + ' · active + always-on';
   refit();
 }
 document.getElementById('search').addEventListener('input', applyFilter);
-deviceSel.addEventListener('change', applyFilter);
-document.getElementById('download-all').addEventListener('click', ev => { ev.preventDefault(); openDownload(null); });
 const refit = () => inners.forEach(fit);
 new ResizeObserver(refit).observe(grid);
 refit();
