@@ -33,20 +33,20 @@ header p { margin: 0; color: var(--muted); }
 .controls { margin-left: auto; display: flex; gap: 8px; align-items: center; color: var(--muted); }
 .controls button { background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
 .controls button[aria-pressed="true"] { border-color: #888; }
-main { max-width: 1400px; margin: 0 auto; padding: 16px 24px 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 20px; }
-.face { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
-.face h2 { margin: 0 0 12px; font-size: 15px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
+main { max-width: 1600px; margin: 0 auto; padding: 12px 24px 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 14px; }
+.face { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
+.face h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
 .face h2 small { color: var(--muted); font-weight: 400; }
-.pair { display: flex; gap: 12px; }
-.board { flex: 1; min-width: 0; text-align: center; color: var(--muted); font-size: 12px; }
+.pair { display: flex; gap: 8px; }
+.board { flex: 1; min-width: 0; text-align: center; color: var(--muted); font-size: 11px; }
 .screen { width: 100%; aspect-ratio: 1; position: relative; }
 .screen > .inner { position: absolute; left: 0; top: 0; width: 390px; height: 390px; transform-origin: 0 0; }
-.swatches { display: flex; gap: 10px; align-items: center; margin-top: 10px; font-size: 12px; color: var(--muted); }
-.swatches > span { min-width: 72px; }
+.swatches { display: flex; gap: 8px; align-items: center; margin-top: 8px; font-size: 11px; color: var(--muted); }
+.swatches > span { min-width: 64px; }
 .swatches > div { display: flex; gap: 6px; flex-wrap: wrap; }
 .settings { font-size: 12px; color: var(--muted); }
-.face-foot { margin-top: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
-.settings-btn { background: var(--card); color: var(--text); border: 1px solid #3a3a3a; border-radius: 8px; padding: 6px 12px; font: inherit; cursor: pointer; }
+.face-foot { margin-top: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--muted); }
+.settings-btn { background: var(--card); color: var(--text); border: 1px solid #3a3a3a; border-radius: 8px; padding: 4px 10px; font: inherit; cursor: pointer; }
 .settings-btn:hover { border-color: #777; }
 .settings-dialog { width: min(920px, calc(100vw - 32px)); max-height: calc(100vh - 48px); background: #161616; color: var(--text); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
 .settings-dialog::backdrop { background: rgba(0,0,0,.6); }
@@ -70,7 +70,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 16px 24px 48px; display: grid
 .chip { border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
 .chip.on { border-color: #888; color: var(--text); }
 .settings .note { margin: 10px 0 0; }
-.swatches button { width: 20px; height: 20px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
+.swatches button { width: 16px; height: 16px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
 .swatches button[aria-pressed="true"] { border-color: #fff; }
 body.only-active .board.aod, body.only-aod .board.active { display: none; }
 </style>
